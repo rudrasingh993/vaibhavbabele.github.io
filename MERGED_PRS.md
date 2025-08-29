@@ -2,19 +2,22 @@
 
 This document lists all merged PRs with details: author, title, description (max 10 words), files changed, labels, who merged, merge timestamp, number of lines updated, number of commits, and PR link.
 
-*Last updated: 2025-08-28*
+*Last updated: 2025-08-29*
 
 | # | Title | Author | Description | Files Changed | Labels | Merged By | Merged At | Lines Updated | Commits | PR Link |
 |---|-------|--------|-------------|--------------|--------|-----------|-----------|--------------|---------|---------|
-| [#308](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/308) | Fix: Align 'Total Visitors' section and counter badge for visual consistency | [@ishanibasu](https://github.com/ishanibasu) | ## 🔖 PR Title: Fix: Aligned 'Total Visitors' section and ... | 60 | enhancement, OSCI25, hard | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-25 | 458 | 3 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/308) |
+| [#333](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/333) | Backend for quiz | [@shoaib2000857](https://github.com/shoaib2000857) | ## 🔖 PR Title: <!-- A clear and concise title ... | 1 | backend, feature, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-28 | 342 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/333) |
+| [#332](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/332) | Revert "Added: TimeLimit/ProgressBar/UIFix" | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | Reverts VAIBHAVBABELE/vaibhavbabele.github.io#321 | 3 |  | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-28 | 504 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/332) |
+| [#294](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/294) | fix: improve dark mode accessibility for calculator tabs and results | [@kanishka1804](https://github.com/kanishka1804) | ## 🔖 PR Title: <!-- A clear and concise title ... | 1 | bug, OSCI25, Easy | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-24 | 58 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/294) |
 | [#321](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/321) | Added: TimeLimit/ProgressBar/UIFix | [@Adii0906](https://github.com/Adii0906) | ## 🔖 PR Title: Added: 15-question dynamic quiz with timer ... | 3 |  | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-27 | 504 | 3 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/321) |
+| [#329](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/329) | fix(Nav): improve behavior in mobile view [OSCI 25] | [@ManabBiswas](https://github.com/ManabBiswas) | ## 🔖 PR Title: <!-- A clear and concise title ... | 1 | bug, OSCI25, Easy | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-28 | 6 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/329) |
+| [#308](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/308) | Fix: Align 'Total Visitors' section and counter badge for visual consistency | [@ishanibasu](https://github.com/ishanibasu) | ## 🔖 PR Title: Fix: Aligned 'Total Visitors' section and ... | 60 | enhancement, OSCI25, hard | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-25 | 458 | 3 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/308) |
 | [#328](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/328) | Updated terms final[OSCI'25] | [@ShatadruDhar](https://github.com/ShatadruDhar) | 🔖 PR Title: Fixed missing navigation bar on Terms and ... | 3 | frontend, OSCI25, Easy | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-27 | 199 | 3 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/328) |
 | [#324](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/324) | feat/Navbar and back to top button updated | [@ManabBiswas](https://github.com/ManabBiswas) | ## 🔖 PR Title: <!-- A clear and concise title ... | 69 | feature, OSCI25, intermediate | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-26 | 1594 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/324) |
 | [#320](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/320) | Privacy policy redesigned | [@Dhirajgithub813](https://github.com/Dhirajgithub813) | ## 🔖 PR Title: Privacy policy redesigned --- ## 📄 ... | 3 | frontend, OSCI25, Easy | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-26 | 421 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/320) |
 | [#318](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/318) | Build Syllabus View Service | [@Sundaram-Katare](https://github.com/Sundaram-Katare) | ## 🔖 PR Title: Build Syllabus section for the users ... | 5 | frontend, OSCI25, Easy | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-26 | 139 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/318) |
 | [#301](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/301) | Fix: Responsiveness of website sections on smaller screens | [@roniitpodder](https://github.com/roniitpodder) | ## 🔖 PR Title: Fixed Responsiveness of website sections on ... | 3 | bug, gssoc25, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-24 | 8 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/301) |
 | [#306](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/306) | Added 5 new interactive games and updated games page | [@cin-sameer](https://github.com/cin-sameer) | <h2>🎮 This PR <strong>added</strong> 5 new interactive and fun games ... | 13 | enhancement, gssoc25, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-25 | 739 | 13 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/306) |
-| [#294](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/294) | fix: improve dark mode accessibility for calculator tabs and results | [@kanishka1804](https://github.com/kanishka1804) | ## 🔖 PR Title: <!-- A clear and concise title ... | 1 | bug, level 1, OSCI25 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-24 | 58 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/294) |
 | [#315](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/315) | Added: Cgpa to percentage converter in cgpa calculator page | [@RohitSalv](https://github.com/RohitSalv) | ## Description Added a CGPA to Percentage converter feature in ... | 2 | enhancement, gssoc25, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-25 | 175 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/315) |
 | [#286](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/286) | fix: corrected card alignment and improved Dark Mode text visibility | [@himanshitwri08](https://github.com/himanshitwri08) |  **📄Description**: This PR improves the overall readability and alignment ... | 2 | bug, gssoc25, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-22 | 155 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/286) |
 | [#292](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/292) | changed ui of subject.html and add new features to it | [@vaishaligoyal05](https://github.com/vaishaligoyal05) | ## 🔖 PR Title: <!-- A clear and concise title ... | 3 | gssoc25, feature, level 3 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-23 | 3133 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/292) |
@@ -107,6 +110,90 @@ This document lists all merged PRs with details: author, title, description (max
 
 ## 📝 Detailed Merged PRs
 
+### [#333 Backend for quiz](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/333)
+
+- **Author:** [@shoaib2000857](https://github.com/shoaib2000857)
+- **Description:**  
+## 🔖 PR Title: <!-- A clear and concise title ...
+- **Files Changed (1):**
+    - `backend/app.py`
+- **Labels:** `backend`, `feature`, `LEVEL 2`
+- **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
+- **Merged At:** 2025-08-28 12:35:33
+- **Lines Updated:** 342
+- **Commits:** 1
+- **PR Link:** [PR #333](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/333)
+
+---
+
+### [#332 Revert "Added: TimeLimit/ProgressBar/UIFix"](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/332)
+
+- **Author:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
+- **Description:**  
+Reverts VAIBHAVBABELE/vaibhavbabele.github.io#321
+- **Files Changed (3):**
+    - `games/games.css`
+  - `games/gamess.js`
+  - `games/quiz.html`
+- **Labels:** None
+- **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
+- **Merged At:** 2025-08-28 09:05:16
+- **Lines Updated:** 504
+- **Commits:** 1
+- **PR Link:** [PR #332](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/332)
+
+---
+
+### [#294 fix: improve dark mode accessibility for calculator tabs and results](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/294)
+
+- **Author:** [@kanishka1804](https://github.com/kanishka1804)
+- **Description:**  
+## 🔖 PR Title: <!-- A clear and concise title ...
+- **Files Changed (1):**
+    - `index.css`
+- **Labels:** `bug`, `OSCI25`, `Easy`
+- **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
+- **Merged At:** 2025-08-24 02:16:32
+- **Lines Updated:** 58
+- **Commits:** 1
+- **PR Link:** [PR #294](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/294)
+
+---
+
+### [#321 Added: TimeLimit/ProgressBar/UIFix](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/321)
+
+- **Author:** [@Adii0906](https://github.com/Adii0906)
+- **Description:**  
+## 🔖 PR Title: Added: 15-question dynamic quiz with timer ...
+- **Files Changed (3):**
+    - `games/games.css`
+  - `games/gamess.js`
+  - `games/quiz.html`
+- **Labels:** None
+- **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
+- **Merged At:** 2025-08-27 11:52:02
+- **Lines Updated:** 504
+- **Commits:** 3
+- **PR Link:** [PR #321](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/321)
+
+---
+
+### [#329 fix(Nav): improve behavior in mobile view [OSCI 25]](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/329)
+
+- **Author:** [@ManabBiswas](https://github.com/ManabBiswas)
+- **Description:**  
+## 🔖 PR Title: <!-- A clear and concise title ...
+- **Files Changed (1):**
+    - `index.css`
+- **Labels:** `bug`, `OSCI25`, `Easy`
+- **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
+- **Merged At:** 2025-08-28 01:34:01
+- **Lines Updated:** 6
+- **Commits:** 1
+- **PR Link:** [PR #329](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/329)
+
+---
+
 ### [#308 Fix: Align 'Total Visitors' section and counter badge for visual consistency](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/308)
 
 - **Author:** [@ishanibasu](https://github.com/ishanibasu)
@@ -179,24 +266,6 @@ This document lists all merged PRs with details: author, title, description (max
 - **Lines Updated:** 458
 - **Commits:** 3
 - **PR Link:** [PR #308](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/308)
-
----
-
-### [#321 Added: TimeLimit/ProgressBar/UIFix](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/321)
-
-- **Author:** [@Adii0906](https://github.com/Adii0906)
-- **Description:**  
-## 🔖 PR Title: Added: 15-question dynamic quiz with timer ...
-- **Files Changed (3):**
-    - `games/games.css`
-  - `games/gamess.js`
-  - `games/quiz.html`
-- **Labels:** None
-- **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
-- **Merged At:** 2025-08-27 11:52:02
-- **Lines Updated:** 504
-- **Commits:** 3
-- **PR Link:** [PR #321](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/321)
 
 ---
 
@@ -383,22 +452,6 @@ This document lists all merged PRs with details: author, title, description (max
 - **Lines Updated:** 739
 - **Commits:** 13
 - **PR Link:** [PR #306](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/306)
-
----
-
-### [#294 fix: improve dark mode accessibility for calculator tabs and results](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/294)
-
-- **Author:** [@kanishka1804](https://github.com/kanishka1804)
-- **Description:**  
-## 🔖 PR Title: <!-- A clear and concise title ...
-- **Files Changed (1):**
-    - `index.css`
-- **Labels:** `bug`, `level 1`, `OSCI25`
-- **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
-- **Merged At:** 2025-08-24 02:16:32
-- **Lines Updated:** 58
-- **Commits:** 1
-- **PR Link:** [PR #294](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/294)
 
 ---
 
