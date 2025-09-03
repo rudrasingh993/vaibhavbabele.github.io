@@ -2,10 +2,11 @@
 
 This document lists all merged PRs with details: author, title, description (max 10 words), files changed, labels, who merged, merge timestamp, number of lines updated, number of commits, and PR link.
 
-*Last updated: 2025-09-02*
+*Last updated: 2025-09-03*
 
 | # | Title | Author | Description | Files Changed | Labels | Merged By | Merged At | Lines Updated | Commits | PR Link |
 |---|-------|--------|-------------|--------------|--------|-----------|-----------|--------------|---------|---------|
+| [#385](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/385) | Add Resume ATS Score Checker feature with upload, scoring, and suggestions | [@Harsh-vardhan-sahu](https://github.com/Harsh-vardhan-sahu) | ## 📄 Description: This PR introduces a **Resume ATS Score ... | 7 | gssoc25, feature, level 3 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-02 | 902 | 6 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/385) |
 | [#370](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/370) | Enhanced the FAQ section and added extra features | [@Janhavi078](https://github.com/Janhavi078) | ## 🔖 PR Title: This PR improves the FAQ section ... | 3 | bug, gssoc25, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-01 | 503 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/370) |
 | [#383](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/383) | Fixed infrastructure/ facilities line alignment bug in CSS | [@YogitaSharma253](https://github.com/YogitaSharma253) | ## 🔖 PR Title: Fixed infrastructure facilities line alignment bug ... | 1 | bug, OSCI25, Easy | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-01 | 26 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/383) |
 | [#378](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/378) | Cleanup: Removed Unnecessary Game Files from Repository | [@pavigupta21](https://github.com/pavigupta21) | ## 🔖 PR Title: Cleanup: Removed Unnecessary Game Files from ... | 12 | bug, gssoc25, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-01 | 2308 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/378) |
@@ -116,6 +117,28 @@ This document lists all merged PRs with details: author, title, description (max
 ---
 
 ## 📝 Detailed Merged PRs
+
+### [#385 Add Resume ATS Score Checker feature with upload, scoring, and suggestions](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/385)
+
+- **Author:** [@Harsh-vardhan-sahu](https://github.com/Harsh-vardhan-sahu)
+- **Description:**  
+## 📄 Description: This PR introduces a **Resume ATS Score ...
+- **Files Changed (7):**
+    - `images/ats-score.avif.png`
+  - `images/res.avif`
+  - `index.html`
+  - `pages/ats-score-checker/ats-analysis.js`
+  - `pages/ats-score-checker/ats-score-checker.css`
+  - `pages/ats-score-checker/ats-score-checker.html`
+  - `pages/ats-score-checker/scripts.js`
+- **Labels:** `gssoc25`, `feature`, `level 3`
+- **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
+- **Merged At:** 2025-09-02 10:34:15
+- **Lines Updated:** 902
+- **Commits:** 6
+- **PR Link:** [PR #385](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/385)
+
+---
 
 ### [#370 Enhanced the FAQ section and added extra features](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/370)
 
