@@ -1,6 +1,6 @@
 # 🏆 Contributors Leaderboard
 
-*Last updated: 2025-09-02*
+*Last updated: 2025-09-03*
 
 ## 🌸 GSSoC '25 Leaderboard
 
@@ -13,6 +13,7 @@
 | [@Shailee6464](https://github.com/Shailee6464) | - | 0 | 4 | 0 | 4 | 28 |
 | [@pavigupta21](https://github.com/pavigupta21) | - | 2 | 0 | 1 | 3 | 16 |
 | [@Prabathvsv](https://github.com/Prabathvsv) | - | 0 | 2 | 0 | 2 | 14 |
+| [@Harsh-vardhan-sahu](https://github.com/Harsh-vardhan-sahu) | - | 0 | 0 | 1 | 1 | 10 |
 | [@Gupta-02](https://github.com/Gupta-02) | - | 0 | 0 | 1 | 1 | 10 |
 | [@mavishsethi](https://github.com/mavishsethi) | mavishsethi@gmail.com | 0 | 0 | 1 | 1 | 10 |
 | [@DivyaJain-DataAnalyst](https://github.com/DivyaJain-DataAnalyst) | - | 1 | 1 | 0 | 2 | 10 |
