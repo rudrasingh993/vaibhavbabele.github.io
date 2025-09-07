@@ -1,6 +1,6 @@
 # 🏆 Contributors Leaderboard
 
-*Last updated: 2025-09-06*
+*Last updated: 2025-09-07*
 
 ## 🌸 GSSoC '25 Leaderboard
 
@@ -11,7 +11,7 @@
 | [@Nikita-Mishraa](https://github.com/Nikita-Mishraa) | nikita.mishra.pri@gmail.com | 3 | 3 | 0 | 6 | 30 |
 | [@thilak-r](https://github.com/thilak-r) | thilak22005@gmail.com | 0 | 0 | 3 | 3 | 30 |
 | [@Shailee6464](https://github.com/Shailee6464) | - | 0 | 4 | 0 | 4 | 28 |
-| [@pavigupta21](https://github.com/pavigupta21) | - | 2 | 0 | 1 | 3 | 16 |
+| [@pavigupta21](https://github.com/pavigupta21) | - | 2 | 1 | 1 | 4 | 23 |
 | [@Prabathvsv](https://github.com/Prabathvsv) | - | 0 | 2 | 0 | 2 | 14 |
 | [@Harsh-vardhan-sahu](https://github.com/Harsh-vardhan-sahu) | - | 0 | 0 | 1 | 1 | 10 |
 | [@Gupta-02](https://github.com/Gupta-02) | - | 0 | 0 | 1 | 1 | 10 |
