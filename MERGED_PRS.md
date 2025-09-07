@@ -2,10 +2,11 @@
 
 This document lists all merged PRs with details: author, title, description (max 10 words), files changed, labels, who merged, merge timestamp, number of lines updated, number of commits, and PR link.
 
-*Last updated: 2025-09-06*
+*Last updated: 2025-09-07*
 
 | # | Title | Author | Description | Files Changed | Labels | Merged By | Merged At | Lines Updated | Commits | PR Link |
 |---|-------|--------|-------------|--------------|--------|-----------|-----------|--------------|---------|---------|
+| [#415](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/415) | Redesigned the papers page to match the notes page | [@pavigupta21](https://github.com/pavigupta21) | ## 🔖 PR Title: Redesign Papers Page Layout to Match ... | 2 | enhancement, gssoc25, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-06 | 1147 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/415) |
 | [#407](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/407) | Add Daily Motivation Quote widget with dark/light mode support | [@YogitaSharma253](https://github.com/YogitaSharma253) | ## 🔖 PR Title: Add Daily Motivation Quote widget with ... | 3 | enhancement, OSCI25, intermediate | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-05 | 164 | 4 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/407) |
 | [#394](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/394) | Redesigned landing page with new layout | [@Asmit-06](https://github.com/Asmit-06) | # 🔖 PR Title: - Complete redesigning of Nitra Mitra ... | 2 | enhancement, OSCI25, intermediate | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-03 | 497 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/394) |
 | [#390](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/390) | feat: Improve Inconsistent Preview/Download button layout in Subject … | [@MehakGo](https://github.com/MehakGo) | # Improve Inconsistent Preview/Download Button Layout in Subject Notes Page ... | 2 | bug, OSCI25, Easy | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-03 | 1016 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/390) |
@@ -87,7 +88,7 @@ This document lists all merged PRs with details: author, title, description (max
 | [#108](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/108) | Added Infrastructure/Features Page | [@vaishaligoyal05](https://github.com/vaishaligoyal05) | ## 🔖 PR Title: Added Modern Infrastructure Page with Card-Based ... | 4 | gssoc25, frontend, feature, level 3 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-26 | 930 | 5 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/108) |
 | [#106](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/106) | Optimized the tables for small screens | [@devajuw](https://github.com/devajuw) | ## Optimized the tables for small screens --- ## 📄 ... | 4 | enhancement, gssoc25, frontend, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-26 | 1147 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/106) |
 | [#99](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/99) | Enhancement/update certificate | [@Nikita-Mishraa](https://github.com/Nikita-Mishraa) | ## 🔖 PR Title: Certificate Update --- ## 📄 Description: ... | 2 | enhancement, gssoc25, frontend, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-25 | 46 | 24 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/99) |
-| [#100](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/100) | Modified Configs and setup for backend | [@shoaib2000857](https://github.com/shoaib2000857) | ## 🔖 PR Title: <!-- A clear and concise title ... | 3 | bug, gssoc25, backend, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-25 | 31 | 13 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/100) |
+| [#100](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/100) | Modified Configs and setup for backend | [@shoaib2000857](https://github.com/shoaib2000857) | ## ��� PR Title: <!-- A clear and concise title ... | 3 | bug, gssoc25, backend, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-25 | 31 | 13 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/100) |
 | [#89](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/89) | Fixed Games Page 404 Error \| Added 4 Functional Games \| Enhanced Routing and UI Consistency | [@sabaaa01](https://github.com/sabaaa01) | ## 🔖 PR Title: Fixed Games Page 404 Error \| ... | 10 | enhancement, gssoc25, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-25 | 1338 | 4 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/89) |
 | [#94](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/94) | Created a backend and basic testing page for the notes summary system | [@shoaib2000857](https://github.com/shoaib2000857) | ## 🔖 PR Title: Created a backend and basic testing ... | 5 | gssoc25, backend, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-25 | 1012 | 9 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/94) |
 | [#91](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/91) | Update styles and content across multiple files | [@Tanvi0710](https://github.com/Tanvi0710) | ## 🔖 PR Title: Updated styles and multiple pages --- ... | 8 | enhancement, gssoc25, frontend, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-25 | 544 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/91) |
@@ -120,6 +121,23 @@ This document lists all merged PRs with details: author, title, description (max
 ---
 
 ## 📝 Detailed Merged PRs
+
+### [#415 Redesigned the papers page to match the notes page](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/415)
+
+- **Author:** [@pavigupta21](https://github.com/pavigupta21)
+- **Description:**  
+## 🔖 PR Title: Redesign Papers Page Layout to Match ...
+- **Files Changed (2):**
+    - `pages/paper.css`
+  - `pages/paper.html`
+- **Labels:** `enhancement`, `gssoc25`, `LEVEL 2`
+- **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
+- **Merged At:** 2025-09-06 17:22:39
+- **Lines Updated:** 1147
+- **Commits:** 2
+- **PR Link:** [PR #415](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/415)
+
+---
 
 ### [#407 Add Daily Motivation Quote widget with dark/light mode support](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/407)
 
@@ -3749,7 +3767,7 @@ This PR implements comprehensive content updates and structural enhancements acr
 
 - **Author:** [@shoaib2000857](https://github.com/shoaib2000857)
 - **Description:**  
-## 🔖 PR Title: <!-- A clear and concise title ...
+## ��� PR Title: <!-- A clear and concise title ...
 - **Files Changed (3):**
     - `assistant.js`
   - `backend/vercel.json`
