@@ -1,12 +1,12 @@
 # 🏆 Contributors Leaderboard
 
-*Last updated: 2025-09-07*
+*Last updated: 2025-09-08*
 
 ## 🌸 GSSoC '25 Leaderboard
 
 | Username | Email | Level 1 | Level 2 | Level 3 | PRs Merged | Total Points |
 |----------|-------|---------|---------|---------|------------|--------------|
-| [@shoaib2000857](https://github.com/shoaib2000857) | 24f2000857@ds.study.iitm.ac.in | 1 | 2 | 4 | 7 | 57 |
+| [@shoaib2000857](https://github.com/shoaib2000857) | 24f2000857@ds.study.iitm.ac.in | 1 | 3 | 4 | 8 | 64 |
 | [@vaishaligoyal05](https://github.com/vaishaligoyal05) | vishug654@gmail.com | 0 | 1 | 4 | 5 | 47 |
 | [@Nikita-Mishraa](https://github.com/Nikita-Mishraa) | nikita.mishra.pri@gmail.com | 3 | 3 | 0 | 6 | 30 |
 | [@thilak-r](https://github.com/thilak-r) | thilak22005@gmail.com | 0 | 0 | 3 | 3 | 30 |
@@ -54,7 +54,7 @@
 
 | Username | Email | Easy | Intermediate | Hard | PRs Merged | Total Points |
 |----------|-------|------|--------------|------|------------|--------------|
-| [@ManabBiswas](https://github.com/ManabBiswas) | - | 1 | 1 | 1 | 3 | 60 |
+| [@ManabBiswas](https://github.com/ManabBiswas) | - | 1 | 2 | 1 | 4 | 80 |
 | [@YogitaSharma253](https://github.com/YogitaSharma253) | - | 1 | 1 | 0 | 2 | 30 |
 | [@ishanibasu](https://github.com/ishanibasu) | - | 0 | 0 | 1 | 1 | 30 |
 | [@Asmit-06](https://github.com/Asmit-06) | asmitchhotaray@gmail.com | 0 | 1 | 0 | 1 | 20 |
