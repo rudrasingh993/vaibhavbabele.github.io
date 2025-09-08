@@ -2,11 +2,13 @@
 
 This document lists all merged PRs with details: author, title, description (max 10 words), files changed, labels, who merged, merge timestamp, number of lines updated, number of commits, and PR link.
 
-*Last updated: 2025-09-07*
+*Last updated: 2025-09-08*
 
 | # | Title | Author | Description | Files Changed | Labels | Merged By | Merged At | Lines Updated | Commits | PR Link |
 |---|-------|--------|-------------|--------------|--------|-----------|-----------|--------------|---------|---------|
-| [#415](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/415) | Redesigned the papers page to match the notes page | [@pavigupta21](https://github.com/pavigupta21) | ## 🔖 PR Title: Redesign Papers Page Layout to Match ... | 2 | enhancement, gssoc25, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-06 | 1147 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/415) |
+| [#333](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/333) | Backend for quiz | [@shoaib2000857](https://github.com/shoaib2000857) | ## 🔖 PR Title: <!-- A clear and concise title ... | 1 | gssoc25, backend, feature, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-28 | 342 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/333) |
+| [#410](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/410) | Fix/footer | [@ManabBiswas](https://github.com/ManabBiswas) | ## 🔖 PR Title: fix the footer and team section ... | 35 | enhancement, OSCI25, intermediate | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-07 | 6230 | 21 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/410) |
+| [#415](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/415) | Redesigned the papers page to match the notes page | [@pavigupta21](https://github.com/pavigupta21) | ## 🔖 PR Title: Redesign Papers Page Layout to Match ... | 2 | enhancement, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-06 | 1147 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/415) |
 | [#407](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/407) | Add Daily Motivation Quote widget with dark/light mode support | [@YogitaSharma253](https://github.com/YogitaSharma253) | ## 🔖 PR Title: Add Daily Motivation Quote widget with ... | 3 | enhancement, OSCI25, intermediate | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-05 | 164 | 4 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/407) |
 | [#394](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/394) | Redesigned landing page with new layout | [@Asmit-06](https://github.com/Asmit-06) | # 🔖 PR Title: - Complete redesigning of Nitra Mitra ... | 2 | enhancement, OSCI25, intermediate | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-03 | 497 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/394) |
 | [#390](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/390) | feat: Improve Inconsistent Preview/Download button layout in Subject … | [@MehakGo](https://github.com/MehakGo) | # Improve Inconsistent Preview/Download Button Layout in Subject Notes Page ... | 2 | bug, OSCI25, Easy | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-03 | 1016 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/390) |
@@ -20,7 +22,6 @@ This document lists all merged PRs with details: author, title, description (max
 | [#346](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/346) | Add the Sidebar and fix the navbar [OSCI25] | [@ManabBiswas](https://github.com/ManabBiswas) | ## 🔖 PR Title: <!-- A clear and concise title ... | 75 | enhancement, OSCI25, hard | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-29 | 5216 | 9 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/346) |
 | [#329](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/329) | fix(Nav): improve behavior in mobile view [OSCI 25] | [@ManabBiswas](https://github.com/ManabBiswas) | ## 🔖 PR Title: <!-- A clear and concise title ... | 1 | bug, OSCI25, Easy | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-28 | 6 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/329) |
 | [#301](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/301) | Fix: Responsiveness of website sections on smaller screens | [@roniitpodder](https://github.com/roniitpodder) | ## 🔖 PR Title: Fixed Responsiveness of website sections on ... | 3 | bug, OSCI25, Easy | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-24 | 8 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/301) |
-| [#333](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/333) | Backend for quiz | [@shoaib2000857](https://github.com/shoaib2000857) | ## 🔖 PR Title: <!-- A clear and concise title ... | 1 | backend, feature, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-28 | 342 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/333) |
 | [#332](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/332) | Revert "Added: TimeLimit/ProgressBar/UIFix" | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | Reverts VAIBHAVBABELE/vaibhavbabele.github.io#321 | 3 |  | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-28 | 504 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/332) |
 | [#294](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/294) | fix: improve dark mode accessibility for calculator tabs and results | [@kanishka1804](https://github.com/kanishka1804) | ## 🔖 PR Title: <!-- A clear and concise title ... | 1 | bug, OSCI25, Easy | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-24 | 58 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/294) |
 | [#321](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/321) | Added: TimeLimit/ProgressBar/UIFix | [@Adii0906](https://github.com/Adii0906) | ## 🔖 PR Title: Added: 15-question dynamic quiz with timer ... | 3 |  | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-27 | 504 | 3 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/321) |
@@ -29,8 +30,8 @@ This document lists all merged PRs with details: author, title, description (max
 | [#324](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/324) | feat/Navbar and back to top button updated | [@ManabBiswas](https://github.com/ManabBiswas) | ## 🔖 PR Title: <!-- A clear and concise title ... | 69 | feature, OSCI25, intermediate | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-26 | 1594 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/324) |
 | [#320](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/320) | Privacy policy redesigned | [@Dhirajgithub813](https://github.com/Dhirajgithub813) | ## 🔖 PR Title: Privacy policy redesigned --- ## 📄 ... | 3 | frontend, OSCI25, Easy | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-26 | 421 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/320) |
 | [#318](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/318) | Build Syllabus View Service | [@Sundaram-Katare](https://github.com/Sundaram-Katare) | ## 🔖 PR Title: Build Syllabus section for the users ... | 5 | frontend, OSCI25, Easy | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-26 | 139 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/318) |
-| [#306](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/306) | Added 5 new interactive games and updated games page | [@cin-sameer](https://github.com/cin-sameer) | <h2>🎮 This PR <strong>added</strong> 5 new interactive and fun games ... | 13 | enhancement, gssoc25, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-25 | 739 | 13 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/306) |
-| [#315](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/315) | Added: Cgpa to percentage converter in cgpa calculator page | [@RohitSalv](https://github.com/RohitSalv) | ## Description Added a CGPA to Percentage converter feature in ... | 2 | enhancement, gssoc25, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-25 | 175 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/315) |
+| [#306](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/306) | Added 5 new interactive games and updated games page | [@cin-sameer](https://github.com/cin-sameer) | <h2>🎮 This PR <strong>added</strong> 5 new interactive and fun games ... | 13 | enhancement, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-25 | 739 | 13 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/306) |
+| [#315](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/315) | Added: Cgpa to percentage converter in cgpa calculator page | [@RohitSalv](https://github.com/RohitSalv) | ## Description Added a CGPA to Percentage converter feature in ... | 2 | enhancement, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-25 | 175 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/315) |
 | [#286](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/286) | fix: corrected card alignment and improved Dark Mode text visibility | [@himanshitwri08](https://github.com/himanshitwri08) |  **📄Description**: This PR improves the overall readability and alignment ... | 2 | bug, gssoc25, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-22 | 155 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/286) |
 | [#292](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/292) | changed ui of subject.html and add new features to it | [@vaishaligoyal05](https://github.com/vaishaligoyal05) | ## 🔖 PR Title: <!-- A clear and concise title ... | 3 | gssoc25, feature, level 3 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-23 | 3133 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/292) |
 | [#285](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/285) | Issue new | [@Gupta-02](https://github.com/Gupta-02) | ## 🔖 PR Title: <!-- A clear and concise title ... | 160 | gssoc25, feature, level 3 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-22 | 6206 | 328 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/285) |
@@ -38,61 +39,61 @@ This document lists all merged PRs with details: author, title, description (max
 | [#277](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/277) | Remove node_modules, update .gitignore & contributor guide #260 | [@rashmibarodiya](https://github.com/rashmibarodiya) |  @VAIBHAVBABELE ## 🔖 PR Title: Remove node_modules, update .gitignore ... | 1616 | gssoc25, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-18 | 241387 | 3 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/277) |
 | [#270](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/270) | Added placement page | [@mavishsethi](https://github.com/mavishsethi) | ## 🔖 PR Title: I have added placement cell updates ... | 3 | gssoc25, feature, level 3 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-17 | 745 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/270) |
 | [#276](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/276) | added external js and css | [@mavishsethi](https://github.com/mavishsethi) | ## 🔖 PR Title: added extrenal css and js files ... | 3 |  | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-18 | 1188 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/276) |
-| [#267](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/267) | Added downloadable tech notes | [@vaishaligoyal05](https://github.com/vaishaligoyal05) | ## 🔖 PR Title: Added downloadable tech notes --- ## ... | 4 | enhancement, gssoc25, feature, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-16 | 982 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/267) |
+| [#267](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/267) | Added downloadable tech notes | [@vaishaligoyal05](https://github.com/vaishaligoyal05) | ## 🔖 PR Title: Added downloadable tech notes --- ## ... | 4 | enhancement, gssoc25, feature, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-16 | 982 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/267) |
 | [#264](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/264) | Enhanced contact page | [@Ayushii-uniyal](https://github.com/Ayushii-uniyal) | ## 🔖 PR Title: Enhanced contact page. --- ## 📄 ... | 2 | bug, gssoc25, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-16 | 227 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/264) |
 | [#253](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/253) | Added multilingual feature! | [@vaishaligoyal05](https://github.com/vaishaligoyal05) | ## 🔖 PR Title: Added multilingual feature across all the ... | 13 | gssoc25, feature, level 3 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-14 | 395 | 5 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/253) |
 | [#259](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/259) | dont need to add points | [@DivyaJain-DataAnalyst](https://github.com/DivyaJain-DataAnalyst) | sorry div problem create kr rha tha last merge, then ... | 1 |  | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-15 | 8 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/259) |
 | [#258](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/258) | Added gssoc logo | [@DivyaJain-DataAnalyst](https://github.com/DivyaJain-DataAnalyst) | for readme gssoc logo | 1 |  | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-15 | 4 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/258) |
-| [#255](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/255) | update readme with gssoc logo | [@DivyaJain-DataAnalyst](https://github.com/DivyaJain-DataAnalyst) | ## 🔖 PR Title: <!-- A clear and concise title ... | 2 | documentation, gssoc25, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-14 | 303 | 3 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/255) |
+| [#255](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/255) | update readme with gssoc logo | [@DivyaJain-DataAnalyst](https://github.com/DivyaJain-DataAnalyst) | ## 🔖 PR Title: <!-- A clear and concise title ... | 2 | documentation, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-14 | 303 | 3 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/255) |
 | [#251](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/251) | Add CODE_OF_CONDUCT.md \| GSSoC'25 Documentation | [@DivyaJain-DataAnalyst](https://github.com/DivyaJain-DataAnalyst) | ## 🔖 PR Title: Added Comprehensive Code of Conduct for ... | 1 | documentation, gssoc25, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-14 | 137 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/251) |
 | [#249](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/249) | added go back button for all games pages | [@pavigupta21](https://github.com/pavigupta21) | ## Summary Added a "Go Back" link with a left ... | 5 | bug, gssoc25, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-13 | 43 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/249) |
 | [#248](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/248) | Recovered pr 06ad052f43bebb0dc288fda72b8f876183f75b05 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | recover 06ad052f43bebb0dc288fda72b8f876183f75b05 this pr 
  | 32 |  | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-13 | 3839 | 5 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/248) |
 | [#247](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/247) | Revert "Fixed resource page link and CSS path issue (#238)" | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | This reverts commit 06ad052f43bebb0dc288fda72b8f876183f75b05. ## 🔖 PR Title: <!-- A ... | 0 |  | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-13 | 0 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/247) |
 | [#232](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/232) | Readme update | [@Sejal-collection](https://github.com/Sejal-collection) | # 🔖 PR Title: Project Structure Refactor & README Enhancement ... | 40 | documentation, gssoc25, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-10 | 5191 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/232) |
-| [#238](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/238) | Fixed resource page link and CSS path issue | [@Sushilnautiyal07](https://github.com/Sushilnautiyal07) | ## 🔖 PR Title: Fixed resource page link and CSS ... | 30 | enhancement, gssoc25, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-11 | 737 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/238) |
-| [#216](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/216) | Added certificate styling and made it responsive | [@divyaHAVES00256](https://github.com/divyaHAVES00256) | ## 🔖 PR Title: <!-- "Fixed certificate page UI/UX" --> ... | 4 | enhancement, gssoc25, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-03 | 285 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/216) |
+| [#238](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/238) | Fixed resource page link and CSS path issue | [@Sushilnautiyal07](https://github.com/Sushilnautiyal07) | ## 🔖 PR Title: Fixed resource page link and CSS ... | 30 | enhancement, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-11 | 737 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/238) |
+| [#216](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/216) | Added certificate styling and made it responsive | [@divyaHAVES00256](https://github.com/divyaHAVES00256) | ## 🔖 PR Title: <!-- "Fixed certificate page UI/UX" --> ... | 4 | enhancement, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-03 | 285 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/216) |
 | [#219](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/219) | Corrected hover zoom issue and title overlap on all cards | [@kunnal-singhh](https://github.com/kunnal-singhh) | ## 🔖 PR Title: Fixed AI summarizer card rendering, card ... | 2 | bug, gssoc25, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-08 | 12 | 5 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/219) |
 | [#202](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/202) | added cgpa/sgpa calculator page and included infrastructure page  | [@vaishaligoyal05](https://github.com/vaishaligoyal05) | ## 🔖 PR Title: Added SGPA/CGPA Calculator Page and adjusted ... | 5 | gssoc25, feature, level 3 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-31 | 726 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/202) |
-| [#218](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/218) | Fix: Updated footer styling for better UI and responsiveness | [@kunnal-singhh](https://github.com/kunnal-singhh) | ## 🔖 PR Title: Improved Footer Design for NITRA MITRA ... | 7 | enhancement, gssoc25, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-04 | 151 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/218) |
+| [#218](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/218) | Fix: Updated footer styling for better UI and responsiveness | [@kunnal-singhh](https://github.com/kunnal-singhh) | ## 🔖 PR Title: Improved Footer Design for NITRA MITRA ... | 7 | enhancement, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-04 | 151 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/218) |
 | [#215](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/215) | Updated Readme for the AI features | [@shoaib2000857](https://github.com/shoaib2000857) | ## 🔖 PR Title: <!-- A clear and concise title ... | 3 | documentation, gssoc25, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-02 | 31 | 24 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/215) |
 | [#204](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/204) | Revert "moved internal css into external css for games" | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | Reverts VAIBHAVBABELE/vaibhavbabele.github.io#203 | 5 |  | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-31 | 995 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/204) |
 | [#203](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/203) | moved internal css into external css for games | [@Shivani-pandey04](https://github.com/Shivani-pandey04) | Moved internal CSS from gamess.html and all the games into ... | 5 |  | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-31 | 995 | 5 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/203) |
 | [#146](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/146) | FIX : Poor Visibility of Headings in Services Section (Dark Mode) #133 | [@piyushhvarma](https://github.com/piyushhvarma) | ## 🔖 PR Title: Fix (Issue no. 133) : Improve ... | 1 | enhancement, gssoc25, frontend, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-29 | 29 | 3 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/146) |
-| [#198](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/198) | Refactor: Same UI across all pages and cleanup | [@Shailee6464](https://github.com/Shailee6464) | ## 🔖 PR Title: <!-- A clear and concise title ... | 20 | gssoc25, ui/ux, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-31 | 1773 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/198) |
-| [#188](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/188) | Refactored Internal CSS to External Files for Teams and Contact Us Sections; Fixed Homepage Alignment Issues | [@Prabathvsv](https://github.com/Prabathvsv) | ## 🔖 PR Title: <!-- A clear and concise title ... | 18 | enhancement, gssoc25, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-30 | 2941 | 10 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/188) |
+| [#198](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/198) | Refactor: Same UI across all pages and cleanup | [@Shailee6464](https://github.com/Shailee6464) | ## 🔖 PR Title: <!-- A clear and concise title ... | 20 | gssoc25, ui/ux, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-31 | 1773 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/198) |
+| [#188](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/188) | Refactored Internal CSS to External Files for Teams and Contact Us Sections; Fixed Homepage Alignment Issues | [@Prabathvsv](https://github.com/Prabathvsv) | ## 🔖 PR Title: <!-- A clear and concise title ... | 18 | enhancement, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-30 | 2941 | 10 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/188) |
 | [#195](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/195) | Updated Integrated UI for AI features | [@shoaib2000857](https://github.com/shoaib2000857) | ## 🔖 PR Title: <!-- A clear and concise title ... | 4 | gssoc25, frontend, backend, feature, level 3 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-30 | 2218 | 22 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/195) |
 | [#189](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/189) | success | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | success | 1 |  | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-30 | 2128 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/189) |
-| [#174](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/174) | fix: Enhanced text content and corrected script placement | [@Shailee6464](https://github.com/Shailee6464) | ## 🔖 PR Title: <!-- A clear and concise title ... | 2 | enhancement, gssoc25, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-28 | 443 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/174) |
+| [#174](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/174) | fix: Enhanced text content and corrected script placement | [@Shailee6464](https://github.com/Shailee6464) | ## 🔖 PR Title: <!-- A clear and concise title ... | 2 | enhancement, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-28 | 443 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/174) |
 | [#130](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/130) | Enhancement of Image Hover Effect in Gallery. | [@DileepKrishnaM](https://github.com/DileepKrishnaM) | ## 🔖 PR Title: Enhancement of Image Hover Effect in ... | 1 | enhancement, frontend, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-27 | 88 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/130) |
 | [#177](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/177) | Final changes: fixed UI, accessibility, responsiveness, grammar | [@snehaburma270](https://github.com/snehaburma270) | ## 🔖 PR Title: Final Fixes: Improved UI, Responsiveness, Accessibility, ... | 2 | gssoc25, frontend, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-29 | 96 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/177) |
 | [#185](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/185) | Revert "Refactor: Site-wide content, structure, and code cleanup" | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | Reverts VAIBHAVBABELE/vaibhavbabele.github.io#184 | 18 |  | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-29 | 3493 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/185) |
 | [#184](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/184) | Refactor: Site-wide content, structure, and code cleanup | [@Shailee6464](https://github.com/Shailee6464) | ## 🔖 PR Title: <!-- A clear and concise title ... | 18 |  | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-29 | 3493 | 3 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/184) |
-| [#180](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/180) | feat: Implement comprehensive security improvements for Nitra Mitra platform | [@singharyan006](https://github.com/singharyan006) | # 🔖 feat: Implement comprehensive security improvements for Nitra Mitra ... | 7 | gssoc25, backend, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-29 | 324 | 4 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/180) |
+| [#180](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/180) | feat: Implement comprehensive security improvements for Nitra Mitra platform | [@singharyan006](https://github.com/singharyan006) | # 🔖 feat: Implement comprehensive security improvements for Nitra Mitra ... | 7 | gssoc25, backend, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-29 | 324 | 4 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/180) |
 | [#151](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/151) | Pratik | [@pratiks2905](https://github.com/pratiks2905) | 🔖 PR Title: Enhance Feedback Form Validation with Robust JavaScript ... | 1 | gssoc25, frontend, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-27 | 49 | 3 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/151) |
 | [#147](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/147) | AI-Powered Resume Analyzer  | [@PrathmeshTatar](https://github.com/PrathmeshTatar) | ## 🔖 PR Title: **Enhancement: Integrated AI-Powered Resume Analyzer UI ... | 10 | gssoc25, backend, level 3 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-28 | 692 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/147) |
 | [#155](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/155) | Revert "Feature/about us restructure and enhancement across home page" | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | Reverts VAIBHAVBABELE/vaibhavbabele.github.io#153 | 3 |  | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-27 | 589 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/155) |
-| [#153](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/153) | Feature/about us restructure and enhancement across home page | [@Shailee6464](https://github.com/Shailee6464) | This PR implements comprehensive content updates and structural enhancements across ... | 3 | enhancement, gssoc25, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-27 | 589 | 3 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/153) |
-| [#132](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/132) | Refactor: Improved alt tag for Games card and resource card image | [@Shailee6464](https://github.com/Shailee6464) | ## 🔖 PR Title: <!-- A clear and concise title ... | 9 | enhancement, gssoc25, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-27 | 4 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/132) |
-| [#141](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/141) | Front end pages for the AI notes summary | [@shoaib2000857](https://github.com/shoaib2000857) | ## 🔖 PR Title: <!-- A clear and concise title ... | 3 | gssoc25, frontend, backend, level 3 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-27 | 1377 | 15 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/141) |
-| [#150](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/150) | Added Contact Us Page & Team Showcase to All Pages with Responsive Design | [@Prabathvsv](https://github.com/Prabathvsv) | ## 🔖 PR Title: <!-- A clear and concise title ... | 17 | enhancement, gssoc25, frontend, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-27 | 2491 | 4 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/150) |
+| [#153](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/153) | Feature/about us restructure and enhancement across home page | [@Shailee6464](https://github.com/Shailee6464) | This PR implements comprehensive content updates and structural enhancements across ... | 3 | enhancement, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-27 | 589 | 3 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/153) |
+| [#132](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/132) | Refactor: Improved alt tag for Games card and resource card image | [@Shailee6464](https://github.com/Shailee6464) | ## 🔖 PR Title: <!-- A clear and concise title ... | 9 | enhancement, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-27 | 4 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/132) |
+| [#141](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/141) | Front end pages for the AI notes summary | [@shoaib2000857](https://github.com/shoaib2000857) | ## ���� PR Title: <!-- A clear and concise title ... | 3 | gssoc25, frontend, backend, level 3 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-27 | 1377 | 15 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/141) |
+| [#150](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/150) | Added Contact Us Page & Team Showcase to All Pages with Responsive Design | [@Prabathvsv](https://github.com/Prabathvsv) | ## 🔖 PR Title: <!-- A clear and concise title ... | 17 | enhancement, gssoc25, frontend, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-27 | 2491 | 4 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/150) |
 | [#124](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/124) | Added snake trail cursor animation with mobile detection | [@rajasmitaa](https://github.com/rajasmitaa) | ## 🔖 PR Title: Added snake trail cursor animation with ... | 3 | gssoc25, frontend, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-27 | 65 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/124) |
 | [#52](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/52) | added gitignore file | [@MAHENDAR09](https://github.com/MAHENDAR09) | ## 🔖 PR Title: ADDED GIT IGNORE <!-- A clear ... | 1 | documentation, gssoc25, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-27 | 88 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/52) |
 | [#142](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/142) | Fix navbar mobile responsive design and eliminate excessive gaps | [@zoxilsi](https://github.com/zoxilsi) |  <img width="1905" height="992" alt="Screenshot from 2025-07-27 12-50-13" src="https://github.com/user-attachments/assets/50fdc011-43af-4ac5-a818-62b387102ccd" /> ... | 8 | gssoc25, frontend, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-27 | 466 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/142) |
-| [#63](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/63) | fix: finalized responsive and styled footer in all applicable files | [@Vanshika438](https://github.com/Vanshika438) | ## 🔖 PR Title: Enhance responsive footer design across all ... | 20 | enhancement, frontend, ui/ux, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-27 | 8160 | 6 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/63) |
-| [#122](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/122) | Bug/navbar link | [@Nikita-Mishraa](https://github.com/Nikita-Mishraa) | ## 🔖 PR Title: <!-- A clear and concise title ... | 1 | gssoc25, frontend, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-26 | 8 | 26 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/122) |
+| [#63](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/63) | fix: finalized responsive and styled footer in all applicable files | [@Vanshika438](https://github.com/Vanshika438) | ## 🔖 PR Title: Enhance responsive footer design across all ... | 20 | enhancement, frontend, ui/ux, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-27 | 8160 | 6 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/63) |
+| [#122](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/122) | Bug/navbar link | [@Nikita-Mishraa](https://github.com/Nikita-Mishraa) | ## 🔖 PR Title: <!-- A clear and concise title ... | 1 | gssoc25, frontend, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-26 | 8 | 26 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/122) |
 | [#40](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/40) | Updated: Gallery Image Hover Text Alignment (Closes issue #28) | [@DileepKrishnaM](https://github.com/DileepKrishnaM) | ## 🔖 PR Title: Gallery Image Hover Text Alignment --- ... | 1 | enhancement, gssoc25, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-25 | 2 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/40) |
 | [#119](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/119) | Bug/form update | [@Nikita-Mishraa](https://github.com/Nikita-Mishraa) | ## 🔖 PR Title: <!-- A clear and concise title ... | 1 | enhancement, gssoc25, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-26 | 83 | 24 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/119) |
-| [#116](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/116) | Enhancement/form update | [@Nikita-Mishraa](https://github.com/Nikita-Mishraa) | ## 🔖 PR Title: <!-- A clear and concise title ... | 3 | gssoc25, frontend, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-26 | 448 | 25 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/116) |
-| [#109](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/109) | Upd footer | [@harikareddy312](https://github.com/harikareddy312) | ## 🔖 PR Title: <!-- A clear and concise title ... | 4 | enhancement, gssoc25, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-26 | 722 | 3 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/109) |
+| [#116](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/116) | Enhancement/form update | [@Nikita-Mishraa](https://github.com/Nikita-Mishraa) | ## 🔖 PR Title: <!-- A clear and concise title ... | 3 | gssoc25, frontend, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-26 | 448 | 25 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/116) |
+| [#109](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/109) | Upd footer | [@harikareddy312](https://github.com/harikareddy312) | ## 🔖 PR Title: <!-- A clear and concise title ... | 4 | enhancement, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-26 | 722 | 3 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/109) |
 | [#108](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/108) | Added Infrastructure/Features Page | [@vaishaligoyal05](https://github.com/vaishaligoyal05) | ## 🔖 PR Title: Added Modern Infrastructure Page with Card-Based ... | 4 | gssoc25, frontend, feature, level 3 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-26 | 930 | 5 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/108) |
-| [#106](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/106) | Optimized the tables for small screens | [@devajuw](https://github.com/devajuw) | ## Optimized the tables for small screens --- ## 📄 ... | 4 | enhancement, gssoc25, frontend, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-26 | 1147 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/106) |
+| [#106](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/106) | Optimized the tables for small screens | [@devajuw](https://github.com/devajuw) | ## Optimized the tables for small screens --- ## 📄 ... | 4 | enhancement, gssoc25, frontend, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-26 | 1147 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/106) |
 | [#99](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/99) | Enhancement/update certificate | [@Nikita-Mishraa](https://github.com/Nikita-Mishraa) | ## 🔖 PR Title: Certificate Update --- ## 📄 Description: ... | 2 | enhancement, gssoc25, frontend, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-25 | 46 | 24 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/99) |
-| [#100](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/100) | Modified Configs and setup for backend | [@shoaib2000857](https://github.com/shoaib2000857) | ## ��� PR Title: <!-- A clear and concise title ... | 3 | bug, gssoc25, backend, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-25 | 31 | 13 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/100) |
-| [#89](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/89) | Fixed Games Page 404 Error \| Added 4 Functional Games \| Enhanced Routing and UI Consistency | [@sabaaa01](https://github.com/sabaaa01) | ## 🔖 PR Title: Fixed Games Page 404 Error \| ... | 10 | enhancement, gssoc25, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-25 | 1338 | 4 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/89) |
-| [#94](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/94) | Created a backend and basic testing page for the notes summary system | [@shoaib2000857](https://github.com/shoaib2000857) | ## 🔖 PR Title: Created a backend and basic testing ... | 5 | gssoc25, backend, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-25 | 1012 | 9 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/94) |
-| [#91](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/91) | Update styles and content across multiple files | [@Tanvi0710](https://github.com/Tanvi0710) | ## 🔖 PR Title: Updated styles and multiple pages --- ... | 8 | enhancement, gssoc25, frontend, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-25 | 544 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/91) |
-| [#80](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/80) | Documentation Change - README.md Update | [@Nikita-Mishraa](https://github.com/Nikita-Mishraa) | ## 🔖 PR Title: Updated README.md --- ## 📄 Description: ... | 9 | documentation, gssoc25, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-25 | 44 | 19 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/80) |
+| [#100](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/100) | Modified Configs and setup for backend | [@shoaib2000857](https://github.com/shoaib2000857) | ## 🔖 PR Title: <!-- A clear and concise title ... | 3 | bug, gssoc25, backend, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-25 | 31 | 13 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/100) |
+| [#89](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/89) | Fixed Games Page 404 Error \| Added 4 Functional Games \| Enhanced Routing and UI Consistency | [@sabaaa01](https://github.com/sabaaa01) | ## 🔖 PR Title: Fixed Games Page 404 Error \| ... | 10 | enhancement, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-25 | 1338 | 4 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/89) |
+| [#94](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/94) | Created a backend and basic testing page for the notes summary system | [@shoaib2000857](https://github.com/shoaib2000857) | ## 🔖 PR Title: Created a backend and basic testing ... | 5 | gssoc25, backend, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-25 | 1012 | 9 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/94) |
+| [#91](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/91) | Update styles and content across multiple files | [@Tanvi0710](https://github.com/Tanvi0710) | ## 🔖 PR Title: Updated styles and multiple pages --- ... | 8 | enhancement, gssoc25, frontend, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-25 | 544 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/91) |
+| [#80](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/80) | Documentation Change - README.md Update | [@Nikita-Mishraa](https://github.com/Nikita-Mishraa) | ## 🔖 PR Title: Updated README.md --- ## 📄 Description: ... | 9 | documentation, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-25 | 44 | 19 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/80) |
 | [#90](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/90) | ✨ Added Certificate Generation Page with PR Showcase Integration GSSoC25 | [@thilak-r](https://github.com/thilak-r) | ## 🔖 PR Title: Added Certificate Generation Page and Updated ... | 4 | gssoc25, frontend, feature, level 3 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-25 | 416 | 5 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/90) |
 | [#74](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/74) | ✨ Added PR Contributors Showcase Page using GitHub Headers | [@thilak-r](https://github.com/thilak-r) | ## 🔖 PR Title: Pr showcase page --- ## 📄 ... | 1 | gssoc25, frontend, feature, level 3 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-24 | 325 | 3 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/74) |
 | [#64](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/64) | [Feature]: Add PR Showcase Page with Contributors, GsSOC  | [@thilak-r](https://github.com/thilak-r) | ## 🔖 PR Title: [Feature]: Add PR Showcase Page with ... | 2 | gssoc25, frontend, feature, level 3 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-24 | 694 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/64) |
@@ -100,7 +101,7 @@ This document lists all merged PRs with details: author, title, description (max
 | [#46](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/46) | Added Flask backend for AI Chatbot (API-secure) | [@shoaib2000857](https://github.com/shoaib2000857) | ## 🔖 PR Title: <!-- A clear and concise title ... | 10 | gssoc25, backend, feature, level 3 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-24 | 1136 | 4 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/46) |
 | [#30](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/30) | Improved README with full instructions for running project locally | [@Vidushi-15b](https://github.com/Vidushi-15b) | ## 🔖 PR Title: <!-- 📘 Improved README.md with Complete ... | 1 | documentation, good first issue, gssoc25, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-23 | 55 | 4 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/30) |
 | [#42](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/42) | Basic Assistant  | [@shoaib2000857](https://github.com/shoaib2000857) | ## 🔖 PR Title: Created a basic Js based chatbot ... | 5 | gssoc25, feature, level 3 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-23 | 1466 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/42) |
-| [#37](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/37) | Fix: UI issues in announcement and user experience tables (Closes #16, #17) | [@Triveni-Balekundri](https://github.com/Triveni-Balekundri) | 🔖 PR Title: Fix: UI issues in announcement and user ... | 4 | enhancement, gssoc25, LEVEL 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-23 | 661 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/37) |
+| [#37](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/37) | Fix: UI issues in announcement and user experience tables (Closes #16, #17) | [@Triveni-Balekundri](https://github.com/Triveni-Balekundri) | 🔖 PR Title: Fix: UI issues in announcement and user ... | 4 | enhancement, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-23 | 661 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/37) |
 | [#25](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/25) | Enhancement/changed navbar and page layout | [@Nikita-Mishraa](https://github.com/Nikita-Mishraa) | ## 🔖 PR Title: Fixed navbar and page layout --- ... | 10 | good first issue, gssoc25, frontend, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-23 | 96 | 9 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/25) |
 | [#31](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/31) | Feature/dynamic date | [@abdullahlko](https://github.com/abdullahlko) | ## 🔖 PR Title: Added dynamic year and footer links ... | 11 | good first issue, gssoc25, frontend, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-23 | 84 | 4 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/31) |
 | [#32](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/32) | Fix: Improve placeholder visibility in dark mode | [@madhujammm](https://github.com/madhujammm) | ## 🔖 PR Title: This PR resolves the issue of ... | 1 | good first issue, gssoc25, frontend, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-23 | 55 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/32) |
@@ -122,6 +123,72 @@ This document lists all merged PRs with details: author, title, description (max
 
 ## 📝 Detailed Merged PRs
 
+### [#333 Backend for quiz](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/333)
+
+- **Author:** [@shoaib2000857](https://github.com/shoaib2000857)
+- **Description:**  
+## 🔖 PR Title: <!-- A clear and concise title ...
+- **Files Changed (1):**
+    - `backend/app.py`
+- **Labels:** `gssoc25`, `backend`, `feature`, `level 2`
+- **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
+- **Merged At:** 2025-08-28 12:35:33
+- **Lines Updated:** 342
+- **Commits:** 1
+- **PR Link:** [PR #333](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/333)
+
+---
+
+### [#410 Fix/footer](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/410)
+
+- **Author:** [@ManabBiswas](https://github.com/ManabBiswas)
+- **Description:**  
+## 🔖 PR Title: fix the footer and team section ...
+- **Files Changed (35):**
+    - `css/footer.css`
+  - `css/team-styles.css`
+  - `games/gamess.html`
+  - `index.css`
+  - `index.html`
+  - `js/footer.js`
+  - `js/team-script.js`
+  - `pages/404.html`
+  - `pages/announcement-table.html`
+  - `pages/assistant/assistant.html`
+  - `pages/ats-score-checker/ats-score-checker.css`
+  - `pages/ats-score-checker/ats-score-checker.html`
+  - `pages/cgpa-calculator.html`
+  - `pages/contact.html`
+  - `pages/footer.css`
+  - `pages/gallery.html`
+  - `pages/gateway.html`
+  - `pages/infrastructure.html`
+  - `pages/paper.html`
+  - `pages/placement-updates.html`
+  - `pages/pr-contribution/pr-contributors.html`
+  - `pages/privacy.css`
+  - `pages/privacy.html`
+  - `pages/quantum.html`
+  - `pages/resorces.html`
+  - `pages/subject.html`
+  - `pages/summary/summary.html`
+  - `pages/syllabus.html`
+  - `pages/syllabus/syllabus.css`
+  - `pages/syllabus/syllabus.html`
+  - `pages/team.css`
+  - `pages/tech.html`
+  - `pages/terms.html`
+  - `pages/test.html`
+  - `pages/user-experience-table.html`
+- **Labels:** `enhancement`, `OSCI25`, `intermediate`
+- **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
+- **Merged At:** 2025-09-07 02:36:11
+- **Lines Updated:** 6230
+- **Commits:** 21
+- **PR Link:** [PR #410](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/410)
+
+---
+
 ### [#415 Redesigned the papers page to match the notes page](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/415)
 
 - **Author:** [@pavigupta21](https://github.com/pavigupta21)
@@ -130,7 +197,7 @@ This document lists all merged PRs with details: author, title, description (max
 - **Files Changed (2):**
     - `pages/paper.css`
   - `pages/paper.html`
-- **Labels:** `enhancement`, `gssoc25`, `LEVEL 2`
+- **Labels:** `enhancement`, `gssoc25`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-09-06 17:22:39
 - **Lines Updated:** 1147
@@ -452,22 +519,6 @@ This document lists all merged PRs with details: author, title, description (max
 
 ---
 
-### [#333 Backend for quiz](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/333)
-
-- **Author:** [@shoaib2000857](https://github.com/shoaib2000857)
-- **Description:**  
-## 🔖 PR Title: <!-- A clear and concise title ...
-- **Files Changed (1):**
-    - `backend/app.py`
-- **Labels:** `backend`, `feature`, `LEVEL 2`
-- **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
-- **Merged At:** 2025-08-28 12:35:33
-- **Lines Updated:** 342
-- **Commits:** 1
-- **PR Link:** [PR #333](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/333)
-
----
-
 ### [#332 Revert "Added: TimeLimit/ProgressBar/UIFix"](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/332)
 
 - **Author:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
@@ -754,7 +805,7 @@ Reverts VAIBHAVBABELE/vaibhavbabele.github.io#321
   - `images/guessTheoutput.png`
   - `images/logic-lock.webp`
   - `images/sudoku.png`
-- **Labels:** `enhancement`, `gssoc25`, `LEVEL 2`
+- **Labels:** `enhancement`, `gssoc25`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-08-25 17:06:14
 - **Lines Updated:** 739
@@ -771,7 +822,7 @@ Reverts VAIBHAVBABELE/vaibhavbabele.github.io#321
 - **Files Changed (2):**
     - `index.css`
   - `pages/cgpa-calculator.html`
-- **Labels:** `enhancement`, `gssoc25`, `LEVEL 2`
+- **Labels:** `enhancement`, `gssoc25`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-08-25 14:44:36
 - **Lines Updated:** 175
@@ -2684,7 +2735,7 @@ Reverts VAIBHAVBABELE/vaibhavbabele.github.io#321
   - `pages/resorces.html`
   - `pages/tech.html`
   - `pages/tech.js`
-- **Labels:** `enhancement`, `gssoc25`, `feature`, `LEVEL 2`
+- **Labels:** `enhancement`, `gssoc25`, `feature`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-08-16 14:49:39
 - **Lines Updated:** 982
@@ -2778,7 +2829,7 @@ for readme gssoc logo
 - **Files Changed (2):**
     - `CODE_OF_CONDUCT.md`
   - `README.md`
-- **Labels:** `documentation`, `gssoc25`, `LEVEL 2`
+- **Labels:** `documentation`, `gssoc25`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-08-14 16:11:15
 - **Lines Updated:** 303
@@ -2978,7 +3029,7 @@ This reverts commit 06ad052f43bebb0dc288fda72b8f876183f75b05. ## 🔖 PR Title: 
   - `pages/terms.html`
   - `pages/test.html`
   - `pages/user-experience-table.html`
-- **Labels:** `enhancement`, `gssoc25`, `LEVEL 2`
+- **Labels:** `enhancement`, `gssoc25`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-08-11 07:08:33
 - **Lines Updated:** 737
@@ -2997,7 +3048,7 @@ This reverts commit 06ad052f43bebb0dc288fda72b8f876183f75b05. ## 🔖 PR Title: 
   - `certificate.html`
   - `gssoc25-logo.jpg`
   - `nitra-mitra-logo.png`
-- **Labels:** `enhancement`, `gssoc25`, `LEVEL 2`
+- **Labels:** `enhancement`, `gssoc25`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-08-03 04:03:08
 - **Lines Updated:** 285
@@ -3056,7 +3107,7 @@ This reverts commit 06ad052f43bebb0dc288fda72b8f876183f75b05. ## 🔖 PR Title: 
   - `pr-contributors.html`
   - `privacy.css`
   - `resorces.html`
-- **Labels:** `enhancement`, `gssoc25`, `LEVEL 2`
+- **Labels:** `enhancement`, `gssoc25`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-08-04 14:43:56
 - **Lines Updated:** 151
@@ -3165,7 +3216,7 @@ Moved internal CSS from gamess.html and all the games into ...
   - `resources.css`
   - `summary.html`
   - `terms.html`
-- **Labels:** `gssoc25`, `ui/ux`, `LEVEL 2`
+- **Labels:** `gssoc25`, `ui/ux`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-07-31 10:33:56
 - **Lines Updated:** 1773
@@ -3198,7 +3249,7 @@ Moved internal CSS from gamess.html and all the games into ...
   - `team.css`
   - `terms.html`
   - `test.html`
-- **Labels:** `enhancement`, `gssoc25`, `LEVEL 2`
+- **Labels:** `enhancement`, `gssoc25`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-07-30 05:09:02
 - **Lines Updated:** 2941
@@ -3250,7 +3301,7 @@ success
 - **Files Changed (2):**
     - `index.css`
   - `index.html`
-- **Labels:** `enhancement`, `gssoc25`, `LEVEL 2`
+- **Labels:** `enhancement`, `gssoc25`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-07-28 16:22:17
 - **Lines Updated:** 443
@@ -3371,7 +3422,7 @@ Reverts VAIBHAVBABELE/vaibhavbabele.github.io#184
   - `assistant.html`
   - `js/analytics.js`
   - `js/config.js`
-- **Labels:** `gssoc25`, `backend`, `LEVEL 2`
+- **Labels:** `gssoc25`, `backend`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-07-29 09:29:18
 - **Lines Updated:** 324
@@ -3448,7 +3499,7 @@ This PR implements comprehensive content updates and structural enhancements acr
     - `images/Screenshot 2025-07-27 104228.png`
   - `index.css`
   - `index.html`
-- **Labels:** `enhancement`, `gssoc25`, `LEVEL 2`
+- **Labels:** `enhancement`, `gssoc25`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-07-27 16:42:58
 - **Lines Updated:** 589
@@ -3472,7 +3523,7 @@ This PR implements comprehensive content updates and structural enhancements acr
   - `backend/.github/workflows/pr-merged.yml`
   - `backend/.github/workflows/preview-link.yml`
   - `index.html`
-- **Labels:** `enhancement`, `gssoc25`, `LEVEL 2`
+- **Labels:** `enhancement`, `gssoc25`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-07-27 15:47:37
 - **Lines Updated:** 4
@@ -3485,7 +3536,7 @@ This PR implements comprehensive content updates and structural enhancements acr
 
 - **Author:** [@shoaib2000857](https://github.com/shoaib2000857)
 - **Description:**  
-## 🔖 PR Title: <!-- A clear and concise title ...
+## ���� PR Title: <!-- A clear and concise title ...
 - **Files Changed (3):**
     - `summary.css`
   - `summary.html`
@@ -3522,7 +3573,7 @@ This PR implements comprehensive content updates and structural enhancements acr
   - `resorces.html`
   - `subject.html`
   - `web.html`
-- **Labels:** `enhancement`, `gssoc25`, `frontend`, `LEVEL 2`
+- **Labels:** `enhancement`, `gssoc25`, `frontend`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-07-27 14:16:37
 - **Lines Updated:** 2491
@@ -3614,7 +3665,7 @@ This PR implements comprehensive content updates and structural enhancements acr
   - `terms.html`
   - `user-experience-table.html`
   - `web.html`
-- **Labels:** `enhancement`, `frontend`, `ui/ux`, `LEVEL 2`
+- **Labels:** `enhancement`, `frontend`, `ui/ux`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-07-27 06:16:52
 - **Lines Updated:** 8160
@@ -3630,7 +3681,7 @@ This PR implements comprehensive content updates and structural enhancements acr
 ## 🔖 PR Title: <!-- A clear and concise title ...
 - **Files Changed (1):**
     - `pr-contributors.html`
-- **Labels:** `gssoc25`, `frontend`, `LEVEL 2`
+- **Labels:** `gssoc25`, `frontend`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-07-26 16:59:22
 - **Lines Updated:** 8
@@ -3680,7 +3731,7 @@ This PR implements comprehensive content updates and structural enhancements acr
     - `index.css`
   - `index.html`
   - `index.js`
-- **Labels:** `gssoc25`, `frontend`, `LEVEL 2`
+- **Labels:** `gssoc25`, `frontend`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-07-26 11:59:06
 - **Lines Updated:** 448
@@ -3699,7 +3750,7 @@ This PR implements comprehensive content updates and structural enhancements acr
   - `index.js`
   - `privacy.html`
   - `terms.html`
-- **Labels:** `enhancement`, `gssoc25`, `LEVEL 2`
+- **Labels:** `enhancement`, `gssoc25`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-07-26 07:31:10
 - **Lines Updated:** 722
@@ -3737,7 +3788,7 @@ This PR implements comprehensive content updates and structural enhancements acr
   - `announcement-table.htm`
   - `index.html`
   - `user-experience-table.html`
-- **Labels:** `enhancement`, `gssoc25`, `frontend`, `LEVEL 2`
+- **Labels:** `enhancement`, `gssoc25`, `frontend`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-07-26 07:29:17
 - **Lines Updated:** 1147
@@ -3767,12 +3818,12 @@ This PR implements comprehensive content updates and structural enhancements acr
 
 - **Author:** [@shoaib2000857](https://github.com/shoaib2000857)
 - **Description:**  
-## ��� PR Title: <!-- A clear and concise title ...
+## 🔖 PR Title: <!-- A clear and concise title ...
 - **Files Changed (3):**
     - `assistant.js`
   - `backend/vercel.json`
   - `test.html`
-- **Labels:** `bug`, `gssoc25`, `backend`, `LEVEL 2`
+- **Labels:** `bug`, `gssoc25`, `backend`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-07-25 12:06:05
 - **Lines Updated:** 31
@@ -3797,7 +3848,7 @@ This PR implements comprehensive content updates and structural enhancements acr
   - `images/quiz.png`
   - `images/typing.png`
   - `index.html`
-- **Labels:** `enhancement`, `gssoc25`, `LEVEL 2`
+- **Labels:** `enhancement`, `gssoc25`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-07-25 10:36:11
 - **Lines Updated:** 1338
@@ -3817,7 +3868,7 @@ This PR implements comprehensive content updates and structural enhancements acr
   - `backend/vercel.json`
   - `test.html`
   - `vercel.json`
-- **Labels:** `gssoc25`, `backend`, `LEVEL 2`
+- **Labels:** `gssoc25`, `backend`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-07-25 11:03:10
 - **Lines Updated:** 1012
@@ -3840,7 +3891,7 @@ This PR implements comprehensive content updates and structural enhancements acr
   - `resorces.html`
   - `resources.css`
   - `web.css`
-- **Labels:** `enhancement`, `gssoc25`, `frontend`, `LEVEL 2`
+- **Labels:** `enhancement`, `gssoc25`, `frontend`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-07-25 10:43:46
 - **Lines Updated:** 544
@@ -3864,7 +3915,7 @@ This PR implements comprehensive content updates and structural enhancements acr
   - `images/Student Announcement.png`
   - `images/Top Contributors.png`
   - `images/User Experience.png`
-- **Labels:** `documentation`, `gssoc25`, `LEVEL 2`
+- **Labels:** `documentation`, `gssoc25`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-07-25 10:14:41
 - **Lines Updated:** 44
@@ -4012,7 +4063,7 @@ This PR implements comprehensive content updates and structural enhancements acr
   - `index.css`
   - `index.html`
   - `user-experience-table.html`
-- **Labels:** `enhancement`, `gssoc25`, `LEVEL 2`
+- **Labels:** `enhancement`, `gssoc25`, `level 2`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-07-23 10:37:16
 - **Lines Updated:** 661
