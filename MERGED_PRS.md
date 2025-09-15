@@ -2,7 +2,7 @@
 
 This document lists all merged PRs with details: author, title, description (max 10 words), files changed, labels, who merged, merge timestamp, number of lines updated, number of commits, and PR link.
 
-*Last updated: 2025-09-14*
+*Last updated: 2025-09-15*
 
 | # | Title | Author | Description | Files Changed | Labels | Merged By | Merged At | Lines Updated | Commits | PR Link |
 |---|-------|--------|-------------|--------------|--------|-----------|-----------|--------------|---------|---------|
@@ -58,7 +58,7 @@ This document lists all merged PRs with details: author, title, description (max
 | [#219](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/219) | Corrected hover zoom issue and title overlap on all cards | [@kunnal-singhh](https://github.com/kunnal-singhh) | ## 🔖 PR Title: Fixed AI summarizer card rendering, card ... | 2 | bug, gssoc25, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-08 | 12 | 5 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/219) |
 | [#202](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/202) | added cgpa/sgpa calculator page and included infrastructure page  | [@vaishaligoyal05](https://github.com/vaishaligoyal05) | ## 🔖 PR Title: Added SGPA/CGPA Calculator Page and adjusted ... | 5 | gssoc25, feature, level 3 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-31 | 726 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/202) |
 | [#218](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/218) | Fix: Updated footer styling for better UI and responsiveness | [@kunnal-singhh](https://github.com/kunnal-singhh) | ## 🔖 PR Title: Improved Footer Design for NITRA MITRA ... | 7 | enhancement, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-04 | 151 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/218) |
-| [#215](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/215) | Updated Readme for the AI features | [@shoaib2000857](https://github.com/shoaib2000857) | ## 🔖 PR Title: <!-- A clear and concise title ... | 3 | documentation, gssoc25, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-02 | 31 | 24 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/215) |
+| [#215](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/215) | Updated Readme for the AI features | [@shoaib2000857](https://github.com/shoaib2000857) | ## �� PR Title: <!-- A clear and concise title ... | 3 | documentation, gssoc25, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-02 | 31 | 24 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/215) |
 | [#204](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/204) | Revert "moved internal css into external css for games" | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | Reverts VAIBHAVBABELE/vaibhavbabele.github.io#203 | 5 |  | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-31 | 995 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/204) |
 | [#203](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/203) | moved internal css into external css for games | [@Shivani-pandey04](https://github.com/Shivani-pandey04) | Moved internal CSS from gamess.html and all the games into ... | 5 |  | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-31 | 995 | 5 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/203) |
 | [#146](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/146) | FIX : Poor Visibility of Headings in Services Section (Dark Mode) #133 | [@piyushhvarma](https://github.com/piyushhvarma) | ## 🔖 PR Title: Fix (Issue no. 133) : Improve ... | 1 | enhancement, gssoc25, frontend, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-07-29 | 29 | 3 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/146) |
@@ -3184,7 +3184,7 @@ This reverts commit 06ad052f43bebb0dc288fda72b8f876183f75b05. ## 🔖 PR Title: 
 
 - **Author:** [@shoaib2000857](https://github.com/shoaib2000857)
 - **Description:**  
-## 🔖 PR Title: <!-- A clear and concise title ...
+## �� PR Title: <!-- A clear and concise title ...
 - **Files Changed (3):**
     - `README.md`
   - `index.html`
