@@ -2,7 +2,7 @@
 
 This document lists all merged PRs with details: author, title, description (max 10 words), files changed, labels, who merged, merge timestamp, number of lines updated, number of commits, and PR link.
 
-*Last updated: 2025-09-17*
+*Last updated: 2025-09-18*
 
 | # | Title | Author | Description | Files Changed | Labels | Merged By | Merged At | Lines Updated | Commits | PR Link |
 |---|-------|--------|-------------|--------------|--------|-----------|-----------|--------------|---------|---------|
@@ -47,7 +47,7 @@ This document lists all merged PRs with details: author, title, description (max
 | [#259](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/259) | dont need to add points | [@DivyaJain-DataAnalyst](https://github.com/DivyaJain-DataAnalyst) | sorry div problem create kr rha tha last merge, then ... | 1 |  | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-15 | 8 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/259) |
 | [#258](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/258) | Added gssoc logo | [@DivyaJain-DataAnalyst](https://github.com/DivyaJain-DataAnalyst) | for readme gssoc logo | 1 |  | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-15 | 4 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/258) |
 | [#255](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/255) | update readme with gssoc logo | [@DivyaJain-DataAnalyst](https://github.com/DivyaJain-DataAnalyst) | ## 🔖 PR Title: <!-- A clear and concise title ... | 2 | documentation, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-14 | 303 | 3 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/255) |
-| [#251](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/251) | Add CODE_OF_CONDUCT.md \| GSSoC'25 Documentation | [@DivyaJain-DataAnalyst](https://github.com/DivyaJain-DataAnalyst) | ## 🔖 PR Title: Added Comprehensive Code of Conduct for ... | 1 | documentation, gssoc25, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-14 | 137 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/251) |
+| [#251](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/251) | Add CODE_OF_CONDUCT.md \| GSSoC'25 Documentation | [@DivyaJain-DataAnalyst](https://github.com/DivyaJain-DataAnalyst) | ## ���� PR Title: Added Comprehensive Code of Conduct for ... | 1 | documentation, gssoc25, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-14 | 137 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/251) |
 | [#249](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/249) | added go back button for all games pages | [@pavigupta21](https://github.com/pavigupta21) | ## Summary Added a "Go Back" link with a left ... | 5 | bug, gssoc25, level 1 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-13 | 43 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/249) |
 | [#248](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/248) | Recovered pr 06ad052f43bebb0dc288fda72b8f876183f75b05 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | recover 06ad052f43bebb0dc288fda72b8f876183f75b05 this pr 
  | 32 |  | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-13 | 3839 | 5 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/248) |
@@ -2906,7 +2906,7 @@ for readme gssoc logo
 
 - **Author:** [@DivyaJain-DataAnalyst](https://github.com/DivyaJain-DataAnalyst)
 - **Description:**  
-## 🔖 PR Title: Added Comprehensive Code of Conduct for ...
+## ���� PR Title: Added Comprehensive Code of Conduct for ...
 - **Files Changed (1):**
     - `CODE_OF_CONDUCT.md`
 - **Labels:** `documentation`, `gssoc25`, `level 1`
