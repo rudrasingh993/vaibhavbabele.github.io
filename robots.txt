@@ -1,0 +1,63 @@
+# Robots.txt for Nitra Mitra - Academic Platform for NITRA Technical Campus
+# This file tells search engine crawlers which pages they can and cannot crawl
+
+User-agent: *
+Allow: /
+
+# Allow all major search engines to crawl the site
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Disallow crawling of backend files and sensitive directories
+Disallow: /backend/
+Disallow: /css/
+Disallow: /js/
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /favicon/
+Disallow: /images/gallery/
+Disallow: /pages/image/
+
+# Disallow specific files that shouldn't be indexed
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /eslint.config.js
+Disallow: /*.md$
+Disallow: /CNAME
+Disallow: /_htaccess
+Disallow: /ads.txt
+
+# Allow crawling of important CSS and JS files for rendering
+Allow: /index.css
+Allow: /index.js
+Allow: /language.js
+
+# Allow crawling of important images
+Allow: /images/student.png
+Allow: /images/vaibhav.jpg
+Allow: /images/ghanshyam.jpeg
+Allow: /og-image.png
+
+# Sitemap location
+Sitemap: https://vaibhavbabele.github.io/sitemap.xml
+
+# Crawl-delay (optional - helps prevent server overload)
+Crawl-delay: 1
+
+# Cache directive for better performance
+# Cache-Control: max-age=86400
