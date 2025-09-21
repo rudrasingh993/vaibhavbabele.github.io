@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <style>
+      .logo-text { font-family: 'Arial', sans-serif; font-weight: bold; }
+      .primary { fill: #818cf8; }
+      .secondary { fill: #34d399; }
+    </style>
+  </defs>
+  
+  <!-- Dark theme background -->
+  <circle cx="16" cy="16" r="15" fill="#1f2937" stroke="#818cf8" stroke-width="2"/>
+  
+  <!-- NITRA text -->
+  <text x="16" y="12" text-anchor="middle" class="logo-text primary" font-size="8">NITRA</text>
+  
+  <!-- MITRA text -->
+  <text x="16" y="22" text-anchor="middle" class="logo-text secondary" font-size="6">MITRA</text>
+  
+  <!-- Dark theme decorative elements -->
+  <circle cx="8" cy="8" r="1.5" fill="#818cf8" opacity="0.6"/>
+  <circle cx="24" cy="8" r="1.5" fill="#34d399" opacity="0.6"/>
+  <circle cx="8" cy="24" r="1.5" fill="#34d399" opacity="0.6"/>
+  <circle cx="24" cy="24" r="1.5" fill="#818cf8" opacity="0.6"/>
+</svg>
