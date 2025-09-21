@@ -1174,6 +1174,22 @@ body.dark-mode .facility-card p {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* Dark mode styles for About-card */
+body.dark-mode .About-card {
+    background-color: var(--card-bg-color);
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 1rem var(--accent-color);
+}
+
+body.dark-mode .About-card .name {
+    color: var(--primary-text-color);
+}
+
+body.dark-mode .About-card .icon {
+    background-color: var(--accent-color);
+    color: var(--main-color);
+}
+
 .About-card a{
     margin-top: auto;
     padding: 10px,20px;
@@ -1188,6 +1204,18 @@ body.dark-mode .facility-card p {
     background: #8c6723;
     color: #fff;
     box-shadow: 0 0 1rem var(--main-color);
+}
+
+body.dark-mode .About-card a {
+    background-color: var(--accent-color);
+    color: var(--main-color);
+    border: 1px solid var(--accent-color-dark);
+}
+
+body.dark-mode .About-card a:hover {
+    background-color: var(--accent-color-dark);
+    color: var(--white-4345);
+    box-shadow: 0 0 1rem var(--accent-color);
 }
 
 #about h4{
