@@ -30,26 +30,27 @@
   --nav-bgcolor: #a58b52; /* Tan brown navbar */
   --bg-color: #1c1a17; /* Warm charcoal background */
   --bg-shade: #2a2723; /* Slightly lighter for cards or sections */
+  --img-bg-shade: rgba(80, 78, 78, 0.5); /* Soft contrast for image containers */
   --primary-text-color: #fdf0d5; /* Warm light beige text */
   --secondary-text-color: #b5a08a; /* Light beige for secondary text */
   --tertiary-color: #d4b996; /* Soft accent like glowing buttons */
   --footer-bgColor: #a58672; /* Warm clay brown */
-  
-}
-
-.dark-mode {
-    --nav-bgcolor: rgb(165, 139, 82);
-    --bg-shade: rgb(59, 59, 59);
-    --primary-text-color: rgb(238, 234, 234);
-    --tertiary-color: rgb(174, 174, 241);
-    --footer-bgColor: #dbb0b0;
-
-
+  --placeholder-color: #b9a89f;
+  --input-bg-color: #3f3b3c; /* Dark beige input fields */
+  --accent-color: #cda274; /* Keep accent consistent */
+  --accent-color-dark: #d4b996;
+  --card-bg-color: #1e1e1e;
 }
 
 .main {
     border: var(--primary-text-color) 5px solid;
     margin-top: 15vh;
+    background: var(--bg-shade);
+}
+
+body.dark-mode .main {
+    background: var(--bg-shade);
+    border-color: var(--primary-text-color);
 }
 
 #mode {
@@ -68,16 +69,22 @@
     margin: 30px;
 }
 
+body.dark-mode .para {
+    color: #e3d5a7;
+}
+
 .para span {
     color: #cf8133;
 }
 
 body {
     font-family: "poppins", sans-serif;
-    /* color: var(--primary-text-color) */
+    color: var(--primary-text-color);
+    background: var(--bg-color);
+}
 
-    background: lightyellow !important;
-
+body.dark-mode {
+    background: var(--bg-color) !important;
 }
 
 h1 {
@@ -303,6 +310,11 @@ section {
   color: #222222;
 }
 
+body.dark-mode .service-heading {
+  color: #FDE68A;
+  background: var(--bg-shade);
+}
+
 .about-heading {
     text-align: center;
     margin-bottom: 5%;
@@ -390,6 +402,12 @@ section {
     transition: transform 0.3s ease;
 }
 
+body.dark-mode .About-card {
+    background-color: var(--card-bg-color);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 1rem var(--accent-color);
+}
+
 .About-card:hover {
     transform: translateY(-10px);
 }
@@ -412,6 +430,157 @@ section {
     margin-bottom: 20px;
     border-radius: 2em;
     border: 2px solid var(--primary-text-color);
+}
+
+body.dark-mode #btn {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color-dark);
+    color: var(--main-color);
+}
+
+body.dark-mode #btn:hover {
+    background-color: var(--accent-color-dark);
+    color: var(--white-4345);
+}
+
+/* Dark mode styles for notes section */
+body.dark-mode .notes-section {
+    background: var(--bg-shade);
+}
+
+body.dark-mode .category-card {
+    background: var(--card-bg-color);
+    border: 1px solid var(--accent-color);
+}
+
+body.dark-mode .category-card h3 {
+    color: var(--primary-text-color);
+}
+
+body.dark-mode .category-card p {
+    color: var(--secondary-text-color);
+}
+
+body.dark-mode .topic summary {
+    color: var(--primary-text-color);
+}
+
+body.dark-mode .note-item {
+    background: var(--bg-shade);
+    border: 1px solid var(--accent-color);
+}
+
+body.dark-mode .note-info span {
+    color: var(--primary-text-color);
+}
+
+body.dark-mode .form-control {
+    background-color: var(--input-bg-color);
+    color: var(--primary-text-color);
+    border: 1px solid var(--accent-color);
+}
+
+body.dark-mode .form-control::placeholder {
+    color: var(--placeholder-color);
+}
+
+/* Additional dark mode styles for buttons and modals */
+body.dark-mode .btn-outline-primary {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+body.dark-mode .btn-outline-primary:hover {
+    background-color: var(--accent-color);
+    color: var(--main-color);
+    border-color: var(--accent-color);
+}
+
+body.dark-mode .btn-primary {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--main-color);
+}
+
+body.dark-mode .btn-primary:hover {
+    background-color: var(--accent-color-dark);
+    border-color: var(--accent-color-dark);
+    color: var(--white-4345);
+}
+
+/* Modal dark mode styles */
+body.dark-mode .modal-content {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--accent-color);
+}
+
+body.dark-mode .modal-header {
+    border-bottom: 1px solid var(--accent-color);
+}
+
+body.dark-mode .modal-footer {
+    border-top: 1px solid var(--accent-color);
+}
+
+body.dark-mode .modal-title {
+    color: var(--primary-text-color);
+}
+
+body.dark-mode .btn-close {
+    filter: invert(1);
+}
+
+/* Icon wrapper dark mode */
+body.dark-mode .icon-wrap {
+    background-color: var(--accent-color);
+    color: var(--main-color);
+}
+
+/* Category head dark mode */
+body.dark-mode .category-head h3 {
+    color: var(--primary-text-color);
+}
+
+body.dark-mode .category-head p {
+    color: var(--secondary-text-color);
+}
+
+/* Topic summary dark mode */
+body.dark-mode .topic summary {
+    background-color: var(--bg-shade);
+    border: 1px solid var(--accent-color);
+    color: var(--primary-text-color);
+}
+
+body.dark-mode .topic summary:hover {
+    background-color: var(--accent-color);
+    color: var(--main-color);
+}
+
+/* Notes list dark mode */
+body.dark-mode .notes-list {
+    background-color: var(--bg-shade);
+}
+
+/* Actions buttons dark mode */
+body.dark-mode .actions .btn {
+    margin: 2px;
+}
+
+/* Search input dark mode */
+body.dark-mode .notes-search input {
+    background-color: var(--input-bg-color);
+    color: var(--primary-text-color);
+    border: 1px solid var(--accent-color);
+}
+
+body.dark-mode .notes-search input::placeholder {
+    color: var(--placeholder-color);
+}
+
+/* Text muted dark mode */
+body.dark-mode .text-muted {
+    color: var(--secondary-text-color) !important;
 }
 
 .Contact-heading {

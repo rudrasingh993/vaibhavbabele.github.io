@@ -7,7 +7,16 @@
   <title>Nitra Mitra Marketplace</title>
 
   <!-- Marketplace-specific CSS -->
-
+  <script>
+    // Apply theme immediately to prevent flash
+    (function() {
+        const isDark = localStorage.getItem('mode') === 'true';
+        if (isDark) {
+            document.documentElement.classList.add('dark-mode');
+            document.body.classList.add('dark-mode');
+        }
+    })();
+  </script>
   <link rel="stylesheet" href="student-marketplace.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -56,7 +65,7 @@
       <button id="lang-toggle">
         हिंदी
       </button>
-      <img src="images/moon.png" id="mode" alt="Change mode" title="change mode">
+      <img src="../images/moon.png" id="mode" alt="Change mode" title="change mode">
     </div>
   </nav>
   <!-- Scroll Progress Indicator -->
@@ -296,8 +305,9 @@
           return;
         }
 
-        // Initialize dark mode state
+        // Ensure theme is applied (in case immediate script didn't run)
         const isDark = localStorage.getItem('mode') === 'true';
+        document.documentElement.classList.toggle('dark-mode', isDark);
         document.body.classList.toggle('dark-mode', isDark);
 
         updateModeIcon(mode);
@@ -310,6 +320,7 @@
           const wasDarkmode = localStorage.getItem('mode') === 'true';
           const newMode = !wasDarkmode;
           localStorage.setItem('mode', newMode);
+          document.documentElement.classList.toggle("dark-mode", newMode);
           document.body.classList.toggle("dark-mode", newMode);
           updateModeIcon(mode);
           console.log('Theme toggled to:', newMode ? 'dark' : 'light');
@@ -353,9 +364,9 @@
         }
       }
 
-      // Initialize dark mode when DOM 
+      // Initialize dark mode when DOM is ready
       document.addEventListener('DOMContentLoaded', function () {
-        setTimeout(initDarkMode, 100);
+        initDarkMode();
       });
 
 
