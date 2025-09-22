@@ -2,12 +2,14 @@
 
 This document lists all merged PRs with details: author, title, description (max 10 words), files changed, labels, who merged, merge timestamp, number of lines updated, number of commits, and PR link.
 
-*Last updated: 2025-09-21*
+*Last updated: 2025-09-22*
 
 | # | Title | Author | Description | Files Changed | Labels | Merged By | Merged At | Lines Updated | Commits | PR Link |
 |---|-------|--------|-------------|--------------|--------|-----------|-----------|--------------|---------|---------|
+| [#450](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/450) | SEO and meta tag added | [@rudrasingh993](https://github.com/rudrasingh993) | # 🚀 SEO Optimization: Add Meta Tags, Open Graph, and ... | 5 | enhancement, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-21 | 476 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/450) |
 | [#435](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/435) | Enhance PR contributors page | [@YogitaSharma253](https://github.com/YogitaSharma253) | ## 🔖 PR Title: Enhance PR contributors page: fixed cards, ... | 5 | enhancement, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-13 | 2374 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/435) |
-| [#424](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/424) | Add Student Marketplace Feature | [@YogitaSharma253](https://github.com/YogitaSharma253) | ## 🔖 PR Title: Add Student Marketplace Feature --- ## ... | 27 | feature, OSCI25, hard | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-09 | 1332 | 4 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/424) |
+| [#424](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/424) | Add Student Marketplace Feature | [@YogitaSharma253](https://github.com/YogitaSharma253) | ## 🔖 PR Title: Add Student Marketplace Feature --- ## ... | 27 | gssoc25, feature, level 3 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-09 | 1332 | 4 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/424) |
+| [#446](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/446) | Add responsive scholarship cards feature | [@YogitaSharma253](https://github.com/YogitaSharma253) | ## 🔖 PR Title: Add responsive scholarship cards feature ## ... | 35 | gssoc25, feature, level 3 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-21 | 739 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/446) |
 | [#333](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/333) | Backend for quiz | [@shoaib2000857](https://github.com/shoaib2000857) | ## 🔖 PR Title: <!-- A clear and concise title ... | 1 | gssoc25, backend, feature, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-08-28 | 342 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/333) |
 | [#410](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/410) | Fix/footer | [@ManabBiswas](https://github.com/ManabBiswas) | ## 🔖 PR Title: fix the footer and team section ... | 35 | enhancement, OSCI25, intermediate | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-07 | 6230 | 21 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/410) |
 | [#415](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/415) | Redesigned the papers page to match the notes page | [@pavigupta21](https://github.com/pavigupta21) | ## 🔖 PR Title: Redesign Papers Page Layout to Match ... | 2 | enhancement, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-06 | 1147 | 2 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/415) |
@@ -125,6 +127,26 @@ This document lists all merged PRs with details: author, title, description (max
 
 ## 📝 Detailed Merged PRs
 
+### [#450 SEO and meta tag added](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/450)
+
+- **Author:** [@rudrasingh993](https://github.com/rudrasingh993)
+- **Description:**  
+# 🚀 SEO Optimization: Add Meta Tags, Open Graph, and ...
+- **Files Changed (5):**
+    - `index.html`
+  - `og-image.png`
+  - `pages/cgpa-calculator.html`
+  - `robots.txt`
+  - `sitemap.xml`
+- **Labels:** `enhancement`, `gssoc25`, `level 2`
+- **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
+- **Merged At:** 2025-09-21 14:39:46
+- **Lines Updated:** 476
+- **Commits:** 1
+- **PR Link:** [PR #450](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/450)
+
+---
+
 ### [#435 Enhance PR contributors page](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/435)
 
 - **Author:** [@YogitaSharma253](https://github.com/YogitaSharma253)
@@ -178,12 +200,62 @@ This document lists all merged PRs with details: author, title, description (max
   - `pages/student-marketplace.css`
   - `pages/student-marketplace.html`
   - `pages/student-marketplace.js`
-- **Labels:** `feature`, `OSCI25`, `hard`
+- **Labels:** `gssoc25`, `feature`, `level 3`
 - **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
 - **Merged At:** 2025-09-09 11:28:57
 - **Lines Updated:** 1332
 - **Commits:** 4
 - **PR Link:** [PR #424](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/424)
+
+---
+
+### [#446 Add responsive scholarship cards feature](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/446)
+
+- **Author:** [@YogitaSharma253](https://github.com/YogitaSharma253)
+- **Description:**  
+## 🔖 PR Title: Add responsive scholarship cards feature ## ...
+- **Files Changed (35):**
+    - `index.html`
+  - `pages/Logo-image/image.png`
+  - `pages/Logo-image/image0.png`
+  - `pages/Logo-image/image1.png`
+  - `pages/Logo-image/image10.png`
+  - `pages/Logo-image/image11.png`
+  - `pages/Logo-image/image12.png`
+  - `pages/Logo-image/image13.png`
+  - `pages/Logo-image/image14.png`
+  - `pages/Logo-image/image15.png`
+  - `pages/Logo-image/image16.png`
+  - `pages/Logo-image/image17.png`
+  - `pages/Logo-image/image18.png`
+  - `pages/Logo-image/image19.png`
+  - `pages/Logo-image/image2.png`
+  - `pages/Logo-image/image20.png`
+  - `pages/Logo-image/image21.png`
+  - `pages/Logo-image/image22.png`
+  - `pages/Logo-image/image23.png`
+  - `pages/Logo-image/image24.png`
+  - `pages/Logo-image/image25.png`
+  - `pages/Logo-image/image26.png`
+  - `pages/Logo-image/image27.png`
+  - `pages/Logo-image/image28.png`
+  - `pages/Logo-image/image29.png`
+  - `pages/Logo-image/image3.png`
+  - `pages/Logo-image/image4.png`
+  - `pages/Logo-image/image5.png`
+  - `pages/Logo-image/image6.png`
+  - `pages/Logo-image/image7.png`
+  - `pages/Logo-image/image8.png`
+  - `pages/Logo-image/image9.png`
+  - `pages/scholarship.css`
+  - `pages/scholarship.html`
+  - `pages/scholarship.js`
+- **Labels:** `gssoc25`, `feature`, `level 3`
+- **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
+- **Merged At:** 2025-09-21 12:27:34
+- **Lines Updated:** 739
+- **Commits:** 2
+- **PR Link:** [PR #446](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/446)
 
 ---
 
