@@ -6,10 +6,14 @@
 }
 
 .dark-mode .contact-hero {
-    background: var(--primary-text-color);
+    background: var(--bg-shade);
+    border-bottom: 5px solid var(--accent-color);
 }
 .dark-mode .contact-hero .container h1{
-    color: var(--main-color);
+    color: var(--primary-text-color);
+}
+.dark-mode .contact-hero p {
+    color: var(--secondary-text-color);
 }
 
 .contact-hero h1 {
@@ -545,6 +549,7 @@ h1 {
     margin-bottom: 60px;
 }
 
+.section-title h1,
 .section-title h2 {
     font-size: 2.5rem;
     color: var(--primary-text-color);
@@ -560,6 +565,7 @@ h1 {
     line-height: 1.6;
 }
 
+.dark-mode .section-title h1,
 .dark-mode .section-title h2 {
     color: var(--primary-text-color);
 }

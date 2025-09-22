@@ -1,19 +1,64 @@
+  /* CSS Variables */
+  :root {
+    --snd-bg-color: #fdf0d5;
+    --text-color: #3e3e3e;
+    --main-color: #5a3e2b;
+    --bg-color: #fdf6ec;
+    --white-4345: #f9f6f0;
+    --bg-shade: #faebdd;
+    --img-bg-shade: rgba(250, 235, 221, 0.6);
+    --primary-text-color: #4e342e;
+    --secondary-text-color: #926f57;
+    --nav-bgcolor: #f2d087;
+    --accent-color: #cda274;
+    --accent-color-dark: #856113;
+    --footer-bgColor: #e7c6b6;
+    --placeholder-color: #8a7e74;
+    --input-bg-color: #f0e3d3;
+    --card-bg-color: #fff;
+  }
+
+  .dark-mode {
+    --nav-bgcolor: #a58b52;
+    --bg-color: #1c1a17;
+    --bg-shade: #2a2723;
+    --img-bg-shade: rgba(80, 78, 78, 0.5);
+    --primary-text-color: #fdf0d5;
+    --secondary-text-color: #b5a08a;
+    --tertiary-color: #d4b996;
+    --footer-bgColor: #a58672;
+    --placeholder-color: #b9a89f;
+    --input-bg-color: #3f3b3c;
+    --accent-color: #cda274;
+    --accent-color-dark: #d4b996;
+    --card-bg-color: #1e1e1e;
+  }
+
   body {
     font-family: Arial, sans-serif;
-    background-color: white;
-    color: #4E342E;
+    background-color: var(--bg-color);
+    color: var(--primary-text-color);
     margin: 0;
     padding: 0;
+  }
+
+  body.dark-mode {
+    background-color: var(--bg-color);
   }
 
   header {
     margin-top: 60px;
     padding: 30px 20px;
     text-align: center;
-    color: #4E342E;
-    border-bottom: 2px solid #4E342E;
-    border-top: 2px solid #4E342E;
-    background: linear-gradient(135deg, #F0E2C6, #F0E2C6)
+    color: var(--primary-text-color);
+    border-bottom: 2px solid var(--primary-text-color);
+    border-top: 2px solid var(--primary-text-color);
+    background: var(--bg-shade);
+  }
+
+  body.dark-mode header {
+    background: var(--bg-shade);
+    border-color: var(--primary-text-color);
   }
 
   header h1 {
