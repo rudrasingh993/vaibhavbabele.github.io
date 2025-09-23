@@ -2,10 +2,12 @@
 
 This document lists all merged PRs with details: author, title, description (max 10 words), files changed, labels, who merged, merge timestamp, number of lines updated, number of commits, and PR link.
 
-*Last updated: 2025-09-22*
+*Last updated: 2025-09-23*
 
 | # | Title | Author | Description | Files Changed | Labels | Merged By | Merged At | Lines Updated | Commits | PR Link |
 |---|-------|--------|-------------|--------------|--------|-----------|-----------|--------------|---------|---------|
+| [#451](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/451) | Enhance pwa manifest and favicon system | [@rudrasingh993](https://github.com/rudrasingh993) | # 🎨 Enhanced PWA Manifest and Comprehensive Favicon System ## ... | 72 | bug, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-22 | 2840 | 5 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/451) |
+| [#455](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/455) | Fix minor chanhes and seamless dark mode transition  | [@rudrasingh993](https://github.com/rudrasingh993) | ## 🌙 Enhanced Dark Mode with Smooth Transitions ### Summary ... | 19 | enhancement, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-22 | 895 | 3 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/455) |
 | [#450](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/450) | SEO and meta tag added | [@rudrasingh993](https://github.com/rudrasingh993) | # 🚀 SEO Optimization: Add Meta Tags, Open Graph, and ... | 5 | enhancement, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-21 | 476 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/450) |
 | [#435](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/435) | Enhance PR contributors page | [@YogitaSharma253](https://github.com/YogitaSharma253) | ## 🔖 PR Title: Enhance PR contributors page: fixed cards, ... | 5 | enhancement, gssoc25, level 2 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-13 | 2374 | 1 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/435) |
 | [#424](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/424) | Add Student Marketplace Feature | [@YogitaSharma253](https://github.com/YogitaSharma253) | ## 🔖 PR Title: Add Student Marketplace Feature --- ## ... | 27 | gssoc25, feature, level 3 | [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE) | 2025-09-09 | 1332 | 4 | [PR Link](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/424) |
@@ -126,6 +128,127 @@ This document lists all merged PRs with details: author, title, description (max
 ---
 
 ## 📝 Detailed Merged PRs
+
+### [#451 Enhance pwa manifest and favicon system](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/451)
+
+- **Author:** [@rudrasingh993](https://github.com/rudrasingh993)
+- **Description:**  
+# 🎨 Enhanced PWA Manifest and Comprehensive Favicon System ## ...
+- **Files Changed (72):**
+    - `backend/php/firebase_pyqs.html`
+  - `backend/php/pg_locator_map.html`
+  - `favicon/browserconfig.xml`
+  - `favicon/favicon-dark.svg`
+  - `favicon/favicon-light.svg`
+  - `favicon/favicon.svg`
+  - `favicon/site.webmanifest`
+  - `games/gamess.html`
+  - `index.html`
+  - `js/favicon-manager.js`
+  - `pages/404.html`
+  - `pages/ai-assistant.html`
+  - `pages/ai-file-process.html`
+  - `pages/ai-question-gen.html`
+  - `pages/ai-summary.html`
+  - `pages/announcement-table.html`
+  - `pages/assistant/assistant.html`
+  - `pages/ats-score-checker/ats-score-checker.html`
+  - `pages/attendance.html`
+  - `pages/career-resource-library.html`
+  - `pages/certificate/certificate.html`
+  - `pages/cgpa-calculator.html`
+  - `pages/complaints.html`
+  - `pages/contact-queries.html`
+  - `pages/contact.html`
+  - `pages/dark-mode.html`
+  - `pages/documentation-templates.html`
+  - `pages/feedback.html`
+  - `pages/gallery.html`
+  - `pages/gateway.html`
+  - `pages/ide-recommendation.html`
+  - `pages/infrastructure.html`
+  - `pages/issue-tracker.html`
+  - `pages/job-board.html`
+  - `pages/lab-reports.html`
+  - `pages/lectures.html`
+  - `pages/live-sessions.html`
+  - `pages/lost-found.html`
+  - `pages/marketplace.html`
+  - `pages/mock-test.html`
+  - `pages/multi-language.html`
+  - `pages/notes.html`
+  - `pages/notifications.html`
+  - `pages/open-source-opportunities.html`
+  - `pages/paper.html`
+  - `pages/pg-reviews.html`
+  - `pages/placement-updates.html`
+  - `pages/pr-contribution/pr-contributors.html`
+  - `pages/privacy.html`
+  - `pages/product-list.html`
+  - `pages/pyqs.html`
+  - `pages/quantum.html`
+  - `pages/registration-complete.html`
+  - `pages/resorces.html`
+  - `pages/roommate-finder.html`
+  - `pages/scholarship.html`
+  - `pages/service-ratings.html`
+  - `pages/skill-tracker.html`
+  - `pages/student-dashboard.html`
+  - `pages/student-marketplace.html`
+  - `pages/study-groups.html`
+  - `pages/subject-wiki.html`
+  - `pages/subject.html`
+  - `pages/suggestions.html`
+  - `pages/summary/summary.html`
+  - `pages/syllabus.html`
+  - `pages/syllabus/syllabus.html`
+  - `pages/tech.html`
+  - `pages/terms.html`
+  - `pages/test.html`
+  - `pages/user-experience-table.html`
+  - `pages/version-control-tips.html`
+- **Labels:** `bug`, `gssoc25`, `level 2`
+- **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
+- **Merged At:** 2025-09-22 07:33:02
+- **Lines Updated:** 2840
+- **Commits:** 5
+- **PR Link:** [PR #451](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/451)
+
+---
+
+### [#455 Fix minor chanhes and seamless dark mode transition ](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/455)
+
+- **Author:** [@rudrasingh993](https://github.com/rudrasingh993)
+- **Description:**  
+## 🌙 Enhanced Dark Mode with Smooth Transitions ### Summary ...
+- **Files Changed (19):**
+    - `index.css`
+  - `index.html`
+  - `index.js`
+  - `pages/ai-assistant.html`
+  - `pages/cgpa-calculator.html`
+  - `pages/contact.css`
+  - `pages/feedback.html`
+  - `pages/gateway.html`
+  - `pages/infrastructure.html`
+  - `pages/paper.css`
+  - `pages/paper.html`
+  - `pages/placement-updates.html`
+  - `pages/placement.css`
+  - `pages/product-list.html`
+  - `pages/scholarship.css`
+  - `pages/student-marketplace.css`
+  - `pages/student-marketplace.html`
+  - `pages/subject.html`
+  - `pages/tech.html`
+- **Labels:** `enhancement`, `gssoc25`, `level 2`
+- **Merged By:** [@VAIBHAVBABELE](https://github.com/VAIBHAVBABELE)
+- **Merged At:** 2025-09-22 07:27:39
+- **Lines Updated:** 895
+- **Commits:** 3
+- **PR Link:** [PR #455](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/455)
+
+---
 
 ### [#450 SEO and meta tag added](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/pull/450)
 
