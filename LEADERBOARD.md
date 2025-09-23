@@ -1,6 +1,6 @@
 # 🏆 Contributors Leaderboard
 
-*Last updated: 2025-09-22*
+*Last updated: 2025-09-23*
 
 ## 🌸 GSSoC '25 Leaderboard
 
@@ -13,6 +13,7 @@
 | [@Shailee6464](https://github.com/Shailee6464) | - | 0 | 4 | 0 | 4 | 28 |
 | [@YogitaSharma253](https://github.com/YogitaSharma253) | - | 0 | 1 | 2 | 3 | 27 |
 | [@pavigupta21](https://github.com/pavigupta21) | - | 2 | 1 | 1 | 4 | 23 |
+| [@rudrasingh993](https://github.com/rudrasingh993) | rudrasingh14513@gmail.com | 0 | 3 | 0 | 3 | 21 |
 | [@Prabathvsv](https://github.com/Prabathvsv) | - | 0 | 2 | 0 | 2 | 14 |
 | [@Harsh-vardhan-sahu](https://github.com/Harsh-vardhan-sahu) | - | 0 | 0 | 1 | 1 | 10 |
 | [@Gupta-02](https://github.com/Gupta-02) | - | 0 | 0 | 1 | 1 | 10 |
@@ -20,7 +21,6 @@
 | [@DivyaJain-DataAnalyst](https://github.com/DivyaJain-DataAnalyst) | - | 1 | 1 | 0 | 2 | 10 |
 | [@kunnal-singhh](https://github.com/kunnal-singhh) | - | 1 | 1 | 0 | 2 | 10 |
 | [@PrathmeshTatar](https://github.com/PrathmeshTatar) | prathmeshtatar05@gmail.com | 0 | 0 | 1 | 1 | 10 |
-| [@rudrasingh993](https://github.com/rudrasingh993) | rudrasingh14513@gmail.com | 0 | 1 | 0 | 1 | 7 |
 | [@cin-sameer](https://github.com/cin-sameer) | s.rathorework@gmail.com | 0 | 1 | 0 | 1 | 7 |
 | [@RohitSalv](https://github.com/RohitSalv) | - | 0 | 1 | 0 | 1 | 7 |
 | [@Sushilnautiyal07](https://github.com/Sushilnautiyal07) | nautiyals927@gmail.com | 0 | 1 | 0 | 1 | 7 |
