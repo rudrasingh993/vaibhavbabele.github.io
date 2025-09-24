@@ -152,6 +152,40 @@
             <div class="logo"><a href="https://www.nitra.ac.in/">NITra <span id="mitra">MITra</span></a></div>
         </div>
         <div class="nav-end">
+            <!-- Authentication Buttons -->
+            <div class="auth-buttons">
+                <button id="loginBtn" class="auth-btn login-btn" onclick="showLoginModal()">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </button>
+                <button id="signupBtn" class="auth-btn signup-btn" onclick="showSignupModal()">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up
+                </button>
+                
+                <!-- User Menu (hidden by default) -->
+                <div id="userMenu" class="user-menu" style="display: none;">
+                    <div class="user-info">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userEmail">user@example.com</span>
+                    </div>
+                    <div class="user-dropdown">
+                        <button class="dropdown-item" onclick="goToDashboard()">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </button>
+                        <button class="dropdown-item" onclick="goToProfile()">
+                            <i class="fas fa-user"></i>
+                            Profile
+                        </button>
+                        <button class="dropdown-item" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
             <button id="lang-toggle">
                 हिंदी
             </button>
@@ -283,6 +317,15 @@
                     </div>
                 </div>
 
+                <div class="card" id="card">
+                    <i class="ri-task-line"></i>
+                    <img src="images/undraw_calculator_21hp.png" class="card-img-top" alt="Assignment Tracker">
+                    <div class="card-body">
+                        <h4 class="card-title">Assignment Tracker</h4>
+                        <p class="card-text"><b>Never miss a deadline! Track assignments, manage deadlines, and stay organized.</b></p>
+                        <a href="pages/assignment-tracker.html" class="primary-button" id="btn">Track Now</a>
+                    </div>
+                </div>
 
                 <div class="card" id="card">
                     <i class="ri-sticky-note-line"></i>
@@ -313,6 +356,16 @@
                                 insights and tips.</b></p>
                         <a href="pages/ats-score-checker/ats-score-checker.html" class="primary-button" id="btn">Check
                             Now</a>
+                    </div>
+                </div>
+
+                <div class="card" id="card">
+                    <i class="ri-bar-chart-line"></i>
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" class="card-img-top" alt="Performance Analytics">
+                    <div class="card-body">
+                        <h4 class="card-title">Performance Analytics</h4>
+                        <p class="card-text"><b>Track your academic progress with detailed analytics, grade trends, attendance tracking, and personalized insights.</b></p>
+                        <a href="pages/performance-analytics.html" class="primary-button" id="btn">View Analytics</a>
                     </div>
                 </div>
 
@@ -725,7 +778,58 @@
 
     <!-- scroll -->
     <script src="./js/scroll-indicator.js"></script>
+    <script type="module" src="./js/firebase-config.js"></script>
     <script src="index.js"></script>
+    
+    <!-- Authentication Functions -->
+    <script>
+        // Authentication modal functions
+        function showLoginModal() {
+            window.location.href = 'pages/auth.html?tab=login';
+        }
+        
+        function showSignupModal() {
+            window.location.href = 'pages/auth.html?tab=signup';
+        }
+        
+        // User menu functions
+        function goToDashboard() {
+            if (window.utils && window.utils.requireAuth()) {
+                window.location.href = 'pages/dashboard.html';
+            }
+        }
+        
+        function goToProfile() {
+            if (window.utils && window.utils.requireAuth()) {
+                window.location.href = 'pages/profile.html';
+            }
+        }
+        
+        async function logout() {
+            if (window.authFunctions) {
+                const result = await window.authFunctions.signOut();
+                if (result.success) {
+                    window.utils.showNotification('Logged out successfully!', 'success');
+                    // Reload page to update UI
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000);
+                } else {
+                    window.utils.showNotification('Logout failed. Please try again.', 'error');
+                }
+            }
+        }
+        
+        // Check for auth tab parameter
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tab = urlParams.get('tab');
+            
+            if (tab === 'login' || tab === 'signup') {
+                window.location.href = `pages/auth.html?tab=${tab}`;
+            }
+        });
+    </script>
 </body>
 
 </html>
