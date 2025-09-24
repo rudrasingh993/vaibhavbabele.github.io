@@ -100,9 +100,20 @@ class AssignmentTrackerFirebase {
 
     // Save assignment to Firebase
     async saveAssignment() {
+        console.log('saveAssignment called');
+        
         const form = document.getElementById('assignmentForm');
-        if (!form || !form.checkValidity()) {
-            if (form) form.reportValidity();
+        console.log('Form element:', form);
+        
+        if (!form) {
+            console.error('Assignment form not found');
+            window.utils.showNotification('Form not found. Please refresh the page.', 'error');
+            return;
+        }
+        
+        if (!form.checkValidity()) {
+            console.log('Form validation failed');
+            form.reportValidity();
             return;
         }
 
@@ -114,6 +125,7 @@ class AssignmentTrackerFirebase {
         // Get form elements safely
         const getElementValue = (id) => {
             const element = document.getElementById(id);
+            console.log(`Getting value for ${id}:`, element);
             return element ? (element.value || '') : '';
         };
 
@@ -127,6 +139,8 @@ class AssignmentTrackerFirebase {
             grade: getElementValue('assignmentGrade') || null,
             notes: getElementValue('assignmentNotes').trim()
         };
+        
+        console.log('Assignment data:', assignmentData);
 
         try {
             const result = await window.dbFunctions.addDocument('assignments', assignmentData);
@@ -229,34 +243,46 @@ class AssignmentTrackerFirebase {
 
     // Statistics calculation
     updateStats() {
+        console.log('updateStats called with assignments:', this.assignments.length);
+        
         const total = this.assignments.length;
         const completed = this.assignments.filter(a => a.status === 'Completed' || a.status === 'Graded').length;
-        const inProgress = this.assignments.filter(a => a.status === 'In Progress').length;
-        const pending = this.assignments.filter(a => a.status === 'Not Started').length;
-        const overdue = this.assignments.filter(a => {
-            return a.status !== 'Completed' && a.status !== 'Graded' && new Date(a.deadline) < new Date();
+        const upcoming = this.assignments.filter(a => {
+            const deadline = new Date(a.deadline);
+            const now = new Date();
+            const daysUntilDeadline = Math.ceil((deadline - now) / (1000 * 60 * 60 * 24));
+            return a.status !== 'Completed' && a.status !== 'Graded' && daysUntilDeadline <= 7 && daysUntilDeadline >= 0;
         }).length;
+
+        console.log('Stats calculated:', { total, completed, upcoming });
 
         // Update stats elements (check if they exist first)
         const totalEl = document.getElementById('totalAssignments');
         const completedEl = document.getElementById('completedAssignments');
-        const inProgressEl = document.getElementById('inProgressAssignments');
-        const pendingEl = document.getElementById('pendingAssignments');
-        const overdueEl = document.getElementById('overdueAssignments');
+        const upcomingEl = document.getElementById('upcomingDeadlines');
 
-        if (totalEl) totalEl.textContent = total;
-        if (completedEl) completedEl.textContent = completed;
-        if (inProgressEl) inProgressEl.textContent = inProgress;
-        if (pendingEl) pendingEl.textContent = pending;
-        if (overdueEl) overdueEl.textContent = overdue;
+        console.log('Stats elements found:', { totalEl, completedEl, upcomingEl });
 
-        // Update progress bars (check if they exist first)
-        const completionRate = total > 0 ? (completed / total) * 100 : 0;
-        const progressBar = document.querySelector('.completion-progress .progress-bar');
-        const progressText = document.querySelector('.completion-progress .progress-text');
+        if (totalEl) {
+            totalEl.textContent = total;
+            console.log('Updated total assignments:', total);
+        } else {
+            console.warn('totalAssignments element not found');
+        }
         
-        if (progressBar) progressBar.style.width = `${completionRate}%`;
-        if (progressText) progressText.textContent = `${completionRate.toFixed(1)}%`;
+        if (completedEl) {
+            completedEl.textContent = completed;
+            console.log('Updated completed assignments:', completed);
+        } else {
+            console.warn('completedAssignments element not found');
+        }
+        
+        if (upcomingEl) {
+            upcomingEl.textContent = upcoming;
+            console.log('Updated upcoming deadlines:', upcoming);
+        } else {
+            console.warn('upcomingDeadlines element not found');
+        }
     }
 
     // Render assignments
