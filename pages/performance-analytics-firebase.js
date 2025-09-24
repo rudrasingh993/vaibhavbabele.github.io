@@ -1,19 +1,30 @@
-// Performance Analytics JavaScript
+// Performance Analytics JavaScript with Firebase Integration
 
-class PerformanceAnalytics {
+class PerformanceAnalyticsFirebase {
     constructor() {
         this.grades = [];
         this.attendance = [];
         this.goals = [];
         this.studyTime = [];
         this.charts = {};
+        this.unsubscribe = {
+            grades: null,
+            attendance: null,
+            goals: null,
+            studyTime: null
+        };
         this.init();
     }
 
-    init() {
-        this.loadData();
-        this.setupEventListeners();
-        this.setCurrentDate();
+    async init() {
+        // Check if user is authenticated
+        if (!window.utils || !window.utils.isAuthenticated()) {
+            this.showLoginRequired();
+            return;
+        }
+
+        await this.setupEventListeners();
+        await this.loadData();
         this.updateStats();
         this.renderCharts();
         this.renderGoals();
@@ -21,196 +32,303 @@ class PerformanceAnalytics {
         this.generateInsights();
     }
 
-    setupEventListeners() {
+    showLoginRequired() {
+        const container = document.querySelector('.main');
+        if (container) {
+            container.innerHTML = `
+                <div class="login-required">
+                    <div class="login-required-content">
+                        <i class="fas fa-lock"></i>
+                        <h2>Login Required</h2>
+                        <p>Please login to access the Performance Analytics</p>
+                        <button class="btn btn-primary" onclick="window.location.href='../pages/auth.html'">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Login Now
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+    }
+
+    async setupEventListeners() {
         // Set current date for forms
         const today = new Date().toISOString().slice(0, 10);
-        document.getElementById('gradeDate').value = today;
-        document.getElementById('attendanceDate').value = today;
-        document.getElementById('goalDeadline').value = today;
+        const gradeDateInput = document.getElementById('gradeDate');
+        const attendanceDateInput = document.getElementById('attendanceDate');
+        
+        if (gradeDateInput) gradeDateInput.value = today;
+        if (attendanceDateInput) attendanceDateInput.value = today;
 
         // Auto-save on form changes
-        document.getElementById('gradeForm').addEventListener('input', this.debounce(() => {
-            this.saveData();
-        }, 1000));
+        const gradeForm = document.getElementById('gradeForm');
+        const attendanceForm = document.getElementById('attendanceForm');
+        const goalForm = document.getElementById('goalForm');
 
-        document.getElementById('attendanceForm').addEventListener('input', this.debounce(() => {
-            this.saveData();
-        }, 1000));
+        if (gradeForm) {
+            gradeForm.addEventListener('input', this.debounce(() => {
+                this.saveData();
+            }, 1000));
+        }
 
-        document.getElementById('goalForm').addEventListener('input', this.debounce(() => {
-            this.saveData();
-        }, 1000));
+        if (attendanceForm) {
+            attendanceForm.addEventListener('input', this.debounce(() => {
+                this.saveData();
+            }, 1000));
+        }
+
+        if (goalForm) {
+            goalForm.addEventListener('input', this.debounce(() => {
+                this.saveData();
+            }, 1000));
+        }
     }
 
-    setCurrentDate() {
-        const today = new Date().toISOString().slice(0, 10);
-        document.getElementById('gradeDate').value = today;
-        document.getElementById('attendanceDate').value = today;
-    }
-
-    // Data Management
-    loadData() {
+    // Load data from Firebase
+    async loadData() {
         try {
-            this.grades = JSON.parse(localStorage.getItem('performance_grades')) || [];
-            this.attendance = JSON.parse(localStorage.getItem('performance_attendance')) || [];
-            this.goals = JSON.parse(localStorage.getItem('performance_goals')) || [];
-            this.studyTime = JSON.parse(localStorage.getItem('performance_study_time')) || [];
+            if (!window.dbFunctions) {
+                console.error('Firebase not initialized');
+                return;
+            }
+
+            // Set up real-time listeners for all collections
+            this.unsubscribe.grades = window.dbFunctions.listenToCollection('grades', (grades) => {
+                this.grades = grades;
+                this.updateStats();
+                this.renderCharts();
+                this.renderGrades();
+                this.generateInsights();
+            }, window.currentUser?.uid);
+
+            this.unsubscribe.attendance = window.dbFunctions.listenToCollection('attendance', (attendance) => {
+                this.attendance = attendance;
+                this.updateStats();
+                this.renderCharts();
+                this.generateInsights();
+            }, window.currentUser?.uid);
+
+            this.unsubscribe.goals = window.dbFunctions.listenToCollection('goals', (goals) => {
+                this.goals = goals;
+                this.renderGoals();
+                this.generateInsights();
+            }, window.currentUser?.uid);
+
+            this.unsubscribe.studyTime = window.dbFunctions.listenToCollection('studyTime', (studyTime) => {
+                this.studyTime = studyTime;
+                this.renderCharts();
+            }, window.currentUser?.uid);
+
         } catch (error) {
             console.error('Error loading data:', error);
-            this.grades = [];
-            this.attendance = [];
-            this.goals = [];
-            this.studyTime = [];
+            window.utils.showNotification('Error loading data', 'error');
         }
     }
 
-    saveData() {
-        try {
-            localStorage.setItem('performance_grades', JSON.stringify(this.grades));
-            localStorage.setItem('performance_attendance', JSON.stringify(this.attendance));
-            localStorage.setItem('performance_goals', JSON.stringify(this.goals));
-            localStorage.setItem('performance_study_time', JSON.stringify(this.studyTime));
-        } catch (error) {
-            console.error('Error saving data:', error);
-            this.showNotification('Error saving data', 'error');
-        }
-    }
-
-    // Grade Management
-    saveGrade() {
+    // Save grade to Firebase
+    async saveGrade() {
         const form = document.getElementById('gradeForm');
-        if (!form.checkValidity()) {
-            form.reportValidity();
+        if (!form || !form.checkValidity()) {
+            if (form) form.reportValidity();
             return;
         }
 
-        const grade = {
-            id: Date.now().toString(),
-            subject: document.getElementById('gradeSubject').value,
-            type: document.getElementById('gradeType').value,
-            title: document.getElementById('gradeTitle').value,
-            value: document.getElementById('gradeValue').value,
-            date: document.getElementById('gradeDate').value,
-            maxMarks: document.getElementById('gradeMaxMarks').value || null,
-            notes: document.getElementById('gradeNotes').value,
-            createdAt: new Date().toISOString()
-        };
-
-        this.grades.unshift(grade);
-        this.saveData();
-        this.updateStats();
-        this.renderCharts();
-        this.renderGrades();
-        this.generateInsights();
-
-        // Close modal and reset form
-        bootstrap.Modal.getInstance(document.getElementById('addGradeModal')).hide();
-        form.reset();
-        this.setCurrentDate();
-
-        this.showNotification('Grade added successfully!', 'success');
-    }
-
-    deleteGrade(gradeId) {
-        if (confirm('Are you sure you want to delete this grade?')) {
-            this.grades = this.grades.filter(grade => grade.id !== gradeId);
-            this.saveData();
-            this.updateStats();
-            this.renderCharts();
-            this.renderGrades();
-            this.generateInsights();
-            this.showNotification('Grade deleted successfully!', 'success');
-        }
-    }
-
-    // Attendance Management
-    saveAttendance() {
-        const form = document.getElementById('attendanceForm');
-        if (!form.checkValidity()) {
-            form.reportValidity();
+        if (!window.utils.isAuthenticated()) {
+            window.utils.showNotification('Please login to save grades', 'warning');
             return;
         }
 
-        const attendance = {
-            id: Date.now().toString(),
-            subject: document.getElementById('attendanceSubject').value,
-            date: document.getElementById('attendanceDate').value,
-            status: document.getElementById('attendanceStatus').value,
-            notes: document.getElementById('attendanceNotes').value,
-            createdAt: new Date().toISOString()
+        // Get form elements safely
+        const getElementValue = (id) => {
+            const element = document.getElementById(id);
+            return element ? (element.value || '') : '';
         };
 
-        this.attendance.unshift(attendance);
-        this.saveData();
-        this.updateStats();
-        this.renderCharts();
-        this.generateInsights();
-
-        // Close modal and reset form
-        bootstrap.Modal.getInstance(document.getElementById('addAttendanceModal')).hide();
-        form.reset();
-        this.setCurrentDate();
-
-        this.showNotification('Attendance updated successfully!', 'success');
-    }
-
-    // Goal Management
-    saveGoal() {
-        const form = document.getElementById('goalForm');
-        if (!form.checkValidity()) {
-            form.reportValidity();
-            return;
-        }
-
-        const goal = {
-            id: Date.now().toString(),
-            title: document.getElementById('goalTitle').value,
-            subject: document.getElementById('goalSubject').value,
-            target: document.getElementById('goalTarget').value,
-            deadline: document.getElementById('goalDeadline').value,
-            description: document.getElementById('goalDescription').value,
-            progress: 0,
-            status: 'active',
-            createdAt: new Date().toISOString()
+        const gradeData = {
+            subject: getElementValue('gradeSubject'),
+            type: getElementValue('gradeType'),
+            title: getElementValue('gradeTitle'),
+            value: getElementValue('gradeValue'),
+            date: getElementValue('gradeDate'),
+            maxMarks: getElementValue('gradeMaxMarks') || null,
+            notes: getElementValue('gradeNotes')
         };
 
-        this.goals.unshift(goal);
-        this.saveData();
-        this.renderGoals();
-        this.generateInsights();
-
-        // Close modal and reset form
-        bootstrap.Modal.getInstance(document.getElementById('addGoalModal')).hide();
-        form.reset();
-        this.setCurrentDate();
-
-        this.showNotification('Goal added successfully!', 'success');
-    }
-
-    updateGoalProgress(goalId, progress) {
-        const goal = this.goals.find(g => g.id === goalId);
-        if (goal) {
-            goal.progress = Math.min(100, Math.max(0, progress));
-            if (goal.progress >= 100) {
-                goal.status = 'completed';
+        try {
+            const result = await window.dbFunctions.addDocument('grades', gradeData);
+            
+            if (result.success) {
+                window.utils.showNotification('Grade added successfully!', 'success');
+                
+                // Close modal and reset form
+                const modal = bootstrap.Modal.getInstance(document.getElementById('addGradeModal'));
+                if (modal) modal.hide();
+                form.reset();
+                this.setCurrentDate();
+            } else {
+                window.utils.showNotification('Error saving grade: ' + result.error, 'error');
             }
-            this.saveData();
-            this.renderGoals();
-            this.generateInsights();
+        } catch (error) {
+            console.error('Error saving grade:', error);
+            window.utils.showNotification('Error saving grade', 'error');
         }
     }
 
-    deleteGoal(goalId) {
-        if (confirm('Are you sure you want to delete this goal?')) {
-            this.goals = this.goals.filter(goal => goal.id !== goalId);
-            this.saveData();
-            this.renderGoals();
-            this.generateInsights();
-            this.showNotification('Goal deleted successfully!', 'success');
+    // Delete grade from Firebase
+    async deleteGrade(gradeId) {
+        if (!confirm('Are you sure you want to delete this grade?')) {
+            return;
+        }
+
+        try {
+            const result = await window.dbFunctions.deleteDocument('grades', gradeId);
+            
+            if (result.success) {
+                window.utils.showNotification('Grade deleted successfully!', 'success');
+            } else {
+                window.utils.showNotification('Error deleting grade: ' + result.error, 'error');
+            }
+        } catch (error) {
+            console.error('Error deleting grade:', error);
+            window.utils.showNotification('Error deleting grade', 'error');
         }
     }
 
-    // Statistics Calculation
+    // Save attendance to Firebase
+    async saveAttendance() {
+        const form = document.getElementById('attendanceForm');
+        if (!form || !form.checkValidity()) {
+            if (form) form.reportValidity();
+            return;
+        }
+
+        if (!window.utils.isAuthenticated()) {
+            window.utils.showNotification('Please login to save attendance', 'warning');
+            return;
+        }
+
+        // Get form elements safely
+        const getElementValue = (id) => {
+            const element = document.getElementById(id);
+            return element ? (element.value || '') : '';
+        };
+
+        const attendanceData = {
+            subject: getElementValue('attendanceSubject'),
+            date: getElementValue('attendanceDate'),
+            status: getElementValue('attendanceStatus'),
+            notes: getElementValue('attendanceNotes')
+        };
+
+        try {
+            const result = await window.dbFunctions.addDocument('attendance', attendanceData);
+            
+            if (result.success) {
+                window.utils.showNotification('Attendance updated successfully!', 'success');
+                
+                // Close modal and reset form
+                const modal = bootstrap.Modal.getInstance(document.getElementById('addAttendanceModal'));
+                if (modal) modal.hide();
+                form.reset();
+                this.setCurrentDate();
+            } else {
+                window.utils.showNotification('Error saving attendance: ' + result.error, 'error');
+            }
+        } catch (error) {
+            console.error('Error saving attendance:', error);
+            window.utils.showNotification('Error saving attendance', 'error');
+        }
+    }
+
+    // Save goal to Firebase
+    async saveGoal() {
+        const form = document.getElementById('goalForm');
+        if (!form || !form.checkValidity()) {
+            if (form) form.reportValidity();
+            return;
+        }
+
+        if (!window.utils.isAuthenticated()) {
+            window.utils.showNotification('Please login to save goals', 'warning');
+            return;
+        }
+
+        // Get form elements safely
+        const getElementValue = (id) => {
+            const element = document.getElementById(id);
+            return element ? (element.value || '') : '';
+        };
+
+        const goalData = {
+            title: getElementValue('goalTitle'),
+            subject: getElementValue('goalSubject'),
+            target: getElementValue('goalTarget'),
+            deadline: getElementValue('goalDeadline'),
+            description: getElementValue('goalDescription'),
+            progress: 0,
+            status: 'active'
+        };
+
+        try {
+            const result = await window.dbFunctions.addDocument('goals', goalData);
+            
+            if (result.success) {
+                window.utils.showNotification('Goal added successfully!', 'success');
+                
+                // Close modal and reset form
+                const modal = bootstrap.Modal.getInstance(document.getElementById('addGoalModal'));
+                if (modal) modal.hide();
+                form.reset();
+                this.setCurrentDate();
+            } else {
+                window.utils.showNotification('Error saving goal: ' + result.error, 'error');
+            }
+        } catch (error) {
+            console.error('Error saving goal:', error);
+            window.utils.showNotification('Error saving goal', 'error');
+        }
+    }
+
+    // Update goal progress
+    async updateGoalProgress(goalId, progress) {
+        try {
+            const result = await window.dbFunctions.updateDocument('goals', goalId, {
+                progress: Math.min(100, Math.max(0, progress)),
+                status: progress >= 100 ? 'completed' : 'active'
+            });
+            
+            if (result.success) {
+                window.utils.showNotification('Goal progress updated!', 'success');
+            } else {
+                window.utils.showNotification('Error updating goal: ' + result.error, 'error');
+            }
+        } catch (error) {
+            console.error('Error updating goal:', error);
+            window.utils.showNotification('Error updating goal', 'error');
+        }
+    }
+
+    // Delete goal
+    async deleteGoal(goalId) {
+        if (!confirm('Are you sure you want to delete this goal?')) {
+            return;
+        }
+
+        try {
+            const result = await window.dbFunctions.deleteDocument('goals', goalId);
+            
+            if (result.success) {
+                window.utils.showNotification('Goal deleted successfully!', 'success');
+            } else {
+                window.utils.showNotification('Error deleting goal: ' + result.error, 'error');
+            }
+        } catch (error) {
+            console.error('Error deleting goal:', error);
+            window.utils.showNotification('Error deleting goal', 'error');
+        }
+    }
+
+    // Statistics calculation
     updateStats() {
         this.updateOverallGPA();
         this.updateBestSubject();
@@ -220,23 +338,27 @@ class PerformanceAnalytics {
 
     updateOverallGPA() {
         if (this.grades.length === 0) {
-            document.getElementById('overallGPA').textContent = '0.00';
+            const element = document.getElementById('overallGPA');
+            if (element) element.textContent = '0.00';
             return;
         }
 
         const numericGrades = this.grades.map(grade => this.parseGrade(grade.value)).filter(g => g !== null);
         if (numericGrades.length === 0) {
-            document.getElementById('overallGPA').textContent = '0.00';
+            const element = document.getElementById('overallGPA');
+            if (element) element.textContent = '0.00';
             return;
         }
 
         const average = numericGrades.reduce((sum, grade) => sum + grade, 0) / numericGrades.length;
-        document.getElementById('overallGPA').textContent = average.toFixed(2);
+        const element = document.getElementById('overallGPA');
+        if (element) element.textContent = average.toFixed(2);
     }
 
     updateBestSubject() {
         if (this.grades.length === 0) {
-            document.getElementById('bestSubject').textContent = '-';
+            const element = document.getElementById('bestSubject');
+            if (element) element.textContent = '-';
             return;
         }
 
@@ -263,12 +385,14 @@ class PerformanceAnalytics {
             }
         });
 
-        document.getElementById('bestSubject').textContent = bestSubject;
+        const element = document.getElementById('bestSubject');
+        if (element) element.textContent = bestSubject;
     }
 
     updateImprovement() {
         if (this.grades.length < 2) {
-            document.getElementById('improvement').textContent = '0%';
+            const element = document.getElementById('improvement');
+            if (element) element.textContent = '0%';
             return;
         }
 
@@ -278,7 +402,8 @@ class PerformanceAnalytics {
             .sort((a, b) => new Date(a.date) - new Date(b.date));
 
         if (sortedGrades.length < 2) {
-            document.getElementById('improvement').textContent = '0%';
+            const element = document.getElementById('improvement');
+            if (element) element.textContent = '0%';
             return;
         }
 
@@ -289,12 +414,14 @@ class PerformanceAnalytics {
         const secondAverage = secondHalf.reduce((sum, grade) => sum + grade.numericGrade, 0) / secondHalf.length;
 
         const improvement = ((secondAverage - firstAverage) / firstAverage) * 100;
-        document.getElementById('improvement').textContent = `${improvement >= 0 ? '+' : ''}${improvement.toFixed(1)}%`;
+        const element = document.getElementById('improvement');
+        if (element) element.textContent = `${improvement >= 0 ? '+' : ''}${improvement.toFixed(1)}%`;
     }
 
     updateAttendance() {
         if (this.attendance.length === 0) {
-            document.getElementById('attendance').textContent = '0%';
+            const element = document.getElementById('attendance');
+            if (element) element.textContent = '0%';
             return;
         }
 
@@ -302,7 +429,8 @@ class PerformanceAnalytics {
         const totalCount = this.attendance.length;
         const attendancePercentage = (presentCount / totalCount) * 100;
 
-        document.getElementById('attendance').textContent = `${attendancePercentage.toFixed(1)}%`;
+        const element = document.getElementById('attendance');
+        if (element) element.textContent = `${attendancePercentage.toFixed(1)}%`;
     }
 
     parseGrade(gradeValue) {
@@ -344,7 +472,7 @@ class PerformanceAnalytics {
         return null;
     }
 
-    // Chart Rendering
+    // Chart rendering
     renderCharts() {
         this.renderTrendsChart();
         this.renderSubjectChart();
@@ -353,13 +481,14 @@ class PerformanceAnalytics {
     }
 
     renderTrendsChart() {
-        const ctx = document.getElementById('trendsChart').getContext('2d');
+        const ctx = document.getElementById('trendsChart');
+        if (!ctx) return;
         
         if (this.charts.trends) {
             this.charts.trends.destroy();
         }
 
-        const period = document.getElementById('trendPeriod').value;
+        const period = document.getElementById('trendPeriod')?.value || 'all';
         const filteredGrades = this.filterGradesByPeriod(period);
 
         if (filteredGrades.length === 0) {
@@ -419,7 +548,8 @@ class PerformanceAnalytics {
     }
 
     renderSubjectChart() {
-        const ctx = document.getElementById('subjectChart').getContext('2d');
+        const ctx = document.getElementById('subjectChart');
+        if (!ctx) return;
         
         if (this.charts.subject) {
             this.charts.subject.destroy();
@@ -481,7 +611,8 @@ class PerformanceAnalytics {
     }
 
     renderAttendanceChart() {
-        const ctx = document.getElementById('attendanceChart').getContext('2d');
+        const ctx = document.getElementById('attendanceChart');
+        if (!ctx) return;
         
         if (this.charts.attendance) {
             this.charts.attendance.destroy();
@@ -555,7 +686,8 @@ class PerformanceAnalytics {
     }
 
     renderStudyTimeChart() {
-        const ctx = document.getElementById('studyTimeChart').getContext('2d');
+        const ctx = document.getElementById('studyTimeChart');
+        if (!ctx) return;
         
         if (this.charts.studyTime) {
             this.charts.studyTime.destroy();
@@ -564,6 +696,7 @@ class PerformanceAnalytics {
         // Generate sample study time data if none exists
         if (this.studyTime.length === 0) {
             this.generateSampleStudyTime();
+            return;
         }
 
         const last7Days = this.studyTime.slice(-7);
@@ -618,14 +751,15 @@ class PerformanceAnalytics {
             const date = new Date(today);
             date.setDate(date.getDate() - i);
             
-            this.studyTime.push({
+            const studyData = {
                 date: date.toISOString().slice(0, 10),
                 hours: Math.floor(Math.random() * 8) + 2,
                 subjects: subjects.slice(0, Math.floor(Math.random() * 3) + 2)
-            });
+            };
+            
+            // Save to Firebase
+            window.dbFunctions.addDocument('studyTime', studyData);
         }
-        
-        this.saveData();
     }
 
     showEmptyChart(ctx, message) {
@@ -657,9 +791,10 @@ class PerformanceAnalytics {
         return this.grades.filter(grade => new Date(grade.date) >= cutoff);
     }
 
-    // Goals Rendering
+    // Goals rendering
     renderGoals() {
         const goalsList = document.getElementById('goalsList');
+        if (!goalsList) return;
         
         if (this.goals.length === 0) {
             goalsList.innerHTML = `
@@ -718,9 +853,10 @@ class PerformanceAnalytics {
         return 'bg-danger';
     }
 
-    // Grades Rendering
+    // Grades rendering
     renderGrades() {
         const tbody = document.getElementById('gradesTableBody');
+        if (!tbody) return;
         
         if (this.grades.length === 0) {
             tbody.innerHTML = `
@@ -769,8 +905,9 @@ class PerformanceAnalytics {
     }
 
     filterGrades() {
-        const subjectFilter = document.getElementById('subjectFilter').value;
+        const subjectFilter = document.getElementById('subjectFilter')?.value;
         const tbody = document.getElementById('gradesTableBody');
+        if (!tbody) return;
         
         let filteredGrades = this.grades;
         if (subjectFilter) {
@@ -816,9 +953,11 @@ class PerformanceAnalytics {
         }).join('');
     }
 
-    // Insights Generation
+    // Insights generation
     generateInsights() {
         const insightsList = document.getElementById('insightsList');
+        if (!insightsList) return;
+        
         const insights = [];
 
         // Grade-based insights
@@ -919,7 +1058,7 @@ class PerformanceAnalytics {
         `).join('');
     }
 
-    // Utility Functions
+    // Utility functions
     debounce(func, wait) {
         let timeout;
         return function executedFunction(...args) {
@@ -932,27 +1071,16 @@ class PerformanceAnalytics {
         };
     }
 
-    showNotification(message, type = 'info') {
-        // Create notification element
-        const notification = document.createElement('div');
-        notification.className = `alert alert-${type === 'error' ? 'danger' : type} alert-dismissible fade show position-fixed`;
-        notification.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
-        notification.innerHTML = `
-            ${message}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        `;
-
-        document.body.appendChild(notification);
-
-        // Auto-remove after 5 seconds
-        setTimeout(() => {
-            if (notification.parentNode) {
-                notification.remove();
-            }
-        }, 5000);
+    setCurrentDate() {
+        const today = new Date().toISOString().slice(0, 10);
+        const gradeDateInput = document.getElementById('gradeDate');
+        const attendanceDateInput = document.getElementById('attendanceDate');
+        
+        if (gradeDateInput) gradeDateInput.value = today;
+        if (attendanceDateInput) attendanceDateInput.value = today;
     }
 
-    // Data Export/Import
+    // Data export/import
     exportData() {
         const data = {
             grades: this.grades,
@@ -972,35 +1100,64 @@ class PerformanceAnalytics {
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
 
-        this.showNotification('Data exported successfully!', 'success');
+        window.utils.showNotification('Data exported successfully!', 'success');
     }
 
     importData() {
         const input = document.createElement('input');
         input.type = 'file';
         input.accept = '.json';
-        input.onchange = (e) => {
+        input.onchange = async (e) => {
             const file = e.target.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = (e) => {
+                reader.onload = async (e) => {
                     try {
                         const data = JSON.parse(e.target.result);
-                        if (confirm('This will replace all your current data. Are you sure?')) {
-                            this.grades = data.grades || [];
-                            this.attendance = data.attendance || [];
-                            this.goals = data.goals || [];
-                            this.studyTime = data.studyTime || [];
-                            this.saveData();
-                            this.updateStats();
-                            this.renderCharts();
-                            this.renderGoals();
-                            this.renderGrades();
-                            this.generateInsights();
-                            this.showNotification('Data imported successfully!', 'success');
+                        let imported = 0;
+                        
+                        // Import grades
+                        for (const grade of data.grades || []) {
+                            const result = await window.dbFunctions.addDocument('grades', {
+                                subject: grade.subject,
+                                type: grade.type,
+                                title: grade.title,
+                                value: grade.value,
+                                date: grade.date,
+                                maxMarks: grade.maxMarks,
+                                notes: grade.notes
+                            });
+                            if (result.success) imported++;
                         }
+                        
+                        // Import attendance
+                        for (const attendance of data.attendance || []) {
+                            const result = await window.dbFunctions.addDocument('attendance', {
+                                subject: attendance.subject,
+                                date: attendance.date,
+                                status: attendance.status,
+                                notes: attendance.notes
+                            });
+                            if (result.success) imported++;
+                        }
+                        
+                        // Import goals
+                        for (const goal of data.goals || []) {
+                            const result = await window.dbFunctions.addDocument('goals', {
+                                title: goal.title,
+                                subject: goal.subject,
+                                target: goal.target,
+                                deadline: goal.deadline,
+                                description: goal.description,
+                                progress: goal.progress || 0,
+                                status: goal.status || 'active'
+                            });
+                            if (result.success) imported++;
+                        }
+                        
+                        window.utils.showNotification(`Imported ${imported} items successfully!`, 'success');
                     } catch (error) {
-                        this.showNotification('Invalid file format!', 'error');
+                        window.utils.showNotification('Error importing data', 'error');
                     }
                 };
                 reader.readAsText(file);
@@ -1008,26 +1165,31 @@ class PerformanceAnalytics {
         };
         input.click();
     }
+
+    // Cleanup when page unloads
+    destroy() {
+        Object.values(this.unsubscribe).forEach(unsubscribe => {
+            if (unsubscribe) unsubscribe();
+        });
+    }
 }
 
-// Global Functions
+// Global functions
 let performanceAnalytics;
 
-function showAddGradeModal() {
-    const modal = new bootstrap.Modal(document.getElementById('addGradeModal'));
-    modal.show();
-}
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    performanceAnalytics = new PerformanceAnalyticsFirebase();
+});
 
-function showAddAttendanceModal() {
-    const modal = new bootstrap.Modal(document.getElementById('addAttendanceModal'));
-    modal.show();
-}
+// Cleanup when page unloads
+window.addEventListener('beforeunload', function() {
+    if (performanceAnalytics) {
+        performanceAnalytics.destroy();
+    }
+});
 
-function showGoalModal() {
-    const modal = new bootstrap.Modal(document.getElementById('addGoalModal'));
-    modal.show();
-}
-
+// Global functions for HTML onclick handlers
 function saveGrade() {
     performanceAnalytics.saveGrade();
 }
@@ -1068,7 +1230,31 @@ function importData() {
     performanceAnalytics.importData();
 }
 
-// Initialize when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    performanceAnalytics = new PerformanceAnalytics();
-});
+function showAddGradeModal() {
+    if (!window.utils.isAuthenticated()) {
+        window.utils.showNotification('Please login to add grades', 'warning');
+        return;
+    }
+    const modal = new bootstrap.Modal(document.getElementById('addGradeModal'));
+    modal.show();
+}
+
+function showAddAttendanceModal() {
+    if (!window.utils.isAuthenticated()) {
+        window.utils.showNotification('Please login to add attendance', 'warning');
+        return;
+    }
+    const modal = new bootstrap.Modal(document.getElementById('addAttendanceModal'));
+    modal.show();
+}
+
+function showGoalModal() {
+    if (!window.utils.isAuthenticated()) {
+        window.utils.showNotification('Please login to add goals', 'warning');
+        return;
+    }
+    const modal = new bootstrap.Modal(document.getElementById('addGoalModal'));
+    modal.show();
+}
+
+console.log('Performance Analytics with Firebase loaded successfully!');
