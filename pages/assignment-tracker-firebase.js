@@ -101,8 +101,8 @@ class AssignmentTrackerFirebase {
     // Save assignment to Firebase
     async saveAssignment() {
         const form = document.getElementById('assignmentForm');
-        if (!form.checkValidity()) {
-            form.reportValidity();
+        if (!form || !form.checkValidity()) {
+            if (form) form.reportValidity();
             return;
         }
 
@@ -111,15 +111,21 @@ class AssignmentTrackerFirebase {
             return;
         }
 
+        // Get form elements safely
+        const getElementValue = (id) => {
+            const element = document.getElementById(id);
+            return element ? element.value : '';
+        };
+
         const assignmentData = {
-            title: document.getElementById('assignmentTitle').value.trim(),
-            subject: document.getElementById('assignmentSubject').value,
-            description: document.getElementById('assignmentDescription').value.trim(),
-            deadline: document.getElementById('assignmentDeadline').value,
-            priority: document.getElementById('assignmentPriority').value,
-            status: document.getElementById('assignmentStatus').value,
-            estimatedHours: document.getElementById('estimatedHours').value || null,
-            notes: document.getElementById('assignmentNotes').value.trim()
+            title: getElementValue('assignmentTitle').trim(),
+            subject: getElementValue('assignmentSubject'),
+            description: getElementValue('assignmentDescription').trim(),
+            deadline: getElementValue('assignmentDeadline'),
+            priority: getElementValue('assignmentPriority'),
+            status: getElementValue('assignmentStatus'),
+            estimatedHours: getElementValue('estimatedHours') || null,
+            notes: getElementValue('assignmentNotes').trim()
         };
 
         try {
@@ -144,20 +150,26 @@ class AssignmentTrackerFirebase {
     // Update assignment in Firebase
     async updateAssignment(assignmentId) {
         const form = document.getElementById('editAssignmentForm');
-        if (!form.checkValidity()) {
-            form.reportValidity();
+        if (!form || !form.checkValidity()) {
+            if (form) form.reportValidity();
             return;
         }
 
+        // Get form elements safely
+        const getElementValue = (id) => {
+            const element = document.getElementById(id);
+            return element ? element.value : '';
+        };
+
         const assignmentData = {
-            title: document.getElementById('editAssignmentTitle').value.trim(),
-            subject: document.getElementById('editAssignmentSubject').value,
-            description: document.getElementById('editAssignmentDescription').value.trim(),
-            deadline: document.getElementById('editAssignmentDeadline').value,
-            priority: document.getElementById('editAssignmentPriority').value,
-            status: document.getElementById('editAssignmentStatus').value,
-            estimatedHours: document.getElementById('editEstimatedHours').value || null,
-            notes: document.getElementById('editAssignmentNotes').value.trim()
+            title: getElementValue('editAssignmentTitle').trim(),
+            subject: getElementValue('editAssignmentSubject'),
+            description: getElementValue('editAssignmentDescription').trim(),
+            deadline: getElementValue('editAssignmentDeadline'),
+            priority: getElementValue('editAssignmentPriority'),
+            status: getElementValue('editAssignmentStatus'),
+            estimatedHours: getElementValue('editEstimatedHours') || null,
+            notes: getElementValue('editAssignmentNotes').trim()
         };
 
         try {
@@ -218,23 +230,33 @@ class AssignmentTrackerFirebase {
     // Statistics calculation
     updateStats() {
         const total = this.assignments.length;
-        const completed = this.assignments.filter(a => a.status === 'Completed').length;
+        const completed = this.assignments.filter(a => a.status === 'Completed' || a.status === 'Graded').length;
         const inProgress = this.assignments.filter(a => a.status === 'In Progress').length;
         const pending = this.assignments.filter(a => a.status === 'Not Started').length;
         const overdue = this.assignments.filter(a => {
-            return a.status !== 'Completed' && new Date(a.deadline) < new Date();
+            return a.status !== 'Completed' && a.status !== 'Graded' && new Date(a.deadline) < new Date();
         }).length;
 
-        document.getElementById('totalAssignments').textContent = total;
-        document.getElementById('completedAssignments').textContent = completed;
-        document.getElementById('inProgressAssignments').textContent = inProgress;
-        document.getElementById('pendingAssignments').textContent = pending;
-        document.getElementById('overdueAssignments').textContent = overdue;
+        // Update stats elements (check if they exist first)
+        const totalEl = document.getElementById('totalAssignments');
+        const completedEl = document.getElementById('completedAssignments');
+        const inProgressEl = document.getElementById('inProgressAssignments');
+        const pendingEl = document.getElementById('pendingAssignments');
+        const overdueEl = document.getElementById('overdueAssignments');
 
-        // Update progress bars
+        if (totalEl) totalEl.textContent = total;
+        if (completedEl) completedEl.textContent = completed;
+        if (inProgressEl) inProgressEl.textContent = inProgress;
+        if (pendingEl) pendingEl.textContent = pending;
+        if (overdueEl) overdueEl.textContent = overdue;
+
+        // Update progress bars (check if they exist first)
         const completionRate = total > 0 ? (completed / total) * 100 : 0;
-        document.querySelector('.completion-progress .progress-bar').style.width = `${completionRate}%`;
-        document.querySelector('.completion-progress .progress-text').textContent = `${completionRate.toFixed(1)}%`;
+        const progressBar = document.querySelector('.completion-progress .progress-bar');
+        const progressText = document.querySelector('.completion-progress .progress-text');
+        
+        if (progressBar) progressBar.style.width = `${completionRate}%`;
+        if (progressText) progressText.textContent = `${completionRate.toFixed(1)}%`;
     }
 
     // Render assignments
@@ -363,39 +385,56 @@ class AssignmentTrackerFirebase {
         const assignment = this.assignments.find(a => a.id === assignmentId);
         if (!assignment) return;
 
+        // Helper function to set element value safely
+        const setElementValue = (id, value) => {
+            const element = document.getElementById(id);
+            if (element) element.value = value || '';
+        };
+
         // Populate edit form
-        document.getElementById('editAssignmentTitle').value = assignment.title;
-        document.getElementById('editAssignmentSubject').value = assignment.subject;
-        document.getElementById('editAssignmentDescription').value = assignment.description;
-        document.getElementById('editAssignmentDeadline').value = assignment.deadline;
-        document.getElementById('editAssignmentPriority').value = assignment.priority;
-        document.getElementById('editAssignmentStatus').value = assignment.status;
-        document.getElementById('editEstimatedHours').value = assignment.estimatedHours || '';
-        document.getElementById('editAssignmentNotes').value = assignment.notes || '';
+        setElementValue('editAssignmentTitle', assignment.title);
+        setElementValue('editAssignmentSubject', assignment.subject);
+        setElementValue('editAssignmentDescription', assignment.description);
+        setElementValue('editAssignmentDeadline', assignment.deadline);
+        setElementValue('editAssignmentPriority', assignment.priority);
+        setElementValue('editAssignmentStatus', assignment.status);
+        setElementValue('editEstimatedHours', assignment.estimatedHours);
+        setElementValue('editAssignmentNotes', assignment.notes);
 
         // Show modal
-        const modal = new bootstrap.Modal(document.getElementById('editAssignmentModal'));
-        modal.show();
+        const modalElement = document.getElementById('editAssignmentModal');
+        if (modalElement) {
+            const modal = new bootstrap.Modal(modalElement);
+            modal.show();
+        }
     }
 
     // Set current date for forms
     setCurrentDate() {
         const today = new Date().toISOString().slice(0, 16);
-        document.getElementById('assignmentDeadline').value = today;
-        document.getElementById('editAssignmentDeadline').value = today;
+        const deadlineInput = document.getElementById('assignmentDeadline');
+        const editDeadlineInput = document.getElementById('editAssignmentDeadline');
+        
+        if (deadlineInput) deadlineInput.value = today;
+        if (editDeadlineInput) editDeadlineInput.value = today;
     }
 
     // Auto-save form data
     autoSaveForm() {
+        const getElementValue = (id) => {
+            const element = document.getElementById(id);
+            return element ? element.value : '';
+        };
+
         const formData = {
-            title: document.getElementById('assignmentTitle')?.value || '',
-            subject: document.getElementById('assignmentSubject')?.value || '',
-            description: document.getElementById('assignmentDescription')?.value || '',
-            deadline: document.getElementById('assignmentDeadline')?.value || '',
-            priority: document.getElementById('assignmentPriority')?.value || '',
-            status: document.getElementById('assignmentStatus')?.value || '',
-            estimatedHours: document.getElementById('estimatedHours')?.value || '',
-            notes: document.getElementById('assignmentNotes')?.value || ''
+            title: getElementValue('assignmentTitle'),
+            subject: getElementValue('assignmentSubject'),
+            description: getElementValue('assignmentDescription'),
+            deadline: getElementValue('assignmentDeadline'),
+            priority: getElementValue('assignmentPriority'),
+            status: getElementValue('assignmentStatus'),
+            estimatedHours: getElementValue('estimatedHours'),
+            notes: getElementValue('assignmentNotes')
         };
         
         localStorage.setItem('assignmentFormDraft', JSON.stringify(formData));
@@ -408,7 +447,7 @@ class AssignmentTrackerFirebase {
             const formData = JSON.parse(draft);
             Object.keys(formData).forEach(key => {
                 const element = document.getElementById(`assignment${key.charAt(0).toUpperCase() + key.slice(1)}`);
-                if (element) element.value = formData[key];
+                if (element) element.value = formData[key] || '';
             });
         }
     }
