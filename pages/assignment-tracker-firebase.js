@@ -1,0 +1,568 @@
+// Assignment Tracker JavaScript with Firebase Integration
+
+class AssignmentTrackerFirebase {
+    constructor() {
+        this.assignments = [];
+        this.currentView = 'list';
+        this.currentDate = new Date();
+        this.unsubscribe = null;
+        this.init();
+    }
+
+    async init() {
+        // Check if user is authenticated
+        if (!window.utils || !window.utils.isAuthenticated()) {
+            this.showLoginRequired();
+            return;
+        }
+
+        await this.setupEventListeners();
+        await this.loadAssignments();
+        this.updateStats();
+        this.renderAssignments();
+        this.setupNotifications();
+    }
+
+    showLoginRequired() {
+        const container = document.querySelector('.main');
+        if (container) {
+            container.innerHTML = `
+                <div class="login-required">
+                    <div class="login-required-content">
+                        <i class="fas fa-lock"></i>
+                        <h2>Login Required</h2>
+                        <p>Please login to access the Assignment Tracker</p>
+                        <button class="btn btn-primary" onclick="window.location.href='../pages/auth.html'">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Login Now
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+    }
+
+    async setupEventListeners() {
+        // Set minimum date for deadline input to today
+        const deadlineInput = document.getElementById('assignmentDeadline');
+        const editDeadlineInput = document.getElementById('editAssignmentDeadline');
+        const today = new Date().toISOString().slice(0, 16);
+        
+        if (deadlineInput) {
+            deadlineInput.min = today;
+        }
+        if (editDeadlineInput) {
+            editDeadlineInput.min = today;
+        }
+
+        // Auto-save on form changes
+        document.getElementById('assignmentForm')?.addEventListener('input', this.debounce(() => {
+            this.autoSaveForm();
+        }, 1000));
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                switch(e.key) {
+                    case 'n':
+                        e.preventDefault();
+                        this.showAddAssignmentModal();
+                        break;
+                    case 'f':
+                        e.preventDefault();
+                        document.getElementById('searchInput')?.focus();
+                        break;
+                }
+            }
+        });
+    }
+
+    // Load assignments from Firebase
+    async loadAssignments() {
+        try {
+            if (!window.dbFunctions) {
+                console.error('Firebase not initialized');
+                return;
+            }
+
+            // Set up real-time listener
+            this.unsubscribe = window.dbFunctions.listenToCollection('assignments', (assignments) => {
+                this.assignments = assignments;
+                this.updateStats();
+                this.renderAssignments();
+            }, window.currentUser?.uid);
+
+        } catch (error) {
+            console.error('Error loading assignments:', error);
+            window.utils.showNotification('Error loading assignments', 'error');
+        }
+    }
+
+    // Save assignment to Firebase
+    async saveAssignment() {
+        const form = document.getElementById('assignmentForm');
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        if (!window.utils.isAuthenticated()) {
+            window.utils.showNotification('Please login to save assignments', 'warning');
+            return;
+        }
+
+        const assignmentData = {
+            title: document.getElementById('assignmentTitle').value.trim(),
+            subject: document.getElementById('assignmentSubject').value,
+            description: document.getElementById('assignmentDescription').value.trim(),
+            deadline: document.getElementById('assignmentDeadline').value,
+            priority: document.getElementById('assignmentPriority').value,
+            status: document.getElementById('assignmentStatus').value,
+            estimatedHours: document.getElementById('estimatedHours').value || null,
+            notes: document.getElementById('assignmentNotes').value.trim()
+        };
+
+        try {
+            const result = await window.dbFunctions.addDocument('assignments', assignmentData);
+            
+            if (result.success) {
+                window.utils.showNotification('Assignment saved successfully!', 'success');
+                
+                // Close modal and reset form
+                bootstrap.Modal.getInstance(document.getElementById('addAssignmentModal')).hide();
+                form.reset();
+                this.setCurrentDate();
+            } else {
+                window.utils.showNotification('Error saving assignment: ' + result.error, 'error');
+            }
+        } catch (error) {
+            console.error('Error saving assignment:', error);
+            window.utils.showNotification('Error saving assignment', 'error');
+        }
+    }
+
+    // Update assignment in Firebase
+    async updateAssignment(assignmentId) {
+        const form = document.getElementById('editAssignmentForm');
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        const assignmentData = {
+            title: document.getElementById('editAssignmentTitle').value.trim(),
+            subject: document.getElementById('editAssignmentSubject').value,
+            description: document.getElementById('editAssignmentDescription').value.trim(),
+            deadline: document.getElementById('editAssignmentDeadline').value,
+            priority: document.getElementById('editAssignmentPriority').value,
+            status: document.getElementById('editAssignmentStatus').value,
+            estimatedHours: document.getElementById('editEstimatedHours').value || null,
+            notes: document.getElementById('editAssignmentNotes').value.trim()
+        };
+
+        try {
+            const result = await window.dbFunctions.updateDocument('assignments', assignmentId, assignmentData);
+            
+            if (result.success) {
+                window.utils.showNotification('Assignment updated successfully!', 'success');
+                
+                // Close modal
+                bootstrap.Modal.getInstance(document.getElementById('editAssignmentModal')).hide();
+            } else {
+                window.utils.showNotification('Error updating assignment: ' + result.error, 'error');
+            }
+        } catch (error) {
+            console.error('Error updating assignment:', error);
+            window.utils.showNotification('Error updating assignment', 'error');
+        }
+    }
+
+    // Delete assignment from Firebase
+    async deleteAssignment(assignmentId) {
+        if (!confirm('Are you sure you want to delete this assignment?')) {
+            return;
+        }
+
+        try {
+            const result = await window.dbFunctions.deleteDocument('assignments', assignmentId);
+            
+            if (result.success) {
+                window.utils.showNotification('Assignment deleted successfully!', 'success');
+            } else {
+                window.utils.showNotification('Error deleting assignment: ' + result.error, 'error');
+            }
+        } catch (error) {
+            console.error('Error deleting assignment:', error);
+            window.utils.showNotification('Error deleting assignment', 'error');
+        }
+    }
+
+    // Update assignment status
+    async updateAssignmentStatus(assignmentId, newStatus) {
+        try {
+            const result = await window.dbFunctions.updateDocument('assignments', assignmentId, {
+                status: newStatus
+            });
+            
+            if (result.success) {
+                window.utils.showNotification('Status updated successfully!', 'success');
+            } else {
+                window.utils.showNotification('Error updating status: ' + result.error, 'error');
+            }
+        } catch (error) {
+            console.error('Error updating status:', error);
+            window.utils.showNotification('Error updating status', 'error');
+        }
+    }
+
+    // Statistics calculation
+    updateStats() {
+        const total = this.assignments.length;
+        const completed = this.assignments.filter(a => a.status === 'Completed').length;
+        const inProgress = this.assignments.filter(a => a.status === 'In Progress').length;
+        const pending = this.assignments.filter(a => a.status === 'Not Started').length;
+        const overdue = this.assignments.filter(a => {
+            return a.status !== 'Completed' && new Date(a.deadline) < new Date();
+        }).length;
+
+        document.getElementById('totalAssignments').textContent = total;
+        document.getElementById('completedAssignments').textContent = completed;
+        document.getElementById('inProgressAssignments').textContent = inProgress;
+        document.getElementById('pendingAssignments').textContent = pending;
+        document.getElementById('overdueAssignments').textContent = overdue;
+
+        // Update progress bars
+        const completionRate = total > 0 ? (completed / total) * 100 : 0;
+        document.querySelector('.completion-progress .progress-bar').style.width = `${completionRate}%`;
+        document.querySelector('.completion-progress .progress-text').textContent = `${completionRate.toFixed(1)}%`;
+    }
+
+    // Render assignments
+    renderAssignments() {
+        const container = document.getElementById('assignmentsList');
+        if (!container) return;
+
+        if (this.assignments.length === 0) {
+            container.innerHTML = `
+                <div class="empty-state">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>No Assignments Yet</h3>
+                    <p>Create your first assignment to get started!</p>
+                    <button class="btn btn-primary" onclick="assignmentTracker.showAddAssignmentModal()">
+                        <i class="fas fa-plus"></i>
+                        Add Assignment
+                    </button>
+                </div>
+            `;
+            return;
+        }
+
+        const filteredAssignments = this.filterAssignments();
+        
+        container.innerHTML = filteredAssignments.map(assignment => {
+            const deadline = new Date(assignment.deadline);
+            const isOverdue = deadline < new Date() && assignment.status !== 'Completed';
+            const daysLeft = Math.ceil((deadline - new Date()) / (1000 * 60 * 60 * 24));
+            
+            return `
+                <div class="assignment-card ${assignment.priority.toLowerCase()} ${assignment.status.toLowerCase().replace(' ', '-')} ${isOverdue ? 'overdue' : ''}">
+                    <div class="assignment-header">
+                        <h4 class="assignment-title">${assignment.title}</h4>
+                        <div class="assignment-actions">
+                            <button class="btn btn-sm btn-outline-primary" onclick="assignmentTracker.editAssignment('${assignment.id}')">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger" onclick="assignmentTracker.deleteAssignment('${assignment.id}')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="assignment-meta">
+                        <span class="subject-badge">${assignment.subject}</span>
+                        <span class="priority-badge ${assignment.priority.toLowerCase()}">${assignment.priority}</span>
+                        <span class="status-badge ${assignment.status.toLowerCase().replace(' ', '-')}">${assignment.status}</span>
+                    </div>
+                    
+                    ${assignment.description ? `<p class="assignment-description">${assignment.description}</p>` : ''}
+                    
+                    <div class="assignment-footer">
+                        <div class="deadline-info">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Due: ${deadline.toLocaleDateString()}</span>
+                            ${isOverdue ? '<span class="overdue-text">Overdue!</span>' : ''}
+                            ${!isOverdue && daysLeft <= 3 ? '<span class="urgent-text">Due Soon!</span>' : ''}
+                        </div>
+                        
+                        <div class="status-controls">
+                            <select class="form-select form-select-sm" onchange="assignmentTracker.updateAssignmentStatus('${assignment.id}', this.value)">
+                                <option value="Not Started" ${assignment.status === 'Not Started' ? 'selected' : ''}>Not Started</option>
+                                <option value="In Progress" ${assignment.status === 'In Progress' ? 'selected' : ''}>In Progress</option>
+                                <option value="Completed" ${assignment.status === 'Completed' ? 'selected' : ''}>Completed</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    ${assignment.notes ? `<div class="assignment-notes"><i class="fas fa-sticky-note"></i> ${assignment.notes}</div>` : ''}
+                </div>
+            `;
+        }).join('');
+    }
+
+    // Filter assignments based on current filters
+    filterAssignments() {
+        let filtered = [...this.assignments];
+        
+        // Status filter
+        const statusFilter = document.getElementById('statusFilter')?.value;
+        if (statusFilter && statusFilter !== 'all') {
+            filtered = filtered.filter(a => a.status === statusFilter);
+        }
+        
+        // Subject filter
+        const subjectFilter = document.getElementById('subjectFilter')?.value;
+        if (subjectFilter && subjectFilter !== 'all') {
+            filtered = filtered.filter(a => a.subject === subjectFilter);
+        }
+        
+        // Priority filter
+        const priorityFilter = document.getElementById('priorityFilter')?.value;
+        if (priorityFilter && priorityFilter !== 'all') {
+            filtered = filtered.filter(a => a.priority === priorityFilter);
+        }
+        
+        // Search filter
+        const searchTerm = document.getElementById('searchInput')?.value.toLowerCase();
+        if (searchTerm) {
+            filtered = filtered.filter(a => 
+                a.title.toLowerCase().includes(searchTerm) ||
+                a.description.toLowerCase().includes(searchTerm) ||
+                a.subject.toLowerCase().includes(searchTerm)
+            );
+        }
+        
+        // Sort by deadline
+        filtered.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+        
+        return filtered;
+    }
+
+    // Show add assignment modal
+    showAddAssignmentModal() {
+        if (!window.utils.isAuthenticated()) {
+            window.utils.showNotification('Please login to add assignments', 'warning');
+            return;
+        }
+        
+        const modal = new bootstrap.Modal(document.getElementById('addAssignmentModal'));
+        modal.show();
+    }
+
+    // Edit assignment
+    editAssignment(assignmentId) {
+        const assignment = this.assignments.find(a => a.id === assignmentId);
+        if (!assignment) return;
+
+        // Populate edit form
+        document.getElementById('editAssignmentTitle').value = assignment.title;
+        document.getElementById('editAssignmentSubject').value = assignment.subject;
+        document.getElementById('editAssignmentDescription').value = assignment.description;
+        document.getElementById('editAssignmentDeadline').value = assignment.deadline;
+        document.getElementById('editAssignmentPriority').value = assignment.priority;
+        document.getElementById('editAssignmentStatus').value = assignment.status;
+        document.getElementById('editEstimatedHours').value = assignment.estimatedHours || '';
+        document.getElementById('editAssignmentNotes').value = assignment.notes || '';
+
+        // Show modal
+        const modal = new bootstrap.Modal(document.getElementById('editAssignmentModal'));
+        modal.show();
+    }
+
+    // Set current date for forms
+    setCurrentDate() {
+        const today = new Date().toISOString().slice(0, 16);
+        document.getElementById('assignmentDeadline').value = today;
+        document.getElementById('editAssignmentDeadline').value = today;
+    }
+
+    // Auto-save form data
+    autoSaveForm() {
+        const formData = {
+            title: document.getElementById('assignmentTitle')?.value || '',
+            subject: document.getElementById('assignmentSubject')?.value || '',
+            description: document.getElementById('assignmentDescription')?.value || '',
+            deadline: document.getElementById('assignmentDeadline')?.value || '',
+            priority: document.getElementById('assignmentPriority')?.value || '',
+            status: document.getElementById('assignmentStatus')?.value || '',
+            estimatedHours: document.getElementById('estimatedHours')?.value || '',
+            notes: document.getElementById('assignmentNotes')?.value || ''
+        };
+        
+        localStorage.setItem('assignmentFormDraft', JSON.stringify(formData));
+    }
+
+    // Load form draft
+    loadFormDraft() {
+        const draft = localStorage.getItem('assignmentFormDraft');
+        if (draft) {
+            const formData = JSON.parse(draft);
+            Object.keys(formData).forEach(key => {
+                const element = document.getElementById(`assignment${key.charAt(0).toUpperCase() + key.slice(1)}`);
+                if (element) element.value = formData[key];
+            });
+        }
+    }
+
+    // Setup notifications
+    setupNotifications() {
+        // Check for overdue assignments every minute
+        setInterval(() => {
+            this.checkOverdueAssignments();
+        }, 60000);
+    }
+
+    // Check for overdue assignments
+    checkOverdueAssignments() {
+        const overdue = this.assignments.filter(a => {
+            return a.status !== 'Completed' && new Date(a.deadline) < new Date();
+        });
+
+        if (overdue.length > 0) {
+            // Show notification for overdue assignments
+            window.utils.showNotification(`You have ${overdue.length} overdue assignment(s)`, 'warning');
+        }
+    }
+
+    // Utility functions
+    debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    // Cleanup when page unloads
+    destroy() {
+        if (this.unsubscribe) {
+            this.unsubscribe();
+        }
+    }
+}
+
+// Global functions
+let assignmentTracker;
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    assignmentTracker = new AssignmentTrackerFirebase();
+});
+
+// Cleanup when page unloads
+window.addEventListener('beforeunload', function() {
+    if (assignmentTracker) {
+        assignmentTracker.destroy();
+    }
+});
+
+// Global functions for HTML onclick handlers
+function saveAssignment() {
+    assignmentTracker.saveAssignment();
+}
+
+function updateAssignment(assignmentId) {
+    assignmentTracker.updateAssignment(assignmentId);
+}
+
+function deleteAssignment(assignmentId) {
+    assignmentTracker.deleteAssignment(assignmentId);
+}
+
+function updateAssignmentStatus(assignmentId, newStatus) {
+    assignmentTracker.updateAssignmentStatus(assignmentId, newStatus);
+}
+
+function showAddAssignmentModal() {
+    assignmentTracker.showAddAssignmentModal();
+}
+
+function editAssignment(assignmentId) {
+    assignmentTracker.editAssignment(assignmentId);
+}
+
+function filterAssignments() {
+    assignmentTracker.renderAssignments();
+}
+
+function clearFilters() {
+    document.getElementById('statusFilter').value = 'all';
+    document.getElementById('subjectFilter').value = 'all';
+    document.getElementById('priorityFilter').value = 'all';
+    document.getElementById('searchInput').value = '';
+    assignmentTracker.renderAssignments();
+}
+
+function exportAssignments() {
+    if (assignmentTracker.assignments.length === 0) {
+        window.utils.showNotification('No assignments to export', 'warning');
+        return;
+    }
+
+    const dataStr = JSON.stringify(assignmentTracker.assignments, null, 2);
+    const dataBlob = new Blob([dataStr], {type: 'application/json'});
+    const url = URL.createObjectURL(dataBlob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `assignments-${new Date().toISOString().slice(0, 10)}.json`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+    
+    window.utils.showNotification('Assignments exported successfully!', 'success');
+}
+
+function importAssignments() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+    input.onchange = async (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = async (e) => {
+                try {
+                    const assignments = JSON.parse(e.target.result);
+                    let imported = 0;
+                    
+                    for (const assignment of assignments) {
+                        const result = await window.dbFunctions.addDocument('assignments', {
+                            title: assignment.title,
+                            subject: assignment.subject,
+                            description: assignment.description,
+                            deadline: assignment.deadline,
+                            priority: assignment.priority,
+                            status: assignment.status,
+                            estimatedHours: assignment.estimatedHours,
+                            notes: assignment.notes
+                        });
+                        
+                        if (result.success) imported++;
+                    }
+                    
+                    window.utils.showNotification(`Imported ${imported} assignments successfully!`, 'success');
+                } catch (error) {
+                    window.utils.showNotification('Error importing assignments', 'error');
+                }
+            };
+            reader.readAsText(file);
+        }
+    };
+    input.click();
+}
+
+console.log('Assignment Tracker with Firebase loaded successfully!');

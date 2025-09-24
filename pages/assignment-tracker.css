@@ -646,3 +646,61 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/* Login Required Styles */
+.login-required {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 2rem;
+}
+
+.login-required-content {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.login-required-content i {
+    font-size: 4rem;
+    color: #667eea;
+    margin-bottom: 1.5rem;
+}
+
+.login-required-content h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.login-required-content p {
+    color: #6c757d;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.login-required-content .btn {
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+/* Dark mode for login required */
+.dark-mode .login-required-content {
+    background: #2c3e50;
+    color: #ecf0f1;
+}
+
+.dark-mode .login-required-content h2 {
+    color: #ecf0f1;
+}
+
+.dark-mode .login-required-content p {
+    color: #bdc3c7;
+}
