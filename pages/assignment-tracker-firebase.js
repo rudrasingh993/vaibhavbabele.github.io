@@ -114,7 +114,7 @@ class AssignmentTrackerFirebase {
         // Get form elements safely
         const getElementValue = (id) => {
             const element = document.getElementById(id);
-            return element ? element.value : '';
+            return element ? (element.value || '') : '';
         };
 
         const assignmentData = {
@@ -124,7 +124,7 @@ class AssignmentTrackerFirebase {
             deadline: getElementValue('assignmentDeadline'),
             priority: getElementValue('assignmentPriority'),
             status: getElementValue('assignmentStatus'),
-            estimatedHours: getElementValue('estimatedHours') || null,
+            grade: getElementValue('assignmentGrade') || null,
             notes: getElementValue('assignmentNotes').trim()
         };
 
@@ -158,7 +158,7 @@ class AssignmentTrackerFirebase {
         // Get form elements safely
         const getElementValue = (id) => {
             const element = document.getElementById(id);
-            return element ? element.value : '';
+            return element ? (element.value || '') : '';
         };
 
         const assignmentData = {
@@ -168,7 +168,7 @@ class AssignmentTrackerFirebase {
             deadline: getElementValue('editAssignmentDeadline'),
             priority: getElementValue('editAssignmentPriority'),
             status: getElementValue('editAssignmentStatus'),
-            estimatedHours: getElementValue('editEstimatedHours') || null,
+            grade: getElementValue('editAssignmentGrade') || null,
             notes: getElementValue('editAssignmentNotes').trim()
         };
 
@@ -398,7 +398,7 @@ class AssignmentTrackerFirebase {
         setElementValue('editAssignmentDeadline', assignment.deadline);
         setElementValue('editAssignmentPriority', assignment.priority);
         setElementValue('editAssignmentStatus', assignment.status);
-        setElementValue('editEstimatedHours', assignment.estimatedHours);
+        setElementValue('editAssignmentGrade', assignment.grade);
         setElementValue('editAssignmentNotes', assignment.notes);
 
         // Show modal
@@ -423,7 +423,7 @@ class AssignmentTrackerFirebase {
     autoSaveForm() {
         const getElementValue = (id) => {
             const element = document.getElementById(id);
-            return element ? element.value : '';
+            return element ? (element.value || '') : '';
         };
 
         const formData = {
@@ -433,7 +433,7 @@ class AssignmentTrackerFirebase {
             deadline: getElementValue('assignmentDeadline'),
             priority: getElementValue('assignmentPriority'),
             status: getElementValue('assignmentStatus'),
-            estimatedHours: getElementValue('estimatedHours'),
+            grade: getElementValue('assignmentGrade'),
             notes: getElementValue('assignmentNotes')
         };
         
