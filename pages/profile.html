@@ -767,34 +767,120 @@
     <!-- Profile Script -->
     <script>
         // Profile functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            loadProfileData();
-            loadUserStats();
+        document.addEventListener('DOMContentLoaded', async function() {
+            await loadProfileData();
+            await loadUserStats();
             loadSettings();
             initializeTeamSection();
+            
+            // Set up real-time listeners for authenticated users
+            if (window.utils && window.utils.isAuthenticated() && window.dbFunctions) {
+                console.log('Setting up real-time listeners for profile data...');
+                
+                // Listen for assignment changes
+                window.dbFunctions.listenToCollection('assignments', (assignments) => {
+                    console.log('Real-time assignment update received:', assignments.length, 'assignments');
+                    updateUserStatsFromData(assignments, null, null);
+                });
+                
+                // Listen for grade changes
+                window.dbFunctions.listenToCollection('grades', (grades) => {
+                    console.log('Real-time grade update received:', grades.length, 'grades');
+                    updateUserStatsFromData(null, grades, null);
+                });
+                
+                // Listen for attendance changes
+                window.dbFunctions.listenToCollection('attendance', (attendance) => {
+                    console.log('Real-time attendance update received:', attendance.length, 'attendance records');
+                    updateUserStatsFromData(null, null, attendance);
+                });
+            }
         });
 
-        function loadProfileData() {
-            // Load user profile data
-            const userData = JSON.parse(localStorage.getItem('userProfile') || '{}');
-            
-            document.getElementById('fullName').value = userData.fullName || '';
-            document.getElementById('email').value = userData.email || 'user@example.com';
-            document.getElementById('phone').value = userData.phone || '';
-            document.getElementById('department').value = userData.department || '';
-            document.getElementById('year').value = userData.year || '';
-            
-            // Update header
-            document.getElementById('profileName').textContent = userData.fullName || 'User Profile';
-            document.getElementById('profileEmail').textContent = userData.email || 'user@example.com';
+        async function loadProfileData() {
+            // Load user profile data from Firebase if authenticated, otherwise localStorage
+            try {
+                let userData = {};
+                
+                if (window.utils && window.utils.isAuthenticated() && window.dbFunctions) {
+                    // Load from Firebase
+                    console.log('Loading profile data from Firebase...');
+                    const result = await window.dbFunctions.getDocuments('userProfiles');
+                    if (result.success && result.data.length > 0) {
+                        userData = result.data[0]; // Get the first (and should be only) profile
+                        console.log('Profile data loaded from Firebase:', userData);
+                    } else {
+                        // Fallback to localStorage
+                        userData = JSON.parse(localStorage.getItem('userProfile') || '{}');
+                    }
+                } else {
+                    // Load from localStorage
+                    console.log('Loading profile data from localStorage...');
+                    userData = JSON.parse(localStorage.getItem('userProfile') || '{}');
+                }
+                
+                document.getElementById('fullName').value = userData.fullName || '';
+                document.getElementById('email').value = userData.email || 'user@example.com';
+                document.getElementById('phone').value = userData.phone || '';
+                document.getElementById('department').value = userData.department || '';
+                document.getElementById('year').value = userData.year || '';
+                
+                // Update header
+                document.getElementById('profileName').textContent = userData.fullName || 'User Profile';
+                document.getElementById('profileEmail').textContent = userData.email || 'user@example.com';
+            } catch (error) {
+                console.error('Error loading profile data:', error);
+                // Fallback to localStorage
+                const userData = JSON.parse(localStorage.getItem('userProfile') || '{}');
+                document.getElementById('fullName').value = userData.fullName || '';
+                document.getElementById('email').value = userData.email || 'user@example.com';
+                document.getElementById('phone').value = userData.phone || '';
+                document.getElementById('department').value = userData.department || '';
+                document.getElementById('year').value = userData.year || '';
+                
+                document.getElementById('profileName').textContent = userData.fullName || 'User Profile';
+                document.getElementById('profileEmail').textContent = userData.email || 'user@example.com';
+            }
         }
 
-        function loadUserStats() {
-            // Load assignment stats
+        async function loadUserStats() {
+            // Load assignment stats from Firebase if authenticated, otherwise localStorage
             try {
-                const assignments = JSON.parse(localStorage.getItem('assignments') || '[]');
-                const grades = JSON.parse(localStorage.getItem('performance_grades') || '[]');
-                const attendance = JSON.parse(localStorage.getItem('performance_attendance') || '[]');
+                let assignments = [];
+                let grades = [];
+                let attendance = [];
+                
+                if (window.utils && window.utils.isAuthenticated() && window.dbFunctions) {
+                    // Load from Firebase
+                    console.log('Loading user stats from Firebase...');
+                    
+                    const assignmentsResult = await window.dbFunctions.getDocuments('assignments');
+                    if (assignmentsResult.success) {
+                        assignments = assignmentsResult.data;
+                    }
+                    
+                    const gradesResult = await window.dbFunctions.getDocuments('grades');
+                    if (gradesResult.success) {
+                        grades = gradesResult.data;
+                    }
+                    
+                    const attendanceResult = await window.dbFunctions.getDocuments('attendance');
+                    if (attendanceResult.success) {
+                        attendance = attendanceResult.data;
+                    }
+                    
+                    console.log('Profile data loaded from Firebase:', {
+                        assignments: assignments.length,
+                        grades: grades.length,
+                        attendance: attendance.length
+                    });
+                } else {
+                    // Load from localStorage
+                    console.log('Loading user stats from localStorage...');
+                    assignments = JSON.parse(localStorage.getItem('assignments') || '[]');
+                    grades = JSON.parse(localStorage.getItem('performance_grades') || '[]');
+                    attendance = JSON.parse(localStorage.getItem('performance_attendance') || '[]');
+                }
                 
                 const totalAssignments = assignments.length;
                 const completedAssignments = assignments.filter(a => a.status === 'Completed' || a.status === 'Graded').length;
@@ -821,6 +907,45 @@
             }
         }
 
+        // Helper function to update stats from real-time data
+        function updateUserStatsFromData(assignments, grades, attendance) {
+            try {
+                // Get current data if not provided
+                if (!assignments) {
+                    assignments = JSON.parse(localStorage.getItem('assignments') || '[]');
+                }
+                if (!grades) {
+                    grades = JSON.parse(localStorage.getItem('performance_grades') || '[]');
+                }
+                if (!attendance) {
+                    attendance = JSON.parse(localStorage.getItem('performance_attendance') || '[]');
+                }
+                
+                const totalAssignments = assignments.length;
+                const completedAssignments = assignments.filter(a => a.status === 'Completed' || a.status === 'Graded').length;
+                
+                let averageGrade = 0;
+                if (grades.length > 0) {
+                    const totalMarks = grades.reduce((sum, grade) => sum + (parseFloat(grade.marks) || 0), 0);
+                    const maxMarks = grades.reduce((sum, grade) => sum + (parseFloat(grade.maxMarks) || 100), 0);
+                    averageGrade = maxMarks > 0 ? (totalMarks / maxMarks * 100).toFixed(1) : 0;
+                }
+                
+                let attendanceRate = 0;
+                if (attendance.length > 0) {
+                    const presentDays = attendance.filter(a => a.status === 'Present').length;
+                    attendanceRate = ((presentDays / attendance.length) * 100).toFixed(1);
+                }
+                
+                document.getElementById('totalAssignments').textContent = totalAssignments;
+                document.getElementById('completedAssignments').textContent = completedAssignments;
+                document.getElementById('averageGrade').textContent = averageGrade;
+                document.getElementById('attendanceRate').textContent = attendanceRate + '%';
+            } catch (error) {
+                console.error('Error updating user stats from data:', error);
+            }
+        }
+
         function loadSettings() {
             // Load user settings
             const settings = JSON.parse(localStorage.getItem('userSettings') || '{}');
@@ -831,7 +956,7 @@
         }
 
         // Form submission
-        document.getElementById('personalInfoForm').addEventListener('submit', function(e) {
+        document.getElementById('personalInfoForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const userData = {
@@ -842,13 +967,30 @@
                 year: document.getElementById('year').value
             };
             
-            localStorage.setItem('userProfile', JSON.stringify(userData));
-            
-            // Update header
-            document.getElementById('profileName').textContent = userData.fullName || 'User Profile';
-            document.getElementById('profileEmail').textContent = userData.email || 'user@example.com';
-            
-            showNotification('Profile updated successfully!', 'success');
+            try {
+                if (window.utils && window.utils.isAuthenticated() && window.dbFunctions) {
+                    // Save to Firebase
+                    console.log('Saving profile data to Firebase...');
+                    const result = await window.dbFunctions.addDocument('userProfiles', userData);
+                    if (result.success) {
+                        console.log('Profile saved to Firebase successfully');
+                    } else {
+                        console.error('Failed to save to Firebase:', result.error);
+                    }
+                }
+                
+                // Always save to localStorage as backup
+                localStorage.setItem('userProfile', JSON.stringify(userData));
+                
+                // Update header
+                document.getElementById('profileName').textContent = userData.fullName || 'User Profile';
+                document.getElementById('profileEmail').textContent = userData.email || 'user@example.com';
+                
+                showNotification('Profile updated successfully!', 'success');
+            } catch (error) {
+                console.error('Error saving profile:', error);
+                showNotification('Error saving profile', 'error');
+            }
         });
 
         // Toggle settings

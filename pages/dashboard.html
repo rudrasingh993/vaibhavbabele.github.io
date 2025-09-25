@@ -805,19 +805,48 @@
     <!-- Dashboard Script -->
     <script>
         // Dashboard functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            loadDashboardData();
-            updateStats();
+        document.addEventListener('DOMContentLoaded', async function() {
+            await loadDashboardData();
+            await updateStats();
             initializeTeamSection();
+            
+            // Set up real-time listener for authenticated users
+            if (window.utils && window.utils.isAuthenticated() && window.dbFunctions) {
+                console.log('Setting up real-time listener for assignments...');
+                window.dbFunctions.listenToCollection('assignments', (assignments) => {
+                    console.log('Real-time update received:', assignments.length, 'assignments');
+                    updateAssignmentStats(assignments);
+                });
+            }
         });
 
-        function loadDashboardData() {
-            // Load assignment data from localStorage or Firebase
+        async function loadDashboardData() {
+            // Load assignment data from Firebase if authenticated, otherwise localStorage
             try {
-                const assignments = JSON.parse(localStorage.getItem('assignments') || '[]');
-                updateAssignmentStats(assignments);
+                if (window.utils && window.utils.isAuthenticated() && window.dbFunctions) {
+                    // Load from Firebase
+                    console.log('Loading dashboard data from Firebase...');
+                    const result = await window.dbFunctions.getDocuments('assignments');
+                    if (result.success) {
+                        updateAssignmentStats(result.data);
+                        console.log('Dashboard data loaded from Firebase:', result.data.length, 'assignments');
+                    } else {
+                        console.error('Failed to load from Firebase:', result.error);
+                        // Fallback to localStorage
+                        const assignments = JSON.parse(localStorage.getItem('assignments') || '[]');
+                        updateAssignmentStats(assignments);
+                    }
+                } else {
+                    // Load from localStorage
+                    console.log('Loading dashboard data from localStorage...');
+                    const assignments = JSON.parse(localStorage.getItem('assignments') || '[]');
+                    updateAssignmentStats(assignments);
+                }
             } catch (error) {
                 console.error('Error loading dashboard data:', error);
+                // Fallback to localStorage
+                const assignments = JSON.parse(localStorage.getItem('assignments') || '[]');
+                updateAssignmentStats(assignments);
             }
         }
 
@@ -842,14 +871,15 @@
             document.getElementById('overdueAssignments').textContent = overdue;
         }
 
-        function updateStats() {
+        async function updateStats() {
             // This will be called when Firebase data is available
             if (window.utils && window.utils.isAuthenticated()) {
                 // Load from Firebase
                 console.log('Loading stats from Firebase...');
+                await loadDashboardData();
             } else {
                 // Load from localStorage
-                loadDashboardData();
+                await loadDashboardData();
             }
         }
 
