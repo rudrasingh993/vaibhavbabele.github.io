@@ -17,12 +17,6 @@ class PerformanceAnalyticsFirebase {
     }
 
     async init() {
-        // Check if user is authenticated
-        if (!window.utils || !window.utils.isAuthenticated()) {
-            this.showLoginRequired();
-            return;
-        }
-
         await this.setupEventListeners();
         await this.loadData();
         this.updateStats();
@@ -84,44 +78,79 @@ class PerformanceAnalyticsFirebase {
         }
     }
 
-    // Load data from Firebase
+    // Load data from Firebase or localStorage
     async loadData() {
         try {
-            if (!window.dbFunctions) {
-                console.error('Firebase not initialized');
-                return;
+            // Check if user is authenticated and Firebase is available
+            if (window.utils && window.utils.isAuthenticated() && window.dbFunctions) {
+                // Load from Firebase
+                this.unsubscribe.grades = window.dbFunctions.listenToCollection('grades', (grades) => {
+                    this.grades = grades;
+                    this.updateStats();
+                    this.renderCharts();
+                    this.renderGrades();
+                    this.generateInsights();
+                }, window.currentUser?.uid);
+
+                this.unsubscribe.attendance = window.dbFunctions.listenToCollection('attendance', (attendance) => {
+                    this.attendance = attendance;
+                    this.updateStats();
+                    this.renderCharts();
+                    this.generateInsights();
+                }, window.currentUser?.uid);
+
+                this.unsubscribe.goals = window.dbFunctions.listenToCollection('goals', (goals) => {
+                    this.goals = goals;
+                    this.renderGoals();
+                    this.generateInsights();
+                }, window.currentUser?.uid);
+
+                this.unsubscribe.studyTime = window.dbFunctions.listenToCollection('studyTime', (studyTime) => {
+                    this.studyTime = studyTime;
+                    this.renderCharts();
+                }, window.currentUser?.uid);
+            } else {
+                // Load from localStorage
+                this.loadFromLocalStorage();
             }
-
-            // Set up real-time listeners for all collections
-            this.unsubscribe.grades = window.dbFunctions.listenToCollection('grades', (grades) => {
-                this.grades = grades;
-                this.updateStats();
-                this.renderCharts();
-                this.renderGrades();
-                this.generateInsights();
-            }, window.currentUser?.uid);
-
-            this.unsubscribe.attendance = window.dbFunctions.listenToCollection('attendance', (attendance) => {
-                this.attendance = attendance;
-                this.updateStats();
-                this.renderCharts();
-                this.generateInsights();
-            }, window.currentUser?.uid);
-
-            this.unsubscribe.goals = window.dbFunctions.listenToCollection('goals', (goals) => {
-                this.goals = goals;
-                this.renderGoals();
-                this.generateInsights();
-            }, window.currentUser?.uid);
-
-            this.unsubscribe.studyTime = window.dbFunctions.listenToCollection('studyTime', (studyTime) => {
-                this.studyTime = studyTime;
-                this.renderCharts();
-            }, window.currentUser?.uid);
-
         } catch (error) {
             console.error('Error loading data:', error);
-            window.utils.showNotification('Error loading data', 'error');
+            // Fallback to localStorage
+            this.loadFromLocalStorage();
+        }
+    }
+
+    // Load data from localStorage
+    loadFromLocalStorage() {
+        try {
+            this.grades = JSON.parse(localStorage.getItem('performance_grades') || '[]');
+            this.attendance = JSON.parse(localStorage.getItem('performance_attendance') || '[]');
+            this.goals = JSON.parse(localStorage.getItem('performance_goals') || '[]');
+            this.studyTime = JSON.parse(localStorage.getItem('performance_studyTime') || '[]');
+            
+            this.updateStats();
+            this.renderCharts();
+            this.renderGoals();
+            this.renderGrades();
+            this.generateInsights();
+        } catch (error) {
+            console.error('Error loading from localStorage:', error);
+            this.grades = [];
+            this.attendance = [];
+            this.goals = [];
+            this.studyTime = [];
+        }
+    }
+
+    // Save data to localStorage
+    saveToLocalStorage() {
+        try {
+            localStorage.setItem('performance_grades', JSON.stringify(this.grades));
+            localStorage.setItem('performance_attendance', JSON.stringify(this.attendance));
+            localStorage.setItem('performance_goals', JSON.stringify(this.goals));
+            localStorage.setItem('performance_studyTime', JSON.stringify(this.studyTime));
+        } catch (error) {
+            console.error('Error saving to localStorage:', error);
         }
     }
 
@@ -133,10 +162,8 @@ class PerformanceAnalyticsFirebase {
             return;
         }
 
-        if (!window.utils.isAuthenticated()) {
-            window.utils.showNotification('Please login to save grades', 'warning');
-            return;
-        }
+        // Check authentication status for appropriate storage method
+        const isAuthenticated = window.utils && window.utils.isAuthenticated();
 
         // Get form elements safely
         const getElementValue = (id) => {
@@ -155,22 +182,44 @@ class PerformanceAnalyticsFirebase {
         };
 
         try {
-            const result = await window.dbFunctions.addDocument('grades', gradeData);
-            
-            if (result.success) {
-                window.utils.showNotification('Grade added successfully!', 'success');
+            if (isAuthenticated && window.dbFunctions) {
+                // Save to Firebase
+                const result = await window.dbFunctions.addDocument('grades', gradeData);
+                
+                if (result.success) {
+                    window.utils.showNotification('Grade added successfully!', 'success');
+                    
+                    // Close modal and reset form
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('addGradeModal'));
+                    if (modal) modal.hide();
+                    form.reset();
+                    this.setCurrentDate();
+                } else {
+                    window.utils.showNotification('Error saving grade: ' + result.error, 'error');
+                }
+            } else {
+                // Save to localStorage
+                gradeData.id = Date.now().toString();
+                this.grades.push(gradeData);
+                this.saveToLocalStorage();
+                this.updateStats();
+                this.renderCharts();
+                this.renderGrades();
+                this.generateInsights();
+                
+                window.utils?.showNotification('Grade saved locally!', 'success') || 
+                alert('Grade saved locally!');
                 
                 // Close modal and reset form
                 const modal = bootstrap.Modal.getInstance(document.getElementById('addGradeModal'));
                 if (modal) modal.hide();
                 form.reset();
                 this.setCurrentDate();
-            } else {
-                window.utils.showNotification('Error saving grade: ' + result.error, 'error');
             }
         } catch (error) {
             console.error('Error saving grade:', error);
-            window.utils.showNotification('Error saving grade', 'error');
+            window.utils?.showNotification('Error saving grade', 'error') || 
+            alert('Error saving grade');
         }
     }
 
@@ -1231,28 +1280,16 @@ function importData() {
 }
 
 function showAddGradeModal() {
-    if (!window.utils.isAuthenticated()) {
-        window.utils.showNotification('Please login to add grades', 'warning');
-        return;
-    }
     const modal = new bootstrap.Modal(document.getElementById('addGradeModal'));
     modal.show();
 }
 
 function showAddAttendanceModal() {
-    if (!window.utils.isAuthenticated()) {
-        window.utils.showNotification('Please login to add attendance', 'warning');
-        return;
-    }
     const modal = new bootstrap.Modal(document.getElementById('addAttendanceModal'));
     modal.show();
 }
 
 function showGoalModal() {
-    if (!window.utils.isAuthenticated()) {
-        window.utils.showNotification('Please login to add goals', 'warning');
-        return;
-    }
     const modal = new bootstrap.Modal(document.getElementById('addGoalModal'));
     modal.show();
 }

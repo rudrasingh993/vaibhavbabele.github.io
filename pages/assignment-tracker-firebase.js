@@ -10,12 +10,6 @@ class AssignmentTrackerFirebase {
     }
 
     async init() {
-        // Check if user is authenticated
-        if (!window.utils || !window.utils.isAuthenticated()) {
-            this.showLoginRequired();
-            return;
-        }
-
         await this.setupEventListeners();
         await this.loadAssignments();
         this.updateStats();
@@ -77,24 +71,49 @@ class AssignmentTrackerFirebase {
         });
     }
 
-    // Load assignments from Firebase
+    // Load assignments from Firebase or localStorage
     async loadAssignments() {
         try {
-            if (!window.dbFunctions) {
-                console.error('Firebase not initialized');
-                return;
+            // Check if user is authenticated and Firebase is available
+            if (window.utils && window.utils.isAuthenticated() && window.dbFunctions) {
+                // Load from Firebase
+                this.unsubscribe = window.dbFunctions.listenToCollection('assignments', (assignments) => {
+                    this.assignments = assignments;
+                    this.updateStats();
+                    this.renderAssignments();
+                }, window.currentUser?.uid);
+            } else {
+                // Load from localStorage
+                this.loadFromLocalStorage();
             }
-
-            // Set up real-time listener
-            this.unsubscribe = window.dbFunctions.listenToCollection('assignments', (assignments) => {
-                this.assignments = assignments;
-                this.updateStats();
-                this.renderAssignments();
-            }, window.currentUser?.uid);
-
         } catch (error) {
             console.error('Error loading assignments:', error);
-            window.utils.showNotification('Error loading assignments', 'error');
+            // Fallback to localStorage
+            this.loadFromLocalStorage();
+        }
+    }
+
+    // Load assignments from localStorage
+    loadFromLocalStorage() {
+        try {
+            const stored = localStorage.getItem('assignments');
+            this.assignments = stored ? JSON.parse(stored) : [];
+            this.updateStats();
+            this.renderAssignments();
+        } catch (error) {
+            console.error('Error loading from localStorage:', error);
+            this.assignments = [];
+            this.updateStats();
+            this.renderAssignments();
+        }
+    }
+
+    // Save assignments to localStorage
+    saveToLocalStorage() {
+        try {
+            localStorage.setItem('assignments', JSON.stringify(this.assignments));
+        } catch (error) {
+            console.error('Error saving to localStorage:', error);
         }
     }
 
@@ -117,10 +136,8 @@ class AssignmentTrackerFirebase {
             return;
         }
 
-        if (!window.utils.isAuthenticated()) {
-            window.utils.showNotification('Please login to save assignments', 'warning');
-            return;
-        }
+        // Check authentication status for appropriate storage method
+        const isAuthenticated = window.utils && window.utils.isAuthenticated();
 
         // Get form elements safely
         const getElementValue = (id) => {
@@ -143,21 +160,40 @@ class AssignmentTrackerFirebase {
         console.log('Assignment data:', assignmentData);
 
         try {
-            const result = await window.dbFunctions.addDocument('assignments', assignmentData);
-            
-            if (result.success) {
-                window.utils.showNotification('Assignment saved successfully!', 'success');
+            if (isAuthenticated && window.dbFunctions) {
+                // Save to Firebase
+                const result = await window.dbFunctions.addDocument('assignments', assignmentData);
+                
+                if (result.success) {
+                    window.utils.showNotification('Assignment saved successfully!', 'success');
+                    
+                    // Close modal and reset form
+                    bootstrap.Modal.getInstance(document.getElementById('addAssignmentModal')).hide();
+                    form.reset();
+                    this.setCurrentDate();
+                } else {
+                    window.utils.showNotification('Error saving assignment: ' + result.error, 'error');
+                }
+            } else {
+                // Save to localStorage
+                assignmentData.id = Date.now().toString(); // Generate simple ID
+                this.assignments.push(assignmentData);
+                this.saveToLocalStorage();
+                this.updateStats();
+                this.renderAssignments();
+                
+                window.utils?.showNotification('Assignment saved locally!', 'success') || 
+                alert('Assignment saved locally!');
                 
                 // Close modal and reset form
                 bootstrap.Modal.getInstance(document.getElementById('addAssignmentModal')).hide();
                 form.reset();
                 this.setCurrentDate();
-            } else {
-                window.utils.showNotification('Error saving assignment: ' + result.error, 'error');
             }
         } catch (error) {
             console.error('Error saving assignment:', error);
-            window.utils.showNotification('Error saving assignment', 'error');
+            window.utils?.showNotification('Error saving assignment', 'error') || 
+            alert('Error saving assignment');
         }
     }
 
@@ -397,12 +433,8 @@ class AssignmentTrackerFirebase {
 
     // Show add assignment modal
     showAddAssignmentModal() {
-        if (!window.utils.isAuthenticated()) {
-            window.utils.showNotification('Please login to add assignments', 'warning');
-            return;
-        }
-        
         const modal = new bootstrap.Modal(document.getElementById('addAssignmentModal'));
+        this.setCurrentDate();
         modal.show();
     }
 
