@@ -810,8 +810,20 @@
                         userData = result.data[0]; // Get the first (and should be only) profile
                         console.log('Profile data loaded from Firebase:', userData);
                     } else {
-                        // Fallback to localStorage
-                        userData = JSON.parse(localStorage.getItem('userProfile') || '{}');
+                        // No profile data in Firebase, try to get from current user
+                        console.log('No profile data in Firebase, using current user data...');
+                        if (window.currentUser) {
+                            userData = {
+                                fullName: window.currentUser.displayName || '',
+                                email: window.currentUser.email || '',
+                                phone: '',
+                                department: '',
+                                year: ''
+                            };
+                        } else {
+                            // Fallback to localStorage
+                            userData = JSON.parse(localStorage.getItem('userProfile') || '{}');
+                        }
                     }
                 } else {
                     // Load from localStorage
@@ -819,27 +831,59 @@
                     userData = JSON.parse(localStorage.getItem('userProfile') || '{}');
                 }
                 
-                document.getElementById('fullName').value = userData.fullName || '';
-                document.getElementById('email').value = userData.email || 'user@example.com';
-                document.getElementById('phone').value = userData.phone || '';
-                document.getElementById('department').value = userData.department || '';
-                document.getElementById('year').value = userData.year || '';
+                // Safely set form values
+                const setElementValue = (id, value) => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        element.value = value || '';
+                    } else {
+                        console.warn(`Element with id '${id}' not found`);
+                    }
+                };
                 
-                // Update header
-                document.getElementById('profileName').textContent = userData.fullName || 'User Profile';
-                document.getElementById('profileEmail').textContent = userData.email || 'user@example.com';
+                setElementValue('fullName', userData.fullName);
+                setElementValue('email', userData.email || 'user@example.com');
+                setElementValue('phone', userData.phone);
+                setElementValue('department', userData.department);
+                setElementValue('year', userData.year);
+                
+                // Update header safely
+                const profileNameEl = document.getElementById('profileName');
+                const profileEmailEl = document.getElementById('profileEmail');
+                
+                if (profileNameEl) {
+                    profileNameEl.textContent = userData.fullName || 'User Profile';
+                }
+                if (profileEmailEl) {
+                    profileEmailEl.textContent = userData.email || 'user@example.com';
+                }
+                
+                console.log('Profile data loaded successfully:', userData);
             } catch (error) {
                 console.error('Error loading profile data:', error);
                 // Fallback to localStorage
-                const userData = JSON.parse(localStorage.getItem('userProfile') || '{}');
-                document.getElementById('fullName').value = userData.fullName || '';
-                document.getElementById('email').value = userData.email || 'user@example.com';
-                document.getElementById('phone').value = userData.phone || '';
-                document.getElementById('department').value = userData.department || '';
-                document.getElementById('year').value = userData.year || '';
-                
-                document.getElementById('profileName').textContent = userData.fullName || 'User Profile';
-                document.getElementById('profileEmail').textContent = userData.email || 'user@example.com';
+                try {
+                    const userData = JSON.parse(localStorage.getItem('userProfile') || '{}');
+                    
+                    const setElementValue = (id, value) => {
+                        const element = document.getElementById(id);
+                        if (element) element.value = value || '';
+                    };
+                    
+                    setElementValue('fullName', userData.fullName);
+                    setElementValue('email', userData.email || 'user@example.com');
+                    setElementValue('phone', userData.phone);
+                    setElementValue('department', userData.department);
+                    setElementValue('year', userData.year);
+                    
+                    const profileNameEl = document.getElementById('profileName');
+                    const profileEmailEl = document.getElementById('profileEmail');
+                    
+                    if (profileNameEl) profileNameEl.textContent = userData.fullName || 'User Profile';
+                    if (profileEmailEl) profileEmailEl.textContent = userData.email || 'user@example.com';
+                } catch (fallbackError) {
+                    console.error('Error in fallback profile loading:', fallbackError);
+                }
             }
         }
 
@@ -898,10 +942,20 @@
                     attendanceRate = ((presentDays / attendance.length) * 100).toFixed(1);
                 }
                 
-                document.getElementById('totalAssignments').textContent = totalAssignments;
-                document.getElementById('completedAssignments').textContent = completedAssignments;
-                document.getElementById('averageGrade').textContent = averageGrade;
-                document.getElementById('attendanceRate').textContent = attendanceRate + '%';
+                // Safely update stats elements
+                const setElementText = (id, value) => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        element.textContent = value;
+                    } else {
+                        console.warn(`Element with id '${id}' not found`);
+                    }
+                };
+                
+                setElementText('totalAssignments', totalAssignments);
+                setElementText('completedAssignments', completedAssignments);
+                setElementText('averageGrade', averageGrade);
+                setElementText('attendanceRate', attendanceRate + '%');
             } catch (error) {
                 console.error('Error loading user stats:', error);
             }
@@ -937,10 +991,20 @@
                     attendanceRate = ((presentDays / attendance.length) * 100).toFixed(1);
                 }
                 
-                document.getElementById('totalAssignments').textContent = totalAssignments;
-                document.getElementById('completedAssignments').textContent = completedAssignments;
-                document.getElementById('averageGrade').textContent = averageGrade;
-                document.getElementById('attendanceRate').textContent = attendanceRate + '%';
+                // Safely update stats elements
+                const setElementText = (id, value) => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        element.textContent = value;
+                    } else {
+                        console.warn(`Element with id '${id}' not found`);
+                    }
+                };
+                
+                setElementText('totalAssignments', totalAssignments);
+                setElementText('completedAssignments', completedAssignments);
+                setElementText('averageGrade', averageGrade);
+                setElementText('attendanceRate', attendanceRate + '%');
             } catch (error) {
                 console.error('Error updating user stats from data:', error);
             }

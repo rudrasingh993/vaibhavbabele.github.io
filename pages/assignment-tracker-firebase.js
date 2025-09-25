@@ -395,6 +395,166 @@ class AssignmentTrackerFirebase {
         return filtered;
     }
 
+    // View Toggle
+    toggleView(view) {
+        this.currentView = view;
+        
+        if (view === 'list') {
+            document.getElementById('assignmentsList').style.display = 'block';
+            document.getElementById('calendarView').style.display = 'none';
+        } else if (view === 'calendar') {
+            document.getElementById('assignmentsList').style.display = 'none';
+            document.getElementById('calendarView').style.display = 'block';
+            this.renderCalendar();
+        }
+    }
+
+    // Render calendar view
+    renderCalendar() {
+        const calendarContainer = document.getElementById('calendar');
+        if (!calendarContainer) return;
+
+        const year = this.currentDate.getFullYear();
+        const month = this.currentDate.getMonth();
+        
+        // Update month header
+        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'];
+        const monthHeader = document.getElementById('currentMonth');
+        if (monthHeader) {
+            monthHeader.textContent = `${monthNames[month]} ${year}`;
+        }
+
+        // Get first day of month and number of days
+        const firstDay = new Date(year, month, 1);
+        const lastDay = new Date(year, month + 1, 0);
+        const daysInMonth = lastDay.getDate();
+        const startingDayOfWeek = firstDay.getDay();
+
+        // Create calendar grid
+        let calendarHTML = '';
+        
+        // Add day headers
+        const dayHeaders = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        calendarHTML += '<div class="calendar-week calendar-header-week">';
+        dayHeaders.forEach(day => {
+            calendarHTML += `<div class="calendar-day-header">${day}</div>`;
+        });
+        calendarHTML += '</div>';
+
+        // Add empty cells for days before the first day of the month
+        calendarHTML += '<div class="calendar-week">';
+        for (let i = 0; i < startingDayOfWeek; i++) {
+            calendarHTML += '<div class="calendar-day empty"></div>';
+        }
+
+        // Add days of the month
+        for (let day = 1; day <= daysInMonth; day++) {
+            const currentDate = new Date(year, month, day);
+            const dayAssignments = this.getAssignmentsForDate(currentDate);
+            const hasAssignments = dayAssignments.length > 0;
+            const isToday = this.isToday(currentDate);
+            
+            calendarHTML += `
+                <div class="calendar-day ${isToday ? 'today' : ''} ${hasAssignments ? 'has-assignments' : ''}" 
+                     onclick="assignmentTracker.showDayAssignments('${currentDate.toISOString()}')">
+                    <div class="day-number">${day}</div>
+                    ${hasAssignments ? `<div class="assignment-indicator">${dayAssignments.length}</div>` : ''}
+                </div>
+            `;
+
+            // Start new week if it's Saturday
+            if ((day + startingDayOfWeek) % 7 === 0) {
+                calendarHTML += '</div><div class="calendar-week">';
+            }
+        }
+
+        // Add empty cells for remaining days in the last week
+        const remainingDays = 7 - ((daysInMonth + startingDayOfWeek) % 7);
+        if (remainingDays < 7) {
+            for (let i = 0; i < remainingDays; i++) {
+                calendarHTML += '<div class="calendar-day empty"></div>';
+            }
+        }
+        calendarHTML += '</div>';
+
+        calendarContainer.innerHTML = calendarHTML;
+    }
+
+    // Get assignments for a specific date
+    getAssignmentsForDate(date) {
+        const dateStr = date.toISOString().split('T')[0];
+        return this.assignments.filter(assignment => {
+            const assignmentDate = new Date(assignment.deadline).toISOString().split('T')[0];
+            return assignmentDate === dateStr;
+        });
+    }
+
+    // Check if date is today
+    isToday(date) {
+        const today = new Date();
+        return date.toDateString() === today.toDateString();
+    }
+
+    // Show assignments for a specific day
+    showDayAssignments(dateString) {
+        const date = new Date(dateString);
+        const dayAssignments = this.getAssignmentsForDate(date);
+        
+        if (dayAssignments.length === 0) {
+            window.utils.showNotification('No assignments for this day', 'info');
+            return;
+        }
+
+        // Create modal content
+        const modalContent = `
+            <div class="modal fade" id="dayAssignmentsModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Assignments for ${date.toLocaleDateString()}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            ${dayAssignments.map(assignment => `
+                                <div class="assignment-item">
+                                    <h6>${assignment.title}</h6>
+                                    <p class="text-muted">${assignment.subject} - ${assignment.priority} Priority</p>
+                                    <span class="badge bg-${assignment.status === 'Completed' ? 'success' : 'warning'}">${assignment.status}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Remove existing modal if any
+        const existingModal = document.getElementById('dayAssignmentsModal');
+        if (existingModal) {
+            existingModal.remove();
+        }
+
+        // Add modal to page
+        document.body.insertAdjacentHTML('beforeend', modalContent);
+        
+        // Show modal
+        const modal = new bootstrap.Modal(document.getElementById('dayAssignmentsModal'));
+        modal.show();
+    }
+
+    // Navigate to previous month
+    previousMonth() {
+        this.currentDate.setMonth(this.currentDate.getMonth() - 1);
+        this.renderCalendar();
+    }
+
+    // Navigate to next month
+    nextMonth() {
+        this.currentDate.setMonth(this.currentDate.getMonth() + 1);
+        this.renderCalendar();
+    }
+
     // Show add assignment modal
     showAddAssignmentModal() {
         if (!window.utils.isAuthenticated()) {
@@ -628,6 +788,19 @@ function importAssignments() {
         }
     };
     input.click();
+}
+
+// Calendar navigation functions
+function toggleView(view) {
+    assignmentTracker.toggleView(view);
+}
+
+function previousMonth() {
+    assignmentTracker.previousMonth();
+}
+
+function nextMonth() {
+    assignmentTracker.nextMonth();
 }
 
 console.log('Assignment Tracker with Firebase loaded successfully!');
