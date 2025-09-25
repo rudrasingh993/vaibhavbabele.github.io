@@ -55,7 +55,41 @@
             <div class="logo"><a href="https://www.nitra.ac.in/">NITra <span id="mitra">MITra</span></a></div>
         </div>
         <div class="nav-end">
-            <button id="lang-toggle">
+            <!-- Authentication Buttons -->
+            <div class="auth-buttons">
+                <button id="loginBtn" class="auth-btn login-btn" onclick="showLoginModal()">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </button>
+                <button id="signupBtn" class="auth-btn signup-btn" onclick="showSignupModal()">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up
+                </button>
+                
+                <!-- User Menu (hidden by default) -->
+                <div id="userMenu" class="user-menu" style="display: none;">
+                    <div class="user-info">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userEmail">user@example.com</span>
+                    </div>
+                    <div class="user-dropdown">
+                        <button class="dropdown-item" onclick="goToDashboard()">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </button>
+                        <button class="dropdown-item" onclick="goToProfile()">
+                            <i class="fas fa-user"></i>
+                            Profile
+                        </button>
+                        <button class="dropdown-item" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+<button id="lang-toggle">
                 à¤¹à¤¿à¤‚à¤¦à¥€
             </button>
             <img src="../images/moon.png" id="mode" alt="Change mode" title="change mode">
@@ -94,6 +128,45 @@
   <script src="../js/scroll-indicator.js"></script>
     <!-- Floating Sidebar JavaScript -->
     <script src="../js/sidebar.js"></script>
+
+    <!-- Firebase Configuration -->
+    <script type="module" src="../js/firebase-config.js"></script>
+    
+    <!-- Authentication Functions -->
+    <script>
+        // Authentication modal functions
+        function showLoginModal() {
+            window.location.href = './auth.html?tab=login';
+        }
+        
+        function showSignupModal() {
+            window.location.href = './auth.html?tab=signup';
+        }
+        
+        // User menu functions
+        function goToDashboard() {
+            if (window.utils && window.utils.requireAuth()) {
+                window.location.href = './assignment-tracker.html';
+            }
+        }
+        
+        function goToProfile() {
+            if (window.utils && window.utils.requireAuth()) {
+                window.location.href = './profile.html';
+            }
+        }
+        
+        async function logout() {
+            if (window.firebase && window.firebase.authFunctions) {
+                try {
+                    await window.firebase.authFunctions.signOut();
+                    window.location.reload();
+                } catch (error) {
+                    console.error('Logout error:', error);
+                }
+            }
+        }
+    </script>
 </body>
 </html>
 
