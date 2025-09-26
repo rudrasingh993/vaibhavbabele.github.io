@@ -192,24 +192,285 @@ Let’s build, learn, and grow together — one commit at a time. 🔥👨‍�
 
 ## 🛠 Getting Started
 
-1. Fork the repository
-2. Clone your fork
-``` git clone https://github.com/<your-username>/nitra-mitra.git ```
+### 📋 Prerequisites
+- **Node.js** (v16 or higher)
+- **Git** for version control
+- **XAMPP/WAMP** for PHP backend (optional)
+- **Firebase Account** for authentication
+- **Google AI Studio API Key** for AI features
 
-3. Enter project folder
-``` cd nitra-mitra ```
+### 🚀 Quick Setup
 
-4. For PHP local setup (XAMPP/WAMP)
-Move project to htdocs or www and visit:
-http://localhost/nitra-mitra/
-
-5. Add upstream for updates
-
-```bash 
-git remote add upstream https://github.com/<original-owner>/nitra-mitra.git
-git fetch upstream
-git rebase upstream/main
+1. **Fork and Clone the Repository**
+```bash
+# Fork the repository on GitHub, then clone your fork
+git clone https://github.com/<your-username>/vaibhavbabele.github.io.git
+cd vaibhavbabele.github.io
 ```
+
+2. **Install Dependencies**
+```bash
+npm install
+```
+
+3. **Configure API Keys and Services**
+
+#### 🔥 Firebase Setup (Authentication)
+1. Go to [Firebase Console](https://console.firebase.google.com/)
+2. Create a new project or use existing
+3. Enable **Authentication** → **Sign-in method** → **Email/Password**
+4. Get your Firebase config:
+   - Project Settings → General → Your apps → Web app
+   - Copy the `firebaseConfig` object
+
+5. **Update Firebase Configuration:**
+   - Open `js/firebase-config.js`
+   - Replace the placeholder config with your actual Firebase config:
+   ```javascript
+   const firebaseConfig = {
+     apiKey: "your-api-key",
+     authDomain: "your-project.firebaseapp.com",
+     projectId: "your-project-id",
+     storageBucket: "your-project.appspot.com",
+     messagingSenderId: "123456789",
+     appId: "your-app-id"
+   };
+   ```
+
+#### 🔐 Domain Restrictions Setup
+**For Firebase Authentication:**
+1. In Firebase Console → Authentication → Settings → Authorized domains
+2. Add your domains:
+   - `localhost` (for development)
+   - `your-domain.com` (for production)
+   - `your-github-username.github.io` (for GitHub Pages)
+
+**For Google AI Studio API:**
+1. Go to [Google AI Studio](https://aistudio.google.com/)
+2. Create API key
+3. Set domain restrictions:
+   - Go to API key settings
+   - Add your domains to "Application restrictions"
+   - Set "Website restrictions" to your domain
+
+#### 🤖 AI Features Setup
+1. **Google AI Studio API:**
+   - Get API key from [Google AI Studio](https://aistudio.google.com/)
+   - Add to environment variables or config file
+   - Set domain restrictions as mentioned above
+
+2. **Backend AI Service (Optional):**
+   - Deploy to Vercel for server-side AI processing
+   - See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions
+
+### 🏠 Local Development
+
+#### Option 1: GitHub Pages (Recommended)
+```bash
+# Serve locally with GitHub Pages structure
+npx serve .
+# Visit: http://localhost:3000
+```
+
+#### Option 2: XAMPP/WAMP (For PHP features)
+```bash
+# Copy project to htdocs/www folder
+# Visit: http://localhost/vaibhavbabele.github.io/
+```
+
+#### Option 3: Simple HTTP Server
+```bash
+# Python 3
+python -m http.server 8000
+# Visit: http://localhost:8000
+```
+
+### 🔧 Configuration Files
+
+#### Environment Variables
+Create `.env` file in root directory:
+```env
+# Firebase Configuration
+FIREBASE_API_KEY=your_firebase_api_key
+FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+FIREBASE_PROJECT_ID=your_project_id
+FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+FIREBASE_MESSAGING_SENDER_ID=123456789
+FIREBASE_APP_ID=your_app_id
+
+# AI Services
+GEMINI_API_KEY=your_gemini_api_key
+OPENAI_API_KEY=your_openai_api_key
+
+# Other Services
+ONEsIGNAL_APP_ID=your_onesignal_app_id
+ONEsIGNAL_REST_API_KEY=your_onesignal_rest_api_key
+```
+
+#### Firebase Security Rules
+Update your Firebase Security Rules:
+```javascript
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow authenticated users to read/write their own data
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Public read access for some collections
+    match /public/{document=**} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+  }
+}
+```
+
+### 🚀 Deployment
+
+#### GitHub Pages Deployment
+1. Push your changes to the `main` branch
+2. Go to repository Settings → Pages
+3. Select source: "Deploy from a branch"
+4. Choose branch: `main` and folder: `/ (root)`
+5. Your site will be available at: `https://your-username.github.io/vaibhavbabele.github.io`
+
+#### Custom Domain Setup
+1. Add your domain to `CNAME` file
+2. Configure DNS settings with your domain provider
+3. Update Firebase authorized domains
+4. Update API key domain restrictions
+
+### 🔄 Updating from Upstream
+```bash
+# Add upstream remote
+git remote add upstream https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io.git
+
+# Fetch latest changes
+git fetch upstream
+
+# Merge changes
+git checkout main
+git merge upstream/main
+
+# Push to your fork
+git push origin main
+```
+
+## 🚨 Troubleshooting
+
+### Common Issues and Solutions
+
+#### 🔥 Firebase Authentication Issues
+**Problem:** "Firebase: Error (auth/unauthorized-domain)"
+**Solution:**
+1. Go to Firebase Console → Authentication → Settings
+2. Add your domain to "Authorized domains"
+3. For localhost: Add `localhost` and `127.0.0.1`
+4. For GitHub Pages: Add `your-username.github.io`
+
+**Problem:** "Firebase: Error (auth/api-key-not-valid)"
+**Solution:**
+1. Check your Firebase config in `js/firebase-config.js`
+2. Verify API key is correct
+3. Ensure domain restrictions are properly set
+
+#### 🤖 AI Features Not Working
+**Problem:** AI assistant not responding
+**Solution:**
+1. Check browser console for API key errors
+2. Verify Google AI Studio API key is valid
+3. Check domain restrictions in Google AI Studio
+4. Ensure API quota hasn't been exceeded
+
+**Problem:** "CORS error" or "Network error"
+**Solution:**
+1. Check if backend is running (if using server mode)
+2. Verify CORS settings in backend
+3. Try switching to client mode in settings
+
+#### 🌐 Domain and Deployment Issues
+**Problem:** Site not loading on GitHub Pages
+**Solution:**
+1. Check repository Settings → Pages
+2. Ensure source is set to "Deploy from a branch"
+3. Verify `index.html` is in root directory
+4. Check for any build errors in Actions tab
+
+**Problem:** Custom domain not working
+**Solution:**
+1. Verify `CNAME` file contains your domain
+2. Check DNS settings with domain provider
+3. Update Firebase authorized domains
+4. Update API key domain restrictions
+
+#### 🔧 Development Issues
+**Problem:** Local server not working
+**Solution:**
+```bash
+# Try different port
+python -m http.server 8001
+
+# Or use Node.js serve
+npx serve . -p 3000
+
+# Or use PHP built-in server
+php -S localhost:8000
+```
+
+**Problem:** PHP features not working locally
+**Solution:**
+1. Use XAMPP/WAMP for PHP support
+2. Copy project to `htdocs` or `www` folder
+3. Access via `http://localhost/your-project/`
+4. Check PHP error logs
+
+#### 📱 Mobile/Responsive Issues
+**Problem:** Site not responsive on mobile
+**Solution:**
+1. Check viewport meta tag in HTML
+2. Verify CSS media queries are working
+3. Test on different devices/browsers
+4. Use browser dev tools mobile view
+
+### 🆘 Getting Help
+
+1. **Check Issues:** Search existing [GitHub Issues](https://github.com/VAIBHAVBABELE/vaibhavbabele.github.io/issues)
+2. **Create Issue:** If problem persists, create new issue with:
+   - Error messages
+   - Steps to reproduce
+   - Browser/device information
+   - Screenshots if applicable
+3. **Community:** Join our discussions for help
+4. **Documentation:** Check [CONTRIBUTION.md](CONTRIBUTION.md) for contribution guidelines
+
+## ✅ Quick Setup Checklist
+
+### For New Contributors:
+- [ ] Fork the repository
+- [ ] Clone your fork locally
+- [ ] Install dependencies (`npm install`)
+- [ ] Set up Firebase project and get API keys
+- [ ] Update `js/firebase-config.js` with your Firebase config
+- [ ] Add your domain to Firebase authorized domains
+- [ ] Test locally with `npx serve .`
+- [ ] Push changes and create a Pull Request
+
+### For Project Maintainers:
+- [ ] Set up Firebase project with proper security rules
+- [ ] Configure domain restrictions for all APIs
+- [ ] Set up GitHub Pages deployment
+- [ ] Configure custom domain (if applicable)
+- [ ] Set up monitoring and analytics
+- [ ] Review and merge contributor PRs
+
+### 🔐 Security Checklist:
+- [ ] Firebase security rules configured
+- [ ] API keys have domain restrictions
+- [ ] No sensitive data in public repository
+- [ ] HTTPS enforced for all services
+- [ ] Regular security updates applied
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000">
