@@ -137,7 +137,8 @@ class AssignmentTrackerFirebase {
             priority: getElementValue('assignmentPriority'),
             status: getElementValue('assignmentStatus'),
             grade: getElementValue('assignmentGrade') || null,
-            notes: getElementValue('assignmentNotes').trim()
+            notes: getElementValue('assignmentNotes').trim(),
+            userId: window.currentUser?.uid // Ensure user ID is included
         };
         
         console.log('Assignment data:', assignmentData);

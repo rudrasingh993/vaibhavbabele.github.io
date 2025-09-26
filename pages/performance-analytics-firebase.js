@@ -92,8 +92,11 @@ class PerformanceAnalyticsFirebase {
                 return;
             }
 
-            // Set up real-time listeners for all collections
+            // Set up real-time listeners for all collections with user-specific data
+            console.log('Setting up real-time listeners for user:', window.currentUser?.uid);
+            
             this.unsubscribe.grades = window.dbFunctions.listenToCollection('grades', (grades) => {
+                console.log('Real-time grades update received:', grades.length, 'grades for user');
                 this.grades = grades;
                 this.updateStats();
                 this.renderCharts();
@@ -102,6 +105,7 @@ class PerformanceAnalyticsFirebase {
             }, window.currentUser?.uid);
 
             this.unsubscribe.attendance = window.dbFunctions.listenToCollection('attendance', (attendance) => {
+                console.log('Real-time attendance update received:', attendance.length, 'attendance records for user');
                 this.attendance = attendance;
                 this.updateStats();
                 this.renderCharts();
@@ -109,12 +113,14 @@ class PerformanceAnalyticsFirebase {
             }, window.currentUser?.uid);
 
             this.unsubscribe.goals = window.dbFunctions.listenToCollection('goals', (goals) => {
+                console.log('Real-time goals update received:', goals.length, 'goals for user');
                 this.goals = goals;
                 this.renderGoals();
                 this.generateInsights();
             }, window.currentUser?.uid);
 
             this.unsubscribe.studyTime = window.dbFunctions.listenToCollection('studyTime', (studyTime) => {
+                console.log('Real-time study time update received:', studyTime.length, 'study time records for user');
                 this.studyTime = studyTime;
                 this.renderCharts();
             }, window.currentUser?.uid);
