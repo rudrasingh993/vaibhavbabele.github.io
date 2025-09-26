@@ -116,7 +116,7 @@ window.authFunctions = {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
             
-            // Create user profile in Firestore
+            // Create user profile in Firestore using the user's UID as document ID
             await addDoc(collection(db, 'users'), {
                 uid: user.uid,
                 email: user.email,

@@ -17,6 +17,9 @@ class PerformanceAnalyticsFirebase {
     }
 
     async init() {
+        // Wait for authentication to be ready
+        await this.waitForAuthentication();
+        
         // Check if user is authenticated
         if (!window.utils || !window.utils.isAuthenticated()) {
             this.showLoginRequired();
@@ -30,6 +33,25 @@ class PerformanceAnalyticsFirebase {
         this.renderGoals();
         this.renderGrades();
         this.generateInsights();
+    }
+
+    async waitForAuthentication() {
+        return new Promise((resolve) => {
+            if (window.currentUser) {
+                resolve();
+                return;
+            }
+            
+            // Wait for auth state change
+            const checkAuth = () => {
+                if (window.currentUser) {
+                    resolve();
+                } else {
+                    setTimeout(checkAuth, 100);
+                }
+            };
+            checkAuth();
+        });
     }
 
     showLoginRequired() {
@@ -67,19 +89,22 @@ class PerformanceAnalyticsFirebase {
 
         if (gradeForm) {
             gradeForm.addEventListener('input', this.debounce(() => {
-                this.saveData();
+                // Auto-save functionality can be added here if needed
+                console.log('Form input changed');
             }, 1000));
         }
 
         if (attendanceForm) {
             attendanceForm.addEventListener('input', this.debounce(() => {
-                this.saveData();
+                // Auto-save functionality can be added here if needed
+                console.log('Form input changed');
             }, 1000));
         }
 
         if (goalForm) {
             goalForm.addEventListener('input', this.debounce(() => {
-                this.saveData();
+                // Auto-save functionality can be added here if needed
+                console.log('Form input changed');
             }, 1000));
         }
     }
@@ -104,6 +129,13 @@ class PerformanceAnalyticsFirebase {
                 this.generateInsights();
             }, window.currentUser?.uid);
 
+            // Also manually load grades once
+            const gradesResult = await window.dbFunctions.getDocuments('grades');
+            if (gradesResult.success) {
+                console.log('Manually loaded grades:', gradesResult.data.length);
+                this.grades = gradesResult.data;
+            }
+
             this.unsubscribe.attendance = window.dbFunctions.listenToCollection('attendance', (attendance) => {
                 console.log('Real-time attendance update received:', attendance.length, 'attendance records for user');
                 this.attendance = attendance;
@@ -112,12 +144,26 @@ class PerformanceAnalyticsFirebase {
                 this.generateInsights();
             }, window.currentUser?.uid);
 
+            // Also manually load attendance once
+            const attendanceResult = await window.dbFunctions.getDocuments('attendance');
+            if (attendanceResult.success) {
+                console.log('Manually loaded attendance:', attendanceResult.data.length);
+                this.attendance = attendanceResult.data;
+            }
+
             this.unsubscribe.goals = window.dbFunctions.listenToCollection('goals', (goals) => {
                 console.log('Real-time goals update received:', goals.length, 'goals for user');
                 this.goals = goals;
                 this.renderGoals();
                 this.generateInsights();
             }, window.currentUser?.uid);
+
+            // Also manually load goals once
+            const goalsResult = await window.dbFunctions.getDocuments('goals');
+            if (goalsResult.success) {
+                console.log('Manually loaded goals:', goalsResult.data.length);
+                this.goals = goalsResult.data;
+            }
 
             this.unsubscribe.studyTime = window.dbFunctions.listenToCollection('studyTime', (studyTime) => {
                 console.log('Real-time study time update received:', studyTime.length, 'study time records for user');
@@ -769,6 +815,11 @@ class PerformanceAnalyticsFirebase {
     }
 
     showEmptyChart(ctx, message) {
+        if (!ctx || !ctx.canvas) {
+            console.warn('Canvas context not available for empty chart');
+            return;
+        }
+        
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
         ctx.fillStyle = '#6c757d';
         ctx.font = '16px Arial';
