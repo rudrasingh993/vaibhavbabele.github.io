@@ -83,6 +83,45 @@
     <button onclick="window.location.href='product-list.html'">Go to Marketplace</button>
 
 
+
+    <!-- Firebase Configuration -->
+    <script type="module" src="../js/firebase-config.js"></script>
+    
+    <!-- Authentication Functions -->
+    <script>
+        // Authentication modal functions
+        function showLoginModal() {
+            window.location.href = './auth.html?tab=login';
+        }
+        
+        function showSignupModal() {
+            window.location.href = './auth.html?tab=signup';
+        }
+        
+        // User menu functions
+        function goToDashboard() {
+            if (window.utils && window.utils.requireAuth()) {
+                window.location.href = './assignment-tracker.html';
+            }
+        }
+        
+        function goToProfile() {
+            if (window.utils && window.utils.requireAuth()) {
+                window.location.href = './profile.html';
+            }
+        }
+        
+        async function logout() {
+            if (window.firebase && window.firebase.authFunctions) {
+                try {
+                    await window.firebase.authFunctions.signOut();
+                    window.location.reload();
+                } catch (error) {
+                    console.error('Logout error:', error);
+                }
+            }
+        }
+    </script>
 </body>
 
 </html>

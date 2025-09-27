@@ -8,8 +8,20 @@ h1 {
   text-align: center;
   margin-bottom: 50px;
   font-family: 'Comic Neue', cursive;
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
   color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    padding: 20px 10px;
+  }
+  
+  h1 {
+    margin-bottom: 30px;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
 }
 
 body.dark-mode .service-heading {
@@ -25,6 +37,162 @@ body.dark-mode .service-heading {
   justify-content: center;
   gap: 30px;
   margin-top: 50px;
+}
+
+/* Games Section Responsive */
+.games-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.outer-games {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.inner-games {
+  padding: 2rem;
+}
+
+.tabs-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  background: #f8f9fa;
+  color: #6c757d;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.tab-button.active {
+  background: #4f46e5;
+  color: white;
+}
+
+.tab-button:hover {
+  background: #e9ecef;
+  transform: translateY(-2px);
+}
+
+.tab-button.active:hover {
+  background: #7c3aed;
+}
+
+.arrow {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.arrow:hover {
+  background: #7c3aed;
+  transform: scale(1.1);
+}
+
+.play-games {
+  min-height: 500px;
+}
+
+.tab-content {
+  width: 100%;
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+/* Responsive Design for Games */
+@media (max-width: 768px) {
+  .games-section {
+    padding: 0 10px;
+  }
+  
+  .inner-games {
+    padding: 1rem;
+  }
+  
+  .tabs-wrapper {
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .tab-button {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 0.8rem;
+  }
+  
+  .play-games {
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .inner-games {
+    padding: 0.5rem;
+  }
+  
+  .tabs-wrapper {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .tabs {
+    order: 2;
+    justify-content: center;
+  }
+  
+  .arrow {
+    order: 1;
+    align-self: center;
+  }
+  
+  .tab-button {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+  }
 }
 
 
@@ -316,6 +484,92 @@ section{
       width: 100%;
       margin: 20px auto;
       text-align: center;
+    }
+
+    /* Game-specific responsive styles */
+    .hangman-container {
+      padding: 20px 15px;
+      margin: 15px auto;
+    }
+
+    .hangman-container #word {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      margin: 15px 0;
+    }
+
+    .hangman-container .input-group {
+      flex-direction: column;
+      gap: 10px;
+      margin: 15px 0;
+    }
+
+    .hangman-container input {
+      width: 100%;
+      max-width: 200px;
+      margin: 0 auto;
+    }
+
+    .hangman-container button {
+      width: 100%;
+      max-width: 200px;
+      margin: 0 auto;
+    }
+
+    /* Sudoku responsive */
+    .sudoku-board {
+      max-width: 100%;
+      overflow-x: auto;
+    }
+
+    .sudoku-board .cell {
+      min-width: 30px;
+      min-height: 30px;
+      font-size: 0.9rem;
+    }
+
+    /* Memory game responsive */
+    .grid-container {
+      max-width: 100%;
+      overflow-x: auto;
+    }
+
+    .memory-card {
+      min-width: 60px;
+      min-height: 60px;
+    }
+
+    /* Quiz responsive */
+    .quiz-container {
+      padding: 15px;
+    }
+
+    .quiz-question {
+      font-size: clamp(1rem, 3vw, 1.2rem);
+    }
+
+    .quiz-options {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .quiz-option {
+      width: 100%;
+      padding: 12px;
+    }
+
+    /* Typing game responsive */
+    .typing-container {
+      padding: 15px;
+    }
+
+    .typing-text {
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      line-height: 1.6;
+    }
+
+    .typing-input {
+      width: 100%;
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
     }
 
     #hint {

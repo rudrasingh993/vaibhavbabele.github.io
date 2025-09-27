@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Analytics - Nitra Mitra</title>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../index.css">
+    <link rel="stylesheet" href="../../css/team-styles.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="stylesheet" href="../../css/floating-sidebar.css">
+    <link rel="stylesheet" href="../../css/scroll-indicator.css">
+    <link rel="stylesheet" href="performance-analytics.css">
+    
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon/favicon-16x16.png">
+    <link rel="manifest" href="../../favicon/site.webmanifest">
+    <link rel="mask-icon" href="../../favicon/safari-pinned-tab.svg" color="#5bbad5">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+
+<body id="onload">
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="nav-first">
+            <button onclick="goBack()" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <div class="logo"><a href="https://www.nitra.ac.in/">NITra <span id="mitra">MITra</span></a></div>
+        </div>
+        <div class="nav-end">
+            <button id="lang-toggle">
+                हिंदी
+            </button>
+            <img src="../../images/moon.png" id="mode" alt="Change mode" title="change mode">
+        </div>
+    </nav>
+
+    <div class="main">
+        <!-- HEADER SECTION -->
+        <section class="analytics-header">
+            <div class="container">
+                <h1 class="service-heading">
+                    <i class="fas fa-chart-line"></i> Performance Analytics
+                </h1>
+                <p class="para">Track your academic progress, analyze performance trends, and make data-driven decisions to improve your grades.</p>
+                
+                <!-- Quick Stats -->
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="overallGPA">0.00</h3>
+                            <p>Overall GPA</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="bestSubject">-</h3>
+                            <p>Best Subject</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-trending-up"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="improvement">0%</h3>
+                            <p>Improvement</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="attendance">0%</h3>
+                            <p>Attendance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAIN CONTENT -->
+        <section class="analytics-content">
+            <div class="container">
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="showAddGradeModal()">
+                        <i class="fas fa-plus"></i> Add Grade
+                    </button>
+                    <button class="btn btn-outline-secondary" onclick="showAddAttendanceModal()">
+                        <i class="fas fa-user-check"></i> Update Attendance
+                    </button>
+                    <button class="btn btn-outline-secondary" onclick="showGoalModal()">
+                        <i class="fas fa-target"></i> Set Goals
+                    </button>
+                    <button class="btn btn-outline-secondary" onclick="exportData()">
+                        <i class="fas fa-download"></i> Export Data
+                    </button>
+                    <button class="btn btn-outline-secondary" onclick="importData()">
+                        <i class="fas fa-upload"></i> Import Data
+                    </button>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="charts-section">
+                    <div class="row">
+                        <!-- Grade Trends Chart -->
+                        <div class="col-lg-8">
+                            <div class="chart-card">
+                                <div class="chart-header">
+                                    <h5><i class="fas fa-chart-line"></i> Grade Trends</h5>
+                                    <div class="chart-controls">
+                                        <select id="trendPeriod" class="form-select form-select-sm" onchange="updateTrendsChart()">
+                                            <option value="all">All Time</option>
+                                            <option value="6months">Last 6 Months</option>
+                                            <option value="3months">Last 3 Months</option>
+                                            <option value="1month">Last Month</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="chart-container">
+                                    <canvas id="trendsChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Subject Performance -->
+                        <div class="col-lg-4">
+                            <div class="chart-card">
+                                <div class="chart-header">
+                                    <h5><i class="fas fa-chart-pie"></i> Subject Performance</h5>
+                                </div>
+                                <div class="chart-container">
+                                    <canvas id="subjectChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <!-- Attendance Trends -->
+                        <div class="col-lg-6">
+                            <div class="chart-card">
+                                <div class="chart-header">
+                                    <h5><i class="fas fa-user-check"></i> Attendance Trends</h5>
+                                </div>
+                                <div class="chart-container">
+                                    <canvas id="attendanceChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Study Time Analytics -->
+                        <div class="col-lg-6">
+                            <div class="chart-card">
+                                <div class="chart-header">
+                                    <h5><i class="fas fa-clock"></i> Study Time Analytics</h5>
+                                </div>
+                                <div class="chart-container">
+                                    <canvas id="studyTimeChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Goals Section -->
+                <div class="goals-section">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="goals-card">
+                                <div class="goals-header">
+                                    <h5><i class="fas fa-target"></i> Academic Goals</h5>
+                                    <button class="btn btn-outline-primary btn-sm" onclick="showGoalModal()">
+                                        <i class="fas fa-plus"></i> Add Goal
+                                    </button>
+                                </div>
+                                <div id="goalsList" class="goals-list">
+                                    <!-- Goals will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Performance Insights -->
+                        <div class="col-lg-4">
+                            <div class="insights-card">
+                                <div class="insights-header">
+                                    <h5><i class="fas fa-lightbulb"></i> Performance Insights</h5>
+                                </div>
+                                <div id="insightsList" class="insights-list">
+                                    <!-- Insights will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Grades Table -->
+                <div class="grades-section">
+                    <div class="grades-card">
+                        <div class="grades-header">
+                            <h5><i class="fas fa-list"></i> Recent Grades</h5>
+                            <div class="grades-controls">
+                                <select id="subjectFilter" class="form-select form-select-sm" onchange="filterGrades()">
+                                    <option value="">All Subjects</option>
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="Physics">Physics</option>
+                                    <option value="Chemistry">Chemistry</option>
+                                    <option value="Computer Science">Computer Science</option>
+                                    <option value="English">English</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grades-table-container">
+                            <table class="table grades-table">
+                                <thead>
+                                    <tr>
+                                        <th>Subject</th>
+                                        <th>Assignment/Exam</th>
+                                        <th>Grade</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="gradesTableBody">
+                                    <!-- Grades will be populated here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Add Grade Modal -->
+    <div id="addGradeModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-plus"></i> Add Grade
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="gradeForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="gradeSubject" class="form-label">Subject *</label>
+                                    <select class="form-select" id="gradeSubject" required>
+                                        <option value="">Select Subject</option>
+                                        <option value="Mathematics">Mathematics</option>
+                                        <option value="Physics">Physics</option>
+                                        <option value="Chemistry">Chemistry</option>
+                                        <option value="Computer Science">Computer Science</option>
+                                        <option value="English">English</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="gradeType" class="form-label">Type *</label>
+                                    <select class="form-select" id="gradeType" required>
+                                        <option value="">Select Type</option>
+                                        <option value="Assignment">Assignment</option>
+                                        <option value="Quiz">Quiz</option>
+                                        <option value="Midterm">Midterm</option>
+                                        <option value="Final Exam">Final Exam</option>
+                                        <option value="Project">Project</option>
+                                        <option value="Lab">Lab</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="gradeTitle" class="form-label">Title *</label>
+                                    <input type="text" class="form-control" id="gradeTitle" required placeholder="e.g., Calculus Assignment 1">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="gradeValue" class="form-label">Grade *</label>
+                                    <input type="text" class="form-control" id="gradeValue" required placeholder="e.g., 85, A+, 8.5/10">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="gradeDate" class="form-label">Date *</label>
+                                    <input type="date" class="form-control" id="gradeDate" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="gradeMaxMarks" class="form-label">Max Marks</label>
+                                    <input type="number" class="form-control" id="gradeMaxMarks" placeholder="e.g., 100">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="gradeNotes" class="form-label">Notes</label>
+                            <textarea class="form-control" id="gradeNotes" rows="2" placeholder="Additional notes about this grade..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="saveGrade()">
+                        <i class="fas fa-save"></i> Save Grade
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Attendance Modal -->
+    <div id="addAttendanceModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-user-check"></i> Update Attendance
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="attendanceForm">
+                        <div class="mb-3">
+                            <label for="attendanceSubject" class="form-label">Subject *</label>
+                            <select class="form-select" id="attendanceSubject" required>
+                                <option value="">Select Subject</option>
+                                <option value="Mathematics">Mathematics</option>
+                                <option value="Physics">Physics</option>
+                                <option value="Chemistry">Chemistry</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="English">English</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="attendanceDate" class="form-label">Date *</label>
+                            <input type="date" class="form-control" id="attendanceDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="attendanceStatus" class="form-label">Status *</label>
+                            <select class="form-select" id="attendanceStatus" required>
+                                <option value="">Select Status</option>
+                                <option value="Present">Present</option>
+                                <option value="Absent">Absent</option>
+                                <option value="Late">Late</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="attendanceNotes" class="form-label">Notes</label>
+                            <textarea class="form-control" id="attendanceNotes" rows="2" placeholder="Additional notes..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="saveAttendance()">
+                        <i class="fas fa-save"></i> Save Attendance
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Goal Modal -->
+    <div id="addGoalModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-target"></i> Set Academic Goal
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="goalForm">
+                        <div class="mb-3">
+                            <label for="goalTitle" class="form-label">Goal Title *</label>
+                            <input type="text" class="form-control" id="goalTitle" required placeholder="e.g., Improve Mathematics Grade">
+                        </div>
+                        <div class="mb-3">
+                            <label for="goalSubject" class="form-label">Subject</label>
+                            <select class="form-select" id="goalSubject">
+                                <option value="">All Subjects</option>
+                                <option value="Mathematics">Mathematics</option>
+                                <option value="Physics">Physics</option>
+                                <option value="Chemistry">Chemistry</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="English">English</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="goalTarget" class="form-label">Target Value *</label>
+                                    <input type="text" class="form-control" id="goalTarget" required placeholder="e.g., 85, A+, 90%">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="goalDeadline" class="form-label">Deadline</label>
+                                    <input type="date" class="form-control" id="goalDeadline">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="goalDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="goalDescription" rows="3" placeholder="Describe your goal and how you plan to achieve it..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="saveGoal()">
+                        <i class="fas fa-save"></i> Save Goal
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team section injected by shared script -->
+    <div id="team-section"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../index.js"></script>
+    <script src="../../js/sidebar.js"></script>
+    <script src="../../js/team-script.js"></script>
+    <script src="../../js/scroll-indicator.js"></script>
+    <script src="../../js/footer.js"></script>
+    <script type="module" src="../js/firebase-config.js"></script>
+    <script src="performance-analytics-firebase.js"></script>
+    
+    <!-- Google Translate -->
+    <div id="google_translate_element" style="display:none;"></div>
+    <script src="../../language.js"></script>
+</body>
+
+</html>
