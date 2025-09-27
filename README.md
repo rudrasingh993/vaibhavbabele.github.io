@@ -45,6 +45,7 @@ From **syllabus tracking** to **AI-powered study tools**, and from **event manag
 - [Screenshots](#-screenshots)
 - [Tech Stack](#-tech-stack)
 - [Getting Started](#-getting-started)
+- [Firebase Configuration Setup](#-firebase-configuration-setup)
 - [Project Structure](#-project-structure)
 - [Contribution Guidelines](#-contribution-guidelines)
 - [Contributors](#-contributors)
@@ -476,6 +477,205 @@ php -S localhost:8000
   <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000">
 </div>
 
+## 🔥 Firebase Configuration Setup
+
+### Prerequisites
+- Google Cloud Console account
+- Firebase project created
+- Node.js and npm installed
+
+### 1. Firebase Project Setup
+
+1. **Create Firebase Project**
+   - Go to [Firebase Console](https://console.firebase.google.com/)
+   - Click "Create a project" or "Add project"
+   - Enter project name (e.g., "nitra-mitra")
+   - Enable/disable Google Analytics as needed
+   - Click "Create project"
+
+2. **Enable Required Services**
+   - **Authentication**: Go to Authentication → Sign-in method → Enable Email/Password
+   - **Firestore Database**: Go to Firestore Database → Create database → Start in test mode
+   - **Storage**: Go to Storage → Get started → Start in test mode
+   - **Hosting**: Go to Hosting → Get started (optional for deployment)
+
+### 2. API Keys and Configuration
+
+#### Get Firebase Configuration
+1. Go to Project Settings (gear icon) → General tab
+2. Scroll down to "Your apps" section
+3. Click "Add app" → Web app (</> icon)
+4. Register app with a nickname
+5. Copy the Firebase configuration object
+
+#### Environment Variables Setup
+
+Create a `.env` file in your project root:
+
+```bash
+# Firebase Configuration
+FIREBASE_API_KEY=your_api_key_here
+FIREBASE_AUTH_DOMAIN=your_project_id.firebaseapp.com
+FIREBASE_PROJECT_ID=your_project_id
+FIREBASE_STORAGE_BUCKET=your_project_id.appspot.com
+FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+FIREBASE_APP_ID=your_app_id
+FIREBASE_MEASUREMENT_ID=your_measurement_id
+
+# Other API Keys
+OPENAI_API_KEY=your_openai_api_key
+GITHUB_TOKEN=your_github_token
+ONESIGNAL_APP_ID=your_onesignal_app_id
+```
+
+#### JavaScript Configuration
+
+Create `js/firebase-config.js`:
+
+```javascript
+// Firebase configuration
+const firebaseConfig = {
+  apiKey: process.env.FIREBASE_API_KEY || "your_api_key_here",
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN || "your_project_id.firebaseapp.com",
+  projectId: process.env.FIREBASE_PROJECT_ID || "your_project_id",
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET || "your_project_id.appspot.com",
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID || "your_sender_id",
+  appId: process.env.FIREBASE_APP_ID || "your_app_id",
+  measurementId: process.env.FIREBASE_MEASUREMENT_ID || "your_measurement_id"
+};
+
+// Initialize Firebase
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
+
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+export const storage = getStorage(app);
+```
+
+### 3. Domain Restrictions & Security
+
+#### Google Cloud Console Setup
+
+1. **Navigate to Google Cloud Console**
+   - Go to [Google Cloud Console](https://console.cloud.google.com/)
+   - Select your Firebase project
+
+2. **API Key Restrictions**
+   - Go to "APIs & Services" → "Credentials"
+   - Find your Firebase API key
+   - Click on the key to edit
+   - Under "Application restrictions":
+     - Select "HTTP referrers (web sites)"
+     - Add your domains:
+       ```
+       https://yourdomain.com/*
+       https://www.yourdomain.com/*
+       http://localhost:3000/* (for development)
+       http://127.0.0.1:3000/* (for development)
+       ```
+
+3. **Firebase Security Rules**
+
+**Firestore Rules** (`firestore.rules`):
+```javascript
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow read/write access to authenticated users only
+    match /{document=**} {
+      allow read, write: if request.auth != null;
+    }
+    
+    // Public read access for certain collections
+    match /public/{document=**} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+  }
+}
+```
+
+**Storage Rules** (`storage.rules`):
+```javascript
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read, write: if request.auth != null;
+    }
+    
+    // Public read access for images
+    match /images/{allPaths=**} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+  }
+}
+```
+
+4. **Authentication Domain Restrictions**
+   - Go to Firebase Console → Authentication → Settings
+   - Under "Authorized domains", add only your production domains
+   - Remove `localhost` for production
+
+### 4. Environment-Specific Configuration
+
+#### Development Setup
+```bash
+# .env.development
+FIREBASE_API_KEY=your_dev_api_key
+FIREBASE_PROJECT_ID=your_dev_project_id
+# ... other dev configs
+```
+
+#### Production Setup
+```bash
+# .env.production
+FIREBASE_API_KEY=your_prod_api_key
+FIREBASE_PROJECT_ID=your_prod_project_id
+# ... other prod configs
+```
+
+### 5. Security Best Practices
+
+1. **Never commit API keys to version control**
+   - Add `.env` to `.gitignore`
+   - Use environment variables in production
+
+2. **Use Firebase App Check** (Recommended)
+   - Go to Firebase Console → App Check
+   - Register your app
+   - Enable App Check for your services
+
+3. **Monitor API Usage**
+   - Set up billing alerts in Google Cloud Console
+   - Monitor usage in Firebase Console
+
+4. **Regular Security Audits**
+   - Review Firebase Security Rules regularly
+   - Update API key restrictions as needed
+   - Monitor authentication logs
+
+### 6. Troubleshooting
+
+**Common Issues:**
+- **CORS errors**: Check domain restrictions in Google Cloud Console
+- **Authentication failures**: Verify API keys and domain settings
+- **Permission denied**: Check Firestore/Storage security rules
+- **API quota exceeded**: Monitor usage and set up billing alerts
+
+**Debug Steps:**
+1. Check browser console for Firebase errors
+2. Verify API key restrictions match your domain
+3. Test with Firebase emulator for local development
+4. Check Firebase Console logs for server-side errors
+
+---
+
 ## 📁 Project Structure 
 
 ```
@@ -520,6 +720,11 @@ php -S localhost:8000
 │
 ├── .gitignore                    # Git ignore rules
 ├── .htaccess / .htaccess.backup # Server configuration files
+├── .env                         # Environment variables (Firebase API keys, etc.)
+├── .env.development             # Development environment variables
+├── .env.production              # Production environment variables
+├── firestore.rules              # Firestore security rules
+├── storage.rules                # Firebase Storage security rules
 ├── CNAME                        # Custom domain setup
 ├── eslint.config.js             # ESLint configuration
 ├── index.html                     # Landing page 
