@@ -53,7 +53,6 @@ class PerformanceAnalyticsFirebase {
             checkAuth();
         });
     }
-
     showLoginRequired() {
         const container = document.querySelector('.main');
         if (container) {

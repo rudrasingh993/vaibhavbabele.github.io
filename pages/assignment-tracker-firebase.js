@@ -44,7 +44,6 @@ class AssignmentTrackerFirebase {
             checkAuth();
         });
     }
-
     showLoginRequired() {
         const container = document.querySelector('.main');
         if (container) {
@@ -123,7 +122,6 @@ class AssignmentTrackerFirebase {
                 this.updateStats();
                 this.renderAssignments();
             }
-
         } catch (error) {
             console.error('Error loading assignments:', error);
             window.utils.showNotification('Error loading assignments', 'error');

@@ -973,7 +973,6 @@
                 } catch (fallbackError) {
                     console.error('Error in fallback stats loading:', fallbackError);
                 }
-            }
         }
 
         // Helper function to update stats from real-time data
@@ -1239,7 +1238,6 @@
 
         // Cleanup on page unload
         window.addEventListener('beforeunload', cleanupProfileListeners);
-
         // Initialize team section
         function initializeTeamSection() {
             setTimeout(() => {
